@@ -1,14 +1,14 @@
 <div id="fundetail">
-    <center><h4>Ö÷ÌâÌù¹ÜÀí</h4></center>
+    <center><h4>ä¸»é¢˜è´´ç®¡ç†</h4></center>
     <table class="table">
         <tr>
             <td>ID</td>
-            <td>·¢ÌûÓÃ»§</td>
-            <td>Ìû×Ó±êÌâ</td>
-            <td>·¢ÌûÊ±¼ä</td>
-            <td>Ìû×ÓÄÚÈİ</td>
-            <td>Ìû×ÓÀàĞÍ</td>
-            <td>²Ù×÷</td>
+            <td>å‘å¸–ç”¨æˆ·</td>
+            <td>å¸–å­æ ‡é¢˜</td>
+            <td>å‘å¸–æ—¶é—´</td>
+            <td>å¸–å­å†…å®¹</td>
+            <td>å¸–å­ç±»å‹</td>
+            <td>æ“ä½œ</td>
         </tr>
         <?php
             session_start();
@@ -23,33 +23,33 @@
 	            echo "<td>$row[3]</td>";
                     echo "<td>".substr($row[4],0,48)."</td>";
                     echo "<td>";
-                    if($row[5]==1){echo "ÆÕÍ¨Ìù";}
-                        elseif($row[5]==2){echo "ÖÃ¶¥Ìù";}
-                        elseif($row[5]==3){echo "¾«»ªÌù";}
-                    else{echo "ÖÃ¶¥Ìù¡¢¾«»ªÌù";}
+                    if($row[5]==1){echo "æ™®é€šè´´";}
+                        elseif($row[5]==2){echo "ç½®é¡¶è´´";}
+                        elseif($row[5]==3){echo "ç²¾åè´´";}
+                    else{echo "ç½®é¡¶è´´ã€ç²¾åè´´";}
                     echo "</td>";
-            	echo "<td><a href='./index.php?action=topics&settype=0&tid=$row[0]'>É¾Ìù</a> ";
+            	echo "<td><a href='./index.php?action=topics&settype=0&tid=$row[0]'>åˆ è´´</a> ";
             	if($row[5]==1 or $row[5]==3){
                         echo"<a href='./index.php?action=topics&settype=";
                         if($row[5]==1){echo "2";}
                         else{echo "4";}
-                        echo "&tid=$row[0]'>ÖÃ¶¥ </a>";
+                        echo "&tid=$row[0]'>ç½®é¡¶ </a>";
                     }else{
                         echo"<a href='./index.php?action=topics&settype=";
                         if($row[5]==2){echo "1";}
                         else{echo "3";}
-                        echo "&tid=$row[0]'>È¡ÏûÖÃ¶¥ </a>";
+                        echo "&tid=$row[0]'>å–æ¶ˆç½®é¡¶ </a>";
                 }
             	if($row[5]==1 or $row[5]==2){
                         echo"<a href='./index.php?action=topics&settype=";
                         if($row[5]==1){echo "3";}
                         else{echo "4";}
-                        echo "&tid=$row[0]'>ÉèÎª¾«»ªÌû </a>";
+                        echo "&tid=$row[0]'>è®¾ä¸ºç²¾åå¸– </a>";
                     }else{
                         echo"<a href='./index.php?action=topics&settype=";
                         if($row[5]==3){echo "1";}
                         else{echo "2";}
-                        echo "&tid=$row[0]'>È¡Ïû¾«»ªÌû </a>";
+                        echo "&tid=$row[0]'>å–æ¶ˆç²¾åå¸– </a>";
                 }
 	            echo"</td></tr>";
             }
@@ -60,8 +60,8 @@
 $settype=@$_REQUEST["settype"];
 $tid=@$_REQUEST["tid"];
 if($settype==null or $tid==null){exit;}
-is_numeric($settype) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./');</script>");
-is_numeric($tid) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./');</script>");
+is_numeric($settype) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./');</script>");
+is_numeric($tid) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./');</script>");
 mysql_query("UPDATE wtb_titles SET topictype='$settype' WHERE tid=$tid");
-die("<script> alert('²Ù×÷³É¹¦!');window.navigate('./index.php?action=topics');</script>");
+die("<script> alert('æ“ä½œæˆåŠŸ!');window.navigate('./index.php?action=topics');</script>");
 ?>

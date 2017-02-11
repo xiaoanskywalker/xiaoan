@@ -4,7 +4,7 @@ if(@$_SESSION["user"]==null){header("Location:../");}
 ?>
 <html>
     <head>
-        <title>我的个人中心-<?php echo $_SESSION["user"];?></title>
+        <title>鎴戠殑涓汉涓績-<?php echo $_SESSION["user"];?></title>
         <style>
         a img{border:none}
         .testdiv *{vertical-align:middle;}
@@ -14,7 +14,7 @@ if(@$_SESSION["user"]==null){header("Location:../");}
         <link rel="stylesheet" href="../common/css/bootstrap.css">
         <script src="../common/js/jquery.min.js"></script>
         <script src="../common/js/bootstrap.min.js"></script>
-        <meta http-equiv="content-type" content="text/html;charset=gb2312">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
         <script type="text/javascript">
         function logout(){
             self.location='../'; 
@@ -25,29 +25,29 @@ if(@$_SESSION["user"]==null){header("Location:../");}
         <div id="myhome">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="../">首页</a></li>
-                <li class="active"><a href="./myhome.php">我的个人中心-<?php echo $_SESSION["user"];?></a></li>
+                <li><a href="#"><a href="../">棣栭〉</a></li>
+                <li class="active"><a href="./myhome.php">鎴戠殑涓汉涓績-<?php echo $_SESSION["user"];?></a></li>
                 </ol>
             </div>
             <div class="testdiv" >
-                <a href="../source/upload-avatar.php" target="_blank" title="您的头像，点击头像图片可更换头像"><img src="../common/images/avatar/<?php
+                <a href="../source/upload-avatar.php" target="_blank" title="鎮ㄧ殑澶村儚锛岀偣鍑诲ご鍍忓浘鐗囧彲鏇存崲澶村儚"><img src="../common/images/avatar/<?php
                  $file = "../common/images/avatar/".$_SESSION["user"].".png";
                 if(file_exists($file))
                   { echo $_SESSION["user"];}
                 else
                   {echo "default_avatar";}
                 ?>.png"  height="80" width ="80" /></a>
-                <span><font size='6' color="purple">我的个人中心-<?php echo $_SESSION["user"];?></font></span>
-                <button onclick='logout()' class=lgbtn>返回首页</button>
+                <span><font size='6' color="purple">鎴戠殑涓汉涓績-<?php echo $_SESSION["user"];?></font></span>
+                <button onclick='logout()' class=lgbtn>杩斿洖棣栭〉</button>
             </div>
             <hr style=" height:4px;border:none;border-top:2px dotted green;" />
             <div id="funlist">
-                <a href="./myhome.php?action=index">个人中心首页</a><p><p>
-                <a href="./myhome.php?action=avatar">头像管理</a><p>
-                <a href="./myhome.php?action=myinfo">个人信息管理</a><p>
-                <a href="./myhome.php?action=mytopic">我的帖子</a><p>
-                <a href="./myhome.php?action=message">消息中心</a><p>
-                <a href="./myhome.php?action=changepwd">修改密码</a><p>
+                <a href="./myhome.php?action=index">涓汉涓績棣栭〉</a><p><p>
+                <a href="./myhome.php?action=avatar">澶村儚绠＄悊</a><p>
+                <a href="./myhome.php?action=myinfo">涓汉淇℃伅绠＄悊</a><p>
+                <a href="./myhome.php?action=mytopic">鎴戠殑甯栧瓙</a><p>
+                <a href="./myhome.php?action=message">娑堟伅涓績</a><p>
+                <a href="./myhome.php?action=changepwd">淇敼瀵嗙爜</a><p>
             </div>
             <?php
             require '../common/config.php';

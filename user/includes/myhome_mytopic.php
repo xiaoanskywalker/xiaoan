@@ -1,13 +1,13 @@
 <div id="fundetail">
-    <center><h4>我的帖子</h4></center>
+    <center><h4>鎴戠殑甯栧瓙</h4></center>
     <div class="col-md-9" role="main">
     <!-- NAVI -->
         <ul class="nav nav-tabs" id="PageTab">
             <li class="active">
-                <a href="#adminid" data-toggle="tab" onclick="$(&#39;#newid2&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#newid&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#adminid&#39;).css(&#39;display&#39;,&#39;&#39;);" aria-expanded="true">我的主题</a>
+                <a href="#adminid" data-toggle="tab" onclick="$(&#39;#newid2&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#newid&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#adminid&#39;).css(&#39;display&#39;,&#39;&#39;);" aria-expanded="true">鎴戠殑涓婚</a>
             </li>
             <li class="">
-                <a href="#newid" data-toggle="tab" onclick="$(&#39;#newid&#39;).css(&#39;display&#39;,&#39;&#39;);$(&#39;#adminid&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#newid2&#39;).css(&#39;display&#39;,&#39;none&#39;);" aria-expanded="false">我的回复</a></li>
+                <a href="#newid" data-toggle="tab" onclick="$(&#39;#newid&#39;).css(&#39;display&#39;,&#39;&#39;);$(&#39;#adminid&#39;).css(&#39;display&#39;,&#39;none&#39;);$(&#39;#newid2&#39;).css(&#39;display&#39;,&#39;none&#39;);" aria-expanded="false">鎴戠殑鍥炲</a></li>
         </ul><br>
     <!-- END NAVI -->
     <!-- PAGE1: ADMINID-->

@@ -1,10 +1,10 @@
 <div id="fundetail">
-    <center><h4>ĞŞ¸ÄÃÜÂë</h4></center>
+    <center><h4>ä¿®æ”¹å¯†ç </h4></center>
     <form name="c" action="" method=post>
-        Ô­&nbsp;ÃÜ&nbsp;Âë:<input type=password name="pwd0" maxlength="15" class="form-control" required="">
-        ĞÂ&nbsp;ÃÜ&nbsp;Âë:<input type=password name="pwd1" maxlength="15" class="form-control" required>
-        ÔÙÊäĞÂÃÜÂë:<input type=password name="pwd2" maxlength="15" class="form-control" required>
-        <input name="c" type=submit value="ĞŞ¸ÄÃÜÂë" class="btn btn-success btn-lg">
+        åŸ&nbsp;å¯†&nbsp;ç :<input type=password name="pwd0" maxlength="15" class="form-control" required="">
+        æ–°&nbsp;å¯†&nbsp;ç :<input type=password name="pwd1" maxlength="15" class="form-control" required>
+        å†è¾“æ–°å¯†ç :<input type=password name="pwd2" maxlength="15" class="form-control" required>
+        <input name="c" type=submit value="ä¿®æ”¹å¯†ç " class="btn btn-success btn-lg">
     </form>
     <?php
         session_start();
@@ -14,17 +14,17 @@
         $pwd1=@$_POST['pwd1'];
         $pwd2=@$_POST['pwd2'];
         if(empty($_POST['c'])){exit;}
-        if($pwd0==null or $pwd1==null or $pwd2==null){die ("<script> alert('Èı¸öÊäÈë¿òÖĞ¶¼²»ÄÜÎª¿Õ!');window.navigate('./myhome.php?action=changepwd');</script>");}
-        if($pwd1!=$pwd2){die ("<script> alert('Á½´ÎÊäÈëµÄĞÂÃÜÂë²»Ò»ÖÂ!');window.navigate('./myhome.php?action=changepwd');</script>");}
+        if($pwd0==null or $pwd1==null or $pwd2==null){die ("<script> alert('ä¸‰ä¸ªè¾“å…¥æ¡†ä¸­éƒ½ä¸èƒ½ä¸ºç©º!');window.navigate('./myhome.php?action=changepwd');</script>");}
+        if($pwd1!=$pwd2){die ("<script> alert('ä¸¤æ¬¡è¾“å…¥çš„æ–°å¯†ç ä¸ä¸€è‡´!');window.navigate('./myhome.php?action=changepwd');</script>");}
         $pwd0=md5($pwd0);
         $pwd1=md5($pwd1);
         $pwd2=md5($pwd2);
         $res =mysql_query("SELECT * FROM wtb_users WHERE (usr = '$user' or email = '$user') and pwd='$pwd0'");
         $rows=mysql_num_rows($res);
-        if(!$rows){die("<script> alert('Ô­ÃÜÂë´íÎó!');window.navigate('./myhome.php?action=changepwd');</script>");}
+        if(!$rows){die("<script> alert('åŸå¯†ç é”™è¯¯!');window.navigate('./myhome.php?action=changepwd');</script>");}
         mysql_query("update wtb_users set pwd='$pwd1' where (usr='$user' or email = '$user')");
-        unset($_SESSION["user"]);//Çå¿ÕÃû×ÖÎªuserµÄsession£¬ÍË³öµÇÂ¼
-        echo"<script>alert('ÃÜÂëĞŞ¸Ä³É¹¦!');window.navigate('./login.php')</script>";
+        unset($_SESSION["user"]);//æ¸…ç©ºåå­—ä¸ºuserçš„sessionï¼Œé€€å‡ºç™»å½•
+        echo"<script>alert('å¯†ç ä¿®æ”¹æˆåŠŸ!');window.navigate('./login.php')</script>";
     ?>
-    Çë<a href="./login.php" target="RightFrame">ÖØĞÂµÇÂ½</a>
+    è¯·<a href="./login.php" target="RightFrame">é‡æ–°ç™»é™†</a>
 </div>

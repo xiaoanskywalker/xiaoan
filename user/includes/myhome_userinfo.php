@@ -1,11 +1,11 @@
 <?php
-/*¸öÈËĞÅÏ¢Ô¤´¦Àí*/
+/*ä¸ªäººä¿¡æ¯é¢„å¤„ç†*/
 if(@$_SESSION["user"]==null){header("Location:../");}
 $user=$_SESSION["user"];
-$rs = mysql_query("SELECT * FROM wtb_users where usr='$user'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
+$rs = mysql_query("SELECT * FROM wtb_users where usr='$user'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
 $row = mysql_fetch_row($rs);
 $uid=$row[0];
-$rs = mysql_query("SELECT * FROM wtb_userinfo where uid='$uid'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
+$rs = mysql_query("SELECT * FROM wtb_userinfo where uid='$uid'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
 $row = mysql_fetch_row($rs) ;
 $sex=$row[1];
 $date=$row[2];
@@ -13,37 +13,37 @@ $regtime=$row[3];
 $email=$row[4];
 ?>
 <div id="fundetail">
-    <center><h4>¸öÈËĞÅÏ¢¹ÜÀí</h4></center>
+    <center><h4>ä¸ªäººä¿¡æ¯ç®¡ç†</h4></center>
         <form name="c" action="" method=post>
             <table class="table">
                 <tr>
                     <td>
-                        <b>ÓÃ»§Ãû:<p></b><?php echo $user;?>
+                        <b>ç”¨æˆ·å:<p></b><?php echo $user;?>
                     </td>
                     <td>
                         <b>uid:<p></b><?php echo $uid;?> 
                     </td>
                     <td>
-                        <b>ĞÔ±ğ£º<p></b><input type="radio" name="sex" id="man" value="1" <?php if($sex==1) echo " checked=\"checked\""; ?> /> ÄĞ
-                        <input type="radio" name="sex" id="woman" value="2" <?php if($sex==2) echo " checked=\"checked\""; ?> /> Å®
+                        <b>æ€§åˆ«ï¼š<p></b><input type="radio" name="sex" id="man" value="1" <?php if($sex==1) echo " checked=\"checked\""; ?> /> ç”·
+                        <input type="radio" name="sex" id="woman" value="2" <?php if($sex==2) echo " checked=\"checked\""; ?> /> å¥³
                     </td>
                     <td>
-                       <b>ÉúÈÕ:</b><input type="date" name="date" class="form-control" value="<?php echo $date; ?>" required/> 
+                       <b>ç”Ÿæ—¥:</b><input type="date" name="date" class="form-control" value="<?php echo $date; ?>" required/> 
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <b>×¢²áÊ±¼ä£º<p></b><?php echo $regtime;?>
+                        <b>æ³¨å†Œæ—¶é—´ï¼š<p></b><?php echo $regtime;?>
                     </td>
                     <td>
-                        <b>µç×ÓÓÊÏä£º</b><input type = "text" class="form-control" name="email" value="<?php echo $email;?>" required>
+                        <b>ç”µå­é‚®ç®±ï¼š</b><input type = "text" class="form-control" name="email" value="<?php echo $email;?>" required>
                     </td>
                     <td>       
                         
                     </td>
                 </tr>
             </table>
-            <input name="c" type=submit value="Ìá½»">
+            <input name="c" type=submit value="æäº¤">
         </form>
 </div>
 <?php
@@ -52,12 +52,12 @@ $sex= $_POST["sex"];
 $date= $_POST["date"];
 $email= $_POST["email"];
 if($sex==null){$sex=1;}
-mysql_query("update wtb_userinfo set sex=$sex where uid='$uid'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
-mysql_query("update wtb_userinfo set birthday='$date' where uid='$uid'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
+mysql_query("update wtb_userinfo set sex=$sex where uid='$uid'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
+mysql_query("update wtb_userinfo set birthday='$date' where uid='$uid'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
 if (strstr($email,"@")==false){
-    die ("<script> alert('µç×ÓÓÊÏä¸ñÊ½´íÎó!');window.navigate('./myhome.php?action=myinfo');</script>"); 
+    die ("<script> alert('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯!');window.navigate('./myhome.php?action=myinfo');</script>"); 
 }
-mysql_query("update wtb_userinfo set email='$email' where uid='$uid'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('./myhome.php?action=myinfo');</script>");
-mysql_query("update wtb_users set email='$email' where uid='$uid'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('./myhome.php?action=myinfo');</script>");
-die("<script> alert('¸öÈËĞÅÏ¢ĞŞ¸Ä³É¹¦£¡'); window.navigate('./myhome.php?action=myinfo');</script>");
+mysql_query("update wtb_userinfo set email='$email' where uid='$uid'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('./myhome.php?action=myinfo');</script>");
+mysql_query("update wtb_users set email='$email' where uid='$uid'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('./myhome.php?action=myinfo');</script>");
+die("<script> alert('ä¸ªäººä¿¡æ¯ä¿®æ”¹æˆåŠŸï¼'); window.navigate('./myhome.php?action=myinfo');</script>");
 ?>

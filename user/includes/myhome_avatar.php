@@ -1,10 +1,10 @@
 <?php 
-error_reporting(E_ALL || ~E_NOTICE); //ÏÔÊ¾³ıÈ¥ E_NOTICE Ö®ÍâµÄËùÓĞ´íÎóĞÅÏ¢
+error_reporting(E_ALL || ~E_NOTICE); //æ˜¾ç¤ºé™¤å» E_NOTICE ä¹‹å¤–çš„æ‰€æœ‰é”™è¯¯ä¿¡æ¯
 if(@$_SESSION["user"]==null){header("Location:../");}	
 ?>
 <div id="fundetail">
-<center><h4>Í·Ïñ¹ÜÀí</h4></center>
-<table><tr><td>ÎÒµÄÍ·Ïñ</td><td>ÏµÍ³Ä¬ÈÏÍ·Ïñ</td><td>ÉÏ´«Í·Ïñ</td></tr>
+<center><h4>å¤´åƒç®¡ç†</h4></center>
+<table><tr><td>æˆ‘çš„å¤´åƒ</td><td>ç³»ç»Ÿé»˜è®¤å¤´åƒ</td><td>ä¸Šä¼ å¤´åƒ</td></tr>
 <tr><td>
 <img src="../common/images/avatar/<?php
 $file = "../common/images/avatar/".$_SESSION["user"].".png";
@@ -19,21 +19,21 @@ else
 </td><td>
 <form enctype="multipart/form-data" method="post" name="upform">
   <input name="upfile" type="file">
-  <input type="submit" value="ÉÏ´«"><p>
+  <input type="submit" value="ä¸Šä¼ "><p>
   </form>
 </td></tr></table><p>
 <?php
 /******************************************************************************
-²ÎÊıËµÃ÷:
-$max_file_size  : ÉÏ´«ÎÄ¼ş´óĞ¡ÏŞÖÆ, µ¥Î»BYTE
-$destination_folder : ÉÏ´«ÎÄ¼şÂ·¾¶
-$watermark   : ÊÇ·ñ¸½¼ÓË®Ó¡(1Îª¼ÓË®Ó¡,ÆäËûÎª²»¼ÓË®Ó¡);
+å‚æ•°è¯´æ˜:
+$max_file_size  : ä¸Šä¼ æ–‡ä»¶å¤§å°é™åˆ¶, å•ä½BYTE
+$destination_folder : ä¸Šä¼ æ–‡ä»¶è·¯å¾„
+$watermark   : æ˜¯å¦é™„åŠ æ°´å°(1ä¸ºåŠ æ°´å°,å…¶ä»–ä¸ºä¸åŠ æ°´å°);
 
-Ê¹ÓÃËµÃ÷:
-1. ½«PHP.INIÎÄ¼şÀïÃæµÄ"extension=php_gd2.dll"Ò»ĞĞÇ°ÃæµÄ;ºÅÈ¥µô,ÒòÎªÎÒÃÇÒªÓÃµ½GD¿â;
-2. ½«extension_dir =¸ÄÎªÄãµÄphp_gd2.dllËùÔÚÄ¿Â¼;
+ä½¿ç”¨è¯´æ˜:
+1. å°†PHP.INIæ–‡ä»¶é‡Œé¢çš„"extension=php_gd2.dll"ä¸€è¡Œå‰é¢çš„;å·å»æ‰,å› ä¸ºæˆ‘ä»¬è¦ç”¨åˆ°GDåº“;
+2. å°†extension_dir =æ”¹ä¸ºä½ çš„php_gd2.dllæ‰€åœ¨ç›®å½•;
 ******************************************************************************/
-//ÉÏ´«ÎÄ¼şÀàĞÍÁĞ±í
+//ä¸Šä¼ æ–‡ä»¶ç±»å‹åˆ—è¡¨
 $uptypes=array(
     'image/jpg',
     'image/jpeg',
@@ -44,15 +44,15 @@ $uptypes=array(
     'image/x-png'
 );
 
-$max_file_size=2097152;     //ÉÏ´«ÎÄ¼ş´óĞ¡ÏŞÖÆ, µ¥Î»BYTE
-$destination_folder="../common/images/avatar/"; //ÉÏ´«ÎÄ¼şÂ·¾¶
-$watermark=0;      //ÊÇ·ñ¸½¼ÓË®Ó¡(1Îª¼ÓË®Ó¡,ÆäËûÎª²»¼ÓË®Ó¡);
-$watertype=1;      //Ë®Ó¡ÀàĞÍ(1ÎªÎÄ×Ö,2ÎªÍ¼Æ¬)
-$waterposition=1;     //Ë®Ó¡Î»ÖÃ(1Îª×óÏÂ½Ç,2ÎªÓÒÏÂ½Ç,3Îª×óÉÏ½Ç,4ÎªÓÒÉÏ½Ç,5Îª¾ÓÖĞ);
-$waterstring="http://www.baidu.com/";  //Ë®Ó¡×Ö·û´®
-$waterimg="xplore.gif";    //Ë®Ó¡Í¼Æ¬
-$imgpreview=1;      //ÊÇ·ñÉú³ÉÔ¤ÀÀÍ¼(1ÎªÉú³É,ÆäËûÎª²»Éú³É);
-$imgpreviewsize=1/1;    //ËõÂÔÍ¼±ÈÀı
+$max_file_size=2097152;     //ä¸Šä¼ æ–‡ä»¶å¤§å°é™åˆ¶, å•ä½BYTE
+$destination_folder="../common/images/avatar/"; //ä¸Šä¼ æ–‡ä»¶è·¯å¾„
+$watermark=0;      //æ˜¯å¦é™„åŠ æ°´å°(1ä¸ºåŠ æ°´å°,å…¶ä»–ä¸ºä¸åŠ æ°´å°);
+$watertype=1;      //æ°´å°ç±»å‹(1ä¸ºæ–‡å­—,2ä¸ºå›¾ç‰‡)
+$waterposition=1;     //æ°´å°ä½ç½®(1ä¸ºå·¦ä¸‹è§’,2ä¸ºå³ä¸‹è§’,3ä¸ºå·¦ä¸Šè§’,4ä¸ºå³ä¸Šè§’,5ä¸ºå±…ä¸­);
+$waterstring="http://www.baidu.com/";  //æ°´å°å­—ç¬¦ä¸²
+$waterimg="xplore.gif";    //æ°´å°å›¾ç‰‡
+$imgpreview=1;      //æ˜¯å¦ç”Ÿæˆé¢„è§ˆå›¾(1ä¸ºç”Ÿæˆ,å…¶ä»–ä¸ºä¸ç”Ÿæˆ);
+$imgpreviewsize=1/1;    //ç¼©ç•¥å›¾æ¯”ä¾‹
 ?>
 <style type="text/css">
 <!--
@@ -63,30 +63,30 @@ input
 }
 -->
 </style> <p>
-ÔÊĞíÉÏ´«µÄÎÄ¼şÀàĞÍÎª:<?=implode(', ',$uptypes)?>
- <br><b>Í¼Æ¬´óĞ¡±ØĞëÊÇ100*100</b>£¬Í¼Æ¬´óĞ¡ÏŞÖÆ2MB<p>
+å…è®¸ä¸Šä¼ çš„æ–‡ä»¶ç±»å‹ä¸º:<?=implode(', ',$uptypes)?>
+ <br><b>å›¾ç‰‡å¤§å°å¿…é¡»æ˜¯100*100</b>ï¼Œå›¾ç‰‡å¤§å°é™åˆ¶2MB<p>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
     if (!is_uploaded_file($_FILES["upfile"][tmp_name]))
-    //ÊÇ·ñ´æÔÚÎÄ¼ş
+    //æ˜¯å¦å­˜åœ¨æ–‡ä»¶
     {
-         echo "Í¼Æ¬²»´æÔÚ!";
+         echo "å›¾ç‰‡ä¸å­˜åœ¨!";
          exit;
     }
 
     $file = $_FILES["upfile"];
     if($max_file_size < $file["size"])
-    //¼ì²éÎÄ¼ş´óĞ¡
+    //æ£€æŸ¥æ–‡ä»¶å¤§å°
     {
-        echo "ÎÄ¼şÌ«´ó!";
+        echo "æ–‡ä»¶å¤ªå¤§!";
         exit;
     }
 
     if(!in_array($file["type"], $uptypes))
-    //¼ì²éÎÄ¼şÀàĞÍ
+    //æ£€æŸ¥æ–‡ä»¶ç±»å‹
     {
-        echo "ÎÄ¼şÀàĞÍ²»·û!".$file["type"];
+        echo "æ–‡ä»¶ç±»å‹ä¸ç¬¦!".$file["type"];
         exit;
     }
 
@@ -100,13 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	
 	if($image_size[0]!=$image_size[1])
     {
-        echo "Í¼Æ¬Ó¦³¤¿íÏàµÈ";
+        echo "å›¾ç‰‡åº”é•¿å®½ç›¸ç­‰";
         exit;
     }  
 	
 		if($image_size[0]!=100)
     {
-        echo "Í¼Æ¬³¤¿íÓ¦¾ùÎª100ÏñËØ";
+        echo "å›¾ç‰‡é•¿å®½åº”å‡ä¸º100åƒç´ ";
         exit;
     }  
 	
@@ -116,22 +116,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	/*
     if (file_exists($destination) && $overwrite != true)
     {
-        echo "Í¬ÃûÎÄ¼şÒÑ¾­´æÔÚÁË";
+        echo "åŒåæ–‡ä»¶å·²ç»å­˜åœ¨äº†";
         exit;
     }
 */
     if(!move_uploaded_file ($filename, $destination))
     {
-        echo "ÒÆ¶¯ÎÄ¼ş³ö´í";
+        echo "ç§»åŠ¨æ–‡ä»¶å‡ºé”™";
         exit;
     }
 
     $pinfo=pathinfo($destination);
     $fname=$pinfo[basename];
-    echo " <font color=red>ÒÑ¾­³É¹¦ÉÏ´«</font><br>ÎÄ¼şÃû:  <font color=blue>".$destination_folder.$fname."</font><br>";
-    echo " ¿í¶È:".$image_size[0];
-    echo " ³¤¶È:".$image_size[1];
-    echo "<br> ´óĞ¡:".$file["size"]." bytes£¬¼´".($file["size"]/1000)."KB";
+    echo " <font color=red>å·²ç»æˆåŠŸä¸Šä¼ </font><br>æ–‡ä»¶å:  <font color=blue>".$destination_folder.$fname."</font><br>";
+    echo " å®½åº¦:".$image_size[0];
+    echo " é•¿åº¦:".$image_size[1];
+    echo "<br> å¤§å°:".$file["size"]." bytesï¼Œå³".($file["size"]/1000)."KB";
 
     if($watermark==1)
     {
@@ -156,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             $simage =imagecreatefromwbmp($destination);
             break;
             default:
-            die("²»Ö§³ÖµÄÎÄ¼şÀàĞÍ");
+            die("ä¸æ”¯æŒçš„æ–‡ä»¶ç±»å‹");
             exit;
         }
 
@@ -165,10 +165,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
         switch($watertype)
         {
-            case 1:   //¼ÓË®Ó¡×Ö·û´®
+            case 1:   //åŠ æ°´å°å­—ç¬¦ä¸²
             imagestring($nimage,2,3,$image_size[1]-15,$waterstring,$black);
             break;
-            case 2:   //¼ÓË®Ó¡Í¼Æ¬
+            case 2:   //åŠ æ°´å°å›¾ç‰‡
             $simage1 =imagecreatefromgif("xplore.gif");
             imagecopy($nimage,$simage1,0,0,0,0,85,15);
             imagedestroy($simage1);
@@ -193,16 +193,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
             break;
         }
 
-        //¸²¸ÇÔ­ÉÏ´«ÎÄ¼ş
+        //è¦†ç›–åŸä¸Šä¼ æ–‡ä»¶
         imagedestroy($nimage);
         imagedestroy($simage);
     }
 
     if($imgpreview==1)
     {
-    echo "<br>Í¼Æ¬Ô¤ÀÀ:<br>";
+    echo "<br>å›¾ç‰‡é¢„è§ˆ:<br>";
     echo "<img src=\"".$destination."\" width=".($image_size[0]*$imgpreviewsize)." height=".($image_size[1]*$imgpreviewsize);
-    echo " alt=\"Í¼Æ¬Ô¤ÀÀ:\rÎÄ¼şÃû:".$destination."\rÉÏ´«Ê±¼ä:\">";
+    echo " alt=\"å›¾ç‰‡é¢„è§ˆ:\ræ–‡ä»¶å:".$destination."\rä¸Šä¼ æ—¶é—´:\">";
     }
 }
 ?>

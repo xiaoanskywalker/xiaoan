@@ -1,14 +1,14 @@
 <?php
 session_start();
 if(@$_SESSION["user"]==null){
-    die("<script> alert('Äú»¹Î´µÇÂ¼£¬ÇëµÇÂ¼»ò×¢²á!');history.go(-1);</script>");
+    die("<script> alert('æ‚¨è¿˜æœªç™»å½•ï¼Œè¯·ç™»å½•æˆ–æ³¨å†Œ!');history.go(-1);</script>");
 }
 require_once("./config.php");
 require_once("./conn.php");
 $action=$_REQUEST["action"];
 if ($action=="newtopic"){ _newtopic();}
 elseif ($action=="newreply"){_newreply();}
-else{die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('../');</script>");}
+else{die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('../');</script>");}
 function _newtopic(){
     $title=@$_POST['title'];
     $topic=@$_POST['topic'];
@@ -16,20 +16,20 @@ function _newtopic(){
     $user=$_SESSION["user"];
     if ($title && $topic)
     {
-        mysql_query("insert into wtb_titles values (null,'$user','$title','$time','$topic','no','no')") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
-	die("<script> alert('·¢Ìû³É¹¦!');window.navigate('../');</script>");
+        mysql_query("insert into wtb_titles values (null,'$user','$title','$time','$topic','no','no')") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
+	die("<script> alert('å‘å¸–æˆåŠŸ!');window.navigate('../');</script>");
     }
-    else{die("<script> alert('ÇëÊäÈëÌû×Ó±êÌâºÍÄÚÈİ!');window.navigate('../');</script>");}
+    else{die("<script> alert('è¯·è¾“å…¥å¸–å­æ ‡é¢˜å’Œå†…å®¹!');window.navigate('../');</script>");}
 }
 function _newreply(){
     $reply=@$_POST['reply'];
-    if ($reply=="                " or $reply==null){die("<script>alert('ÇëÊäÈë»Ø¸´ÄÚÈİ!');history.go(-1);</script>");}
+    if ($reply=="                " or $reply==null){die("<script>alert('è¯·è¾“å…¥å›å¤å†…å®¹!');history.go(-1);</script>");}
     $tid=@$_REQUEST["tid"];
-    is_numeric($tid) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');history.go(-1);</script>");
-    if($tid<=0){die("<script> alert('tid²ÎÊı·ÇÕıÕûÊı!');history.go(-1);</script>");}
+    is_numeric($tid) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');history.go(-1);</script>");
+    if($tid<=0){die("<script> alert('tidå‚æ•°éæ­£æ•´æ•°!');history.go(-1);</script>");}
     $tid=round($tid);
     $time = date('Y-m-d h:m:s');
     $user=$_SESSION["user"];
-    mysql_query("insert into wtb_reply values (null,'$tid','$user','$reply','$time')") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('../');</script>");
-    die("<script> alert('»ØÌû³É¹¦!');history.go(-1);</script>");
+    mysql_query("insert into wtb_reply values (null,'$tid','$user','$reply','$time')") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('../');</script>");
+    die("<script> alert('å›å¸–æˆåŠŸ!');history.go(-1);</script>");
 }

@@ -1,28 +1,28 @@
 <?php
 session_start();
-/*TopicID²ÎÊı´¦Àí*/
+/*TopicIDå‚æ•°å¤„ç†*/
 $tid=@$_REQUEST["tid"];
 if($tid==null){$tid=1;}
-is_numeric($tid) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./');</script>");
+is_numeric($tid) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./');</script>");
 if($tid<=0){
     $tid=1;
-    die("<script> alert('topicID²ÎÊı·ÇÕıÕûÊı!');window.navigate('./showtopic.php');</script>");
+    die("<script> alert('topicIDå‚æ•°éæ­£æ•´æ•°!');window.navigate('./showtopic.php');</script>");
 }
 $tid=round($tid);
-/*page²ÎÊıÌû×Ó·ÖÒ³Ô¤´¦Àí*/
+/*pageå‚æ•°å¸–å­åˆ†é¡µé¢„å¤„ç†*/
 $page=@$_REQUEST["page"];
 if($page==null){$page=1;}
-is_numeric($page) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./');</script>");
+is_numeric($page) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./');</script>");
 if($page<=0){
     $page=1;
-    die("<script> alert('page²ÎÊı·ÇÕıÕûÊı!');window.navigate('./');</script>");
+    die("<script> alert('pageå‚æ•°éæ­£æ•´æ•°!');window.navigate('./');</script>");
 }
 $pagestart=round(($page-1)*21);
 $pageend=round($page*21+1);
 ?>
 <html>
     <head>
-        <meta charset="gb2312">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="./common/css/showtopic.css" />
         <style type="text/css">
@@ -47,16 +47,16 @@ $pageend=round($page*21+1);
         <?php
         require_once './common/config.php';
         require_once './common/conn.php';
-        $rs=mysql_query("SELECT * FROM wtb_titles where tid=$tid") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('./');</script>");
+        $rs=mysql_query("SELECT * FROM wtb_titles where tid=$tid") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('./');</script>");
         $row = mysql_fetch_row($rs);
         echo "<title>$row[2]</title>" ;
-        if (mysql_num_rows($rs)<1){die("<script> alert('Ìû×Ó²»´æÔÚ£¡!');window.navigate('./');</script>");}
+        if (mysql_num_rows($rs)<1){die("<script> alert('å¸–å­ä¸å­˜åœ¨ï¼!');window.navigate('./');</script>");}
         ?>
          <script language="javascript"> 
-         function keypress2() //·¢ÌûÄÚÈİÊäÈë³¤¶È´¦Àí 
+         function keypress2() //å‘å¸–å†…å®¹è¾“å…¥é•¿åº¦å¤„ç† 
          { 
          var text1=document.getElementById("myarea").value; 
-         var len;//¼ÇÂ¼Ê£Óà×Ö·û´®µÄ³¤¶È 
+         var len;//è®°å½•å‰©ä½™å­—ç¬¦ä¸²çš„é•¿åº¦ 
          if(text1.length>=10000)
          { 
          document.getElementById("myarea").value=text1.substr(0,300); 
@@ -66,7 +66,7 @@ $pageend=round($page*21+1);
          { 
          len=10000-text1.length; 
          } 
-         var show="Äã»¹¿ÉÒÔÊäÈë"+len+"¸ö×Ö"; 
+         var show="ä½ è¿˜å¯ä»¥è¾“å…¥"+len+"ä¸ªå­—"; 
          document.getElementById("pinglun").innerText=show; 
          } 
          </script> 
@@ -75,9 +75,9 @@ $pageend=round($page*21+1);
         <div id="main">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="./">Ê×Ò³</a></li>
+                <li><a href="#"><a href="./">é¦–é¡µ</a></li>
                 <li class="active">
-                    <?php echo"<a href='./showtopic.php?tid=$tid'>Ö÷ÌâÌû£º$row[2]</a>"?></li>
+                    <?php echo"<a href='./showtopic.php?tid=$tid'>ä¸»é¢˜å¸–ï¼š$row[2]</a>"?></li>
                 </ol>
             </div>
             <h2> <?php echo $row[2];?></h2>
@@ -85,14 +85,14 @@ $pageend=round($page*21+1);
                 <div id="stcon">
                    <div id="user">
                       <img src='./common/images/avatar/<?php
-                      $rs=mysql_query("SELECT * FROM wtb_titles WHERE tid=$tid")or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('./');</script>");
+                      $rs=mysql_query("SELECT * FROM wtb_titles WHERE tid=$tid")or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('./');</script>");
                       $row = mysql_fetch_row($rs);
                       $file = "./common/images/avatar/".$row[1].".png";
                       if(file_exists($file)){echo $row[1];}
                       else{echo "default_avatar";}
-                      echo(".png' /><p>Â¥Ö÷&nbsp;<b>");
-                      echo($row[1]."</b><br>·¢±íÓÚ&nbsp;<b>".$row[3]."</b>"); 
-                      /*Êä³öÖ÷ÌâÌûÄÚÈİ*/
+                      echo(".png' /><p>æ¥¼ä¸»&nbsp;<b>");
+                      echo($row[1]."</b><br>å‘è¡¨äº&nbsp;<b>".$row[3]."</b>"); 
+                      /*è¾“å‡ºä¸»é¢˜å¸–å†…å®¹*/
                       ?>
                    </div>
                   <div id="ctn"><?php echo $row[4];?></div>
@@ -100,15 +100,15 @@ $pageend=round($page*21+1);
             </div>
             <div id="showtopicreply">
             <?php
-            /*Êä³ö»ØÌûÄÚÈİ*/
-            $rs=mysql_query("SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $pagestart,$pageend")or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ±£¡'); window.navigate('./');</script>");
+            /*è¾“å‡ºå›å¸–å†…å®¹*/
+            $rs=mysql_query("SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $pagestart,$pageend")or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ï¼'); window.navigate('./');</script>");
             while($row = mysql_fetch_row($rs)){
                 echo"<div id='showtoc'> <div id='ston'><div id='user'><img src='./common/images/avatar/";
                 $file = "./common/images/avatar/".$row[2].".png";
                 if(file_exists($file)){echo $row[2];}
                 else{echo "default_avatar";}
                 echo(".png' /><p><b>");
-                echo($row[2]."</b><br>·¢±íÓÚ&nbsp;<b>".$row[4]."</b>"); 
+                echo($row[2]."</b><br>å‘è¡¨äº&nbsp;<b>".$row[4]."</b>"); 
                 echo "</div><div id='ctn'>$row[3]</div></div></div>";
             }?>
             </div>
@@ -126,13 +126,13 @@ $pageend=round($page*21+1);
                 <div id="loginbtn">
                     <?php
                     if($_SESSION["user"]==null){
-                        echo "µÇÂ¼ºóÄÚÈİ¸ü¾«²Ê<p>";
-                        echo"<button onclick='login()' class=lgbtn>µÇÂ¼</button>
-                    <button onclick='register()' class=regbtn>×¢²á</button>";
+                        echo "ç™»å½•åå†…å®¹æ›´ç²¾å½©<p>";
+                        echo"<button onclick='login()' class=lgbtn>ç™»å½•</button>
+                    <button onclick='register()' class=regbtn>æ³¨å†Œ</button>";
                     }
                     else{
                         echo ($_SESSION["user"])."<p>";
-                        echo "<button onclick='logout()') class=lgbtn>ÍË³öµÇÂ¼</button>";
+                        echo "<button onclick='logout()') class=lgbtn>é€€å‡ºç™»å½•</button>";
                     }
                     ?>
                 </div>
@@ -146,20 +146,20 @@ $pageend=round($page*21+1);
                 } 
              }
             ?>
-            <a href="./showtopic.php?tid=<?php echo $tid;?>">Ê×Ò³</a>
-            <input type = "text" id="pagea" name="pagea" placeholder="ÊäÈëÒ³Âë..."></input>
+            <a href="./showtopic.php?tid=<?php echo $tid;?>">é¦–é¡µ</a>
+            <input type = "text" id="pagea" name="pagea" placeholder="è¾“å…¥é¡µç ..."></input>
             <a href="#" onclick="pagego()">GO</a>
             </div>
             <div id="addreply">
-                <b><p>·¢±í»Ø¸´ New Reply'</b>
+                <b><p>å‘è¡¨å›å¤ New Reply'</b>
                 <form method="POST" action="./common/addtopic.php?action=newreply&tid=<?php echo $tid;?>">
-                <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="reply" cols="150" placeholder="ÇëÊäÈëÄÚÈİ...²»ÄÜ³¬¹ı10000¸ö×Ö" maxlength="10000" style="outline: none;">
-                </textarea><p><input type="submit" value="·¢Ìû" name="ok">
-                <font color="gray">&nbsp;&nbsp;<label id="pinglun">Äã»¹¿ÉÒÔÊäÈë10000¸ö×Ö</label></font>
+                <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="reply" cols="150" placeholder="è¯·è¾“å…¥å†…å®¹...ä¸èƒ½è¶…è¿‡10000ä¸ªå­—" maxlength="10000" style="outline: none;">
+                </textarea><p><input type="submit" value="å‘å¸–" name="ok">
+                <font color="gray">&nbsp;&nbsp;<label id="pinglun">ä½ è¿˜å¯ä»¥è¾“å…¥10000ä¸ªå­—</label></font>
                 </form>
             </div>
         <hr><footer>
-        <div id="foot">&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">Ğ¡°²ÉçÇø</a>Ø­V0.2.0</div>
+        <div id="foot">&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">å°å®‰ç¤¾åŒº</a>ä¸¨V0.2.0</div>
         </footer>
     </body>
 </html>

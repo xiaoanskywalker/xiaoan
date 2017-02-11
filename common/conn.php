@@ -2,6 +2,6 @@
 ini_set('date.timezone','Asia/Shanghai');
 mysql_connect(constant("mysql_servername") ,constant("mysql_username") , constant("mysql_password"));
 mysql_select_db(constant("mysql_database")); 
-mysql_query("SET NAMES 'gbk'");//Êý¾Ý¿â±àÂë
-mysql_query("SET time_zone = '+8:00'")//Êý¾Ý¿âÊ±Çø
+mysql_query("SET NAMES 'utf8'");//æ•°æ®åº“ç¼–ç 
+mysql_query("SET time_zone = '+8:00'")//æ•°æ®åº“æ—¶åŒº
 ?>

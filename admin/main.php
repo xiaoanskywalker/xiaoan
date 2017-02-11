@@ -1,9 +1,9 @@
-<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <link rel="stylesheet" href="../css/bootstrap.min.css">
 <?php 
-/*Ð¡°²ÔÆÆ½Ì¨-Î¢Ìù°É ¹ÜÀíÖÐÐÄÖ÷Ò³ ¿ª·¢ÓïÑÔ£ºPHP Êý¾Ý¿â£ºMYSQL ¹Ù·½ÍøÕ¾http://www.xiaoan.gq/
-ÇëÎðÎ´¾­³ÌÐòÔ­×÷ÕßÍ¬Òâ¶øËæÒâ¸ü¸Ä°æÈ¨ÐÅÏ¢ºóÔÙ´Î·¢²¼¡£Çë±£Áô³ÌÐòµ×²¿µÄÔ­×÷ÕßÐÅÏ¢¡£
-½¨ÒéÇëÊ¹ÓÃPHP5.3»·¾³£¬·ñÔòmysql_query()º¯Êý¿ÉÄÜÎÞ·¨±»Ö´ÐÐ£¬³ÌÐòÎÞ·¨Ö´ÐÐÒ»ÇÐÊý¾Ý¿â²Ù×÷£¡*/ 
+/*å°å®‰äº‘å¹³å°-å¾®è´´å§ ç®¡ç†ä¸­å¿ƒä¸»é¡µ å¼€å‘è¯­è¨€ï¼šPHP æ•°æ®åº“ï¼šMYSQL å®˜æ–¹ç½‘ç«™http://www.xiaoan.gq/
+è¯·å‹¿æœªç»ç¨‹åºåŽŸä½œè€…åŒæ„è€Œéšæ„æ›´æ”¹ç‰ˆæƒä¿¡æ¯åŽå†æ¬¡å‘å¸ƒã€‚è¯·ä¿ç•™ç¨‹åºåº•éƒ¨çš„åŽŸä½œè€…ä¿¡æ¯ã€‚
+å»ºè®®è¯·ä½¿ç”¨PHP5.3çŽ¯å¢ƒï¼Œå¦åˆ™mysql_query()å‡½æ•°å¯èƒ½æ— æ³•è¢«æ‰§è¡Œï¼Œç¨‹åºæ— æ³•æ‰§è¡Œä¸€åˆ‡æ•°æ®åº“æ“ä½œï¼*/ 
 session_start();
 if(@$_SESSION["user"]==null)
 {header("Location:../user/login.php");}
@@ -12,25 +12,25 @@ if($_SESSION["admin"]==null)
 ?>
 <body style="margin:0;">
 <div style="width:15%; float:left;background:#F0F8FF;">
-<a href="./main.php">¹ÜÀíÖÐÐÄÊ×Ò³</a><p><p>
-<a href="./general.php">È«¾Ö¹ÜÀí</a><p>
-<a href="./topic.php">Ö÷ÌâÌù¹ÜÀí</a><p>
-<a href="./reply.php">»Ø¸´Ìù¹ÜÀí</a><p>
-<a href="./user.php">ÓÃ»§¹ÜÀí</a><p>
-<!--<a href="./notice.php">Í¨ÖªÖÐÐÄ</a><p>
-<a href="./changepwd.php">ÐÞ¸ÄÃÜÂë</a><p>-->
+<a href="./main.php">ç®¡ç†ä¸­å¿ƒé¦–é¡µ</a><p><p>
+<a href="./general.php">å…¨å±€ç®¡ç†</a><p>
+<a href="./topic.php">ä¸»é¢˜è´´ç®¡ç†</a><p>
+<a href="./reply.php">å›žå¤è´´ç®¡ç†</a><p>
+<a href="./user.php">ç”¨æˆ·ç®¡ç†</a><p>
+<!--<a href="./notice.php">é€šçŸ¥ä¸­å¿ƒ</a><p>
+<a href="./changepwd.php">ä¿®æ”¹å¯†ç </a><p>-->
 </div>
 <div style="width:85%; float:left;background:#F0FFF0;">
-<center><h4><b>¹ÜÀíÖÐÐÄÊ×Ò³</b></h4></center>
-µ±Ç°³ÌÐò°æ±¾£º<b>Ð¡°²Î¢Ìù°É/for PHP V0.1²âÊÔ°æ</b><p>
-µ±Ç°µÇÂ¼µÄ¹ÜÀíÔ±ÕÊºÅ£º<b><?php echo $_SESSION["admin"];?></b>
-<p><p><hr><b>·þÎñÆ÷ÐÅÏ¢£º</b><br>
-·þÎñÆ÷²Ù×÷ÏµÍ³£º<?php echo php_uname();?><br><p><p>
-·þÎñÆ÷½âÊÍÒýÇæ£º<?php echo $_SERVER['SERVER_SOFTWARE'];?><br><p>
-PHP°æ±¾£º<?php echo PHP_VERSION;?><br><p>
-·þÎñÆ÷IPµØÖ·£º<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br><p>
-·þÎñÆ÷ÓòÃû£º<?php echo $_SERVER["HTTP_HOST"];?><br><p>
-<a herf="#" onclick="phpinfo()">²ì¿´phpinfo</a>&nbsp;<a herf="#" onclick="serverinfo()">²ì¿´·þÎñÆ÷ÏêÏ¸ÐÅÏ¢</a>
+<center><h4><b>ç®¡ç†ä¸­å¿ƒé¦–é¡µ</b></h4></center>
+å½“å‰ç¨‹åºç‰ˆæœ¬ï¼š<b>å°å®‰å¾®è´´å§/for PHP V0.1æµ‹è¯•ç‰ˆ</b><p>
+å½“å‰ç™»å½•çš„ç®¡ç†å‘˜å¸å·ï¼š<b><?php echo $_SESSION["admin"];?></b>
+<p><p><hr><b>æœåŠ¡å™¨ä¿¡æ¯ï¼š</b><br>
+æœåŠ¡å™¨æ“ä½œç³»ç»Ÿï¼š<?php echo php_uname();?><br><p><p>
+æœåŠ¡å™¨è§£é‡Šå¼•æ“Žï¼š<?php echo $_SERVER['SERVER_SOFTWARE'];?><br><p>
+PHPç‰ˆæœ¬ï¼š<?php echo PHP_VERSION;?><br><p>
+æœåŠ¡å™¨IPåœ°å€ï¼š<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br><p>
+æœåŠ¡å™¨åŸŸåï¼š<?php echo $_SERVER["HTTP_HOST"];?><br><p>
+<a herf="#" onclick="phpinfo()">å¯Ÿçœ‹phpinfo</a>&nbsp;<a herf="#" onclick="serverinfo()">å¯Ÿçœ‹æœåŠ¡å™¨è¯¦ç»†ä¿¡æ¯</a>
 </div>
 </body>
 <SCRIPT type="text/javascript"> 

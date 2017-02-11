@@ -9,23 +9,23 @@ session_start();
      }
      return $strs;
  }
- $str = random(4); //Ëæ»úÉú³ÉµÄ×Ö·û´®
- $width  = 50;  //ÑéÖ¤ÂëÍ¼Æ¬µÄ¿í¶È
- $height = 25;//ÑéÖ¤ÂëÍ¼Æ¬µÄ¸ß¶È
- @ header("Content-Type:image/png");//ÉùÃ÷ĞèÒª´´½¨µÄÍ¼²ãµÄÍ¼Æ¬¸ñÊ½
- $im = imagecreate($width, $height);//´´½¨Ò»¸öÍ¼²ã
- $back = imagecolorallocate($im, 0xFF, 0xFF, 0xFF); //±³¾°É«
- $pix  = imagecolorallocate($im, 187, 230, 247); //Ä£ºıµãÑÕÉ«
- $font = imagecolorallocate($im, 41, 163, 238); //×ÖÌåÉ«
- mt_srand(); //»æÄ£ºı×÷ÓÃµÄµã
+ $str = random(4); //éšæœºç”Ÿæˆçš„å­—ç¬¦ä¸²
+ $width  = 50;  //éªŒè¯ç å›¾ç‰‡çš„å®½åº¦
+ $height = 25;//éªŒè¯ç å›¾ç‰‡çš„é«˜åº¦
+ @ header("Content-Type:image/png");//å£°æ˜éœ€è¦åˆ›å»ºçš„å›¾å±‚çš„å›¾ç‰‡æ ¼å¼
+ $im = imagecreate($width, $height);//åˆ›å»ºä¸€ä¸ªå›¾å±‚
+ $back = imagecolorallocate($im, 0xFF, 0xFF, 0xFF); //èƒŒæ™¯è‰²
+ $pix  = imagecolorallocate($im, 187, 230, 247); //æ¨¡ç³Šç‚¹é¢œè‰²
+ $font = imagecolorallocate($im, 41, 163, 238); //å­—ä½“è‰²
+ mt_srand(); //ç»˜æ¨¡ç³Šä½œç”¨çš„ç‚¹
  for ($i = 0; $i < 1000; $i++) {
      imagesetpixel($im, mt_rand(0, $width), mt_rand(0, $height), $pix);
  }
- imagestring($im, 5, 7, 5, $str, $font); //Êä³ö×Ö·û
- imagerectangle($im, 0, 0, $width -1, $height -1, $font); //Êä³ö¾ØĞÎ
- imagepng($im); //Êä³öÍ¼Æ¬
+ imagestring($im, 5, 7, 5, $str, $font); //è¾“å‡ºå­—ç¬¦
+ imagerectangle($im, 0, 0, $width -1, $height -1, $font); //è¾“å‡ºçŸ©å½¢
+ imagepng($im); //è¾“å‡ºå›¾ç‰‡
  imagedestroy($im);
 $str=md5($str);
- //Ñ¡Ôñ Session
+ //é€‰æ‹© Session
  $_SESSION["verification"] = $str;
  ?>

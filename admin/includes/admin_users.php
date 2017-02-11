@@ -1,13 +1,13 @@
 <div id="fundetail">
-    <center><h4>ÓÃ»§¹ÜÀí</h4></center>
+    <center><h4>ç”¨æˆ·ç®¡ç†</h4></center>
     <table class="table">
         <tr>
             <td>UID</td>
-            <td>Í·ÏñºÍÓÃ»§Ãû</td>
-            <td>×¢²áÊ±¼ä</td>
-            <td>ĞÔ±ğ</td>
-            <td>ÓÃ»§×é</td>
-            <td>²Ù×÷</td>
+            <td>å¤´åƒå’Œç”¨æˆ·å</td>
+            <td>æ³¨å†Œæ—¶é—´</td>
+            <td>æ€§åˆ«</td>
+            <td>ç”¨æˆ·ç»„</td>
+            <td>æ“ä½œ</td>
         </tr>
         <?php
             session_start();
@@ -25,13 +25,13 @@
 	        echo "</td>";
                 echo "<td>$rows[3]</td>";
                 echo "<td>";
-                if($rows[1]==1){echo "ÄĞ";}
-                else {echo "Å®";}
+                if($rows[1]==1){echo "ç”·";}
+                else {echo "å¥³";}
                 echo "</td>";
                 echo "<td>";
-                if($row[4]==1){echo"ÆÕÍ¨¹ÜÀíÔ±";}
-                elseif($row[4]==2){echo"³¬¼¶¹ÜÀíÔ±";}
-                else{echo"ÆÕÍ¨ÓÃ»§";}
+                if($row[4]==1){echo"æ™®é€šç®¡ç†å‘˜";}
+                elseif($row[4]==2){echo"è¶…çº§ç®¡ç†å‘˜";}
+                else{echo"æ™®é€šç”¨æˆ·";}
                 echo "</td>";
 	        require("./includes/admin_del_usr.php");
 	        echo "</tr>";
@@ -43,16 +43,16 @@
 $mode=@$_REQUEST["mode"];
 $uid=@$_REQUEST["uid"];
 if($mode==null or $uid==null){exit;}
-is_numeric($uid) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./index.php?action=users');</script>");
+is_numeric($uid) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./index.php?action=users');</script>");
 function _del(){
     $uid=@$_REQUEST["uid"];
     $row = mysql_fetch_row(mysql_query("SELECT * FROM wtb_users WHERE uid='$uid'"));
     if($row[4]!=0){
-        die("<script> alert('Äú²»ÄÜÉ¾³ıÆ½Ì¨¹ÜÀíÔ±!');window.navigate('./index.php?action=users');</script>");
+        die("<script> alert('æ‚¨ä¸èƒ½åˆ é™¤å¹³å°ç®¡ç†å‘˜!');window.navigate('./index.php?action=users');</script>");
     }
     mysql_query("DELETE FROM wtb_users WHERE uid=$uid");
     mysql_query("DELETE FROM wtb_userinfo WHERE uid=$uid");
-    die("<script> alert('ÓÃ»§(uid:$uid,ÓÃ»§Ãû:$row[1])É¾³ı³É¹¦!');window.navigate('./index.php?action=users');</script>");
+    die("<script> alert('ç”¨æˆ·(uid:$uid,ç”¨æˆ·å:$row[1])åˆ é™¤æˆåŠŸ!');window.navigate('./index.php?action=users');</script>");
 }
 if($mode=="del"){
     _del();exit;

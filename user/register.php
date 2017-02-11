@@ -12,48 +12,48 @@ function _register(){
     $code=@md5($_POST['code']);
     $password2=@$_POST['password2'];
     if($username==null or $password==null or $email==null or $password2==null){
-        die ("<script> alert('ÇëÌîĞ´Ïà¹ØĞÅÏ¢!');window.navigate('./register.php');</script>"); 
+        die ("<script> alert('è¯·å¡«å†™ç›¸å…³ä¿¡æ¯!');window.navigate('./register.php');</script>"); 
     }
     if($code!= $_SESSION["verification"]){
-        die ("<script> alert('ÑéÖ¤Âë´íÎó!');window.navigate('./register.php');</script>");
+        die ("<script> alert('éªŒè¯ç é”™è¯¯!');window.navigate('./register.php');</script>");
     }
     if($password!=$password2){
-        die ("<script> alert('Á½´ÎÊäÈëµÄÃÜÂë²»Ò»ÖÂ£¬ÇëÖØĞÂÊäÈë!');window.navigate('./register.php');</script>");
+        die ("<script> alert('ä¸¤æ¬¡è¾“å…¥çš„å¯†ç ä¸ä¸€è‡´ï¼Œè¯·é‡æ–°è¾“å…¥!');window.navigate('./register.php');</script>");
     }
     if (strstr($email,"@")==false){
-        die ("<script> alert('µç×ÓÓÊÏä¸ñÊ½´íÎó!');window.navigate('./register.php');</script>"); 
+        die ("<script> alert('ç”µå­é‚®ç®±æ ¼å¼é”™è¯¯!');window.navigate('./register.php');</script>"); 
     }
-    $res = mysql_query("SELECT * FROM wtb_users WHERE usr = '$username' ") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ± error in register.php line 25£¡'); window.navigate('./register.php');</script>");
+    $res = mysql_query("SELECT * FROM wtb_users WHERE usr = '$username' ") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ error in register.php line 25ï¼'); window.navigate('./register.php');</script>");
     $rows=mysql_num_rows($res);
     if($rows){
-        die ("<script> alert('¸ÃÓÃ»§ÃûÒÑ±»×¢²á!');window.navigate('./register.php');</script>");        
+        die ("<script> alert('è¯¥ç”¨æˆ·åå·²è¢«æ³¨å†Œ!');window.navigate('./register.php');</script>");        
     }
-    $res = mysql_query("SELECT * FROM wtb_users WHERE email = '$email'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ± error in register.php line 30£¡'); window.navigate('./register.php');</script>");
+    $res = mysql_query("SELECT * FROM wtb_users WHERE email = '$email'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ error in register.php line 30ï¼'); window.navigate('./register.php');</script>");
     $rows=mysql_num_rows($res);
     if($rows){
-        die ("<script> alert('¸Ãµç×ÓÓÊÏäÒÑ±»×¢²á!');window.navigate('./register.php');</script>");        
+        die ("<script> alert('è¯¥ç”µå­é‚®ç®±å·²è¢«æ³¨å†Œ!');window.navigate('./register.php');</script>");        
     }
     $password=md5($password);
-    mysql_query("insert into wtb_users  values (null,'".$username."' ,'".$password."','".$email."',0)") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ± error in register.php line 36£¡'); window.navigate('./register.php');</script>");
-    $rs = mysql_query("SELECT * FROM wtb_users where usr='".$username."'") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ± error in register.php line 37£¡'); window.navigate('./register.php');</script>");
+    mysql_query("insert into wtb_users  values (null,'".$username."' ,'".$password."','".$email."',0)") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ error in register.php line 36ï¼'); window.navigate('./register.php');</script>");
+    $rs = mysql_query("SELECT * FROM wtb_users where usr='".$username."'") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ error in register.php line 37ï¼'); window.navigate('./register.php');</script>");
     $row = mysql_fetch_row($rs) ;
     $uid=$row[0];
     $time = date('Y-m-d h:m:s');
-    mysql_query("insert into wtb_userinfo  values ('".$uid."',1,'2016-1-1','".$time."','".$email."')") or die("<script> alert('Ö´ĞĞÊı¾İ¿â²éÑ¯Ê±³öÏÖ´íÎó£¬ÇëÁªÏµÍøÕ¾¹ÜÀíÔ± error in register.php line 41£¡'); window.navigate('./register.php');</script>");
-    die ("<script> alert('Ç×°®µÄ ".$username."£¬×¢²á³É¹¦!');window.navigate('./login.php');</script>");     
+    mysql_query("insert into wtb_userinfo  values ('".$uid."',1,'2016-1-1','".$time."','".$email."')") or die("<script> alert('æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ—¶å‡ºç°é”™è¯¯ï¼Œè¯·è”ç³»ç½‘ç«™ç®¡ç†å‘˜ error in register.php line 41ï¼'); window.navigate('./register.php');</script>");
+    die ("<script> alert('äº²çˆ±çš„ ".$username."ï¼Œæ³¨å†ŒæˆåŠŸ!');window.navigate('./login.php');</script>");     
 }
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="gb2312">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="../common/css/login.css" />
         <link rel="stylesheet" href="../common/css/bootstrap.css">
         <style type="text/css">
          body {background-image:url(../common/images/bg_<?php echo(rand(1,3));?>.jpg);}
         </style>
-        <title>Ğ¡°²ÉçÇøÓÃ»§×¢²á</title>
+        <title>å°å®‰ç¤¾åŒºç”¨æˆ·æ³¨å†Œ</title>
         <script type="text/javascript" >
         function changing(){document.getElementById('checkpic').src="../common/checkcode.php?"+Math.random();} 
         </script>
@@ -62,48 +62,48 @@ function _register(){
         <div id="main">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="../">Ê×Ò³</a></li>
-                <li class="active"><a href="./register.php">ÓÃ»§×¢²á</a></li>
+                <li><a href="#"><a href="../">é¦–é¡µ</a></li>
+                <li class="active"><a href="./register.php">ç”¨æˆ·æ³¨å†Œ</a></li>
                 </ol>
             </div>
             <div id="login">
                     <ul class="nav nav-pills nav-justified">
-                      <li class="active"><a href="./login.php">µÇÂ¼</a></li>
-                      <li><a href="#">×¢²á</a></li>
+                      <li class="active"><a href="./login.php">ç™»å½•</a></li>
+                      <li><a href="#">æ³¨å†Œ</a></li>
                     </ul>
             <div style="padding: 50px 100px 19px 50px;">
             	<center><form class="form-inline" name="login" role="form" action="" method=post>
             		<table  border = "0" cellpadding = "4">
                   <tr><table>
-                         <td  align = "center">ÓÃ»§Ãû</td>
-                         <td><input type = "text" class="form-control" name="username" placeholder="²»ÄÜ³¬¹ı8Î»×Ö·û" required></td>
+                         <td  align = "center">ç”¨æˆ·å</td>
+                         <td><input type = "text" class="form-control" name="username" placeholder="ä¸èƒ½è¶…è¿‡8ä½å­—ç¬¦" required></td>
                   </tr>
                   <tr>
-                      <td  align = "center">µç×ÓÓÊÏä</td>
-                         <td><input type = "text" class="form-control" name="email" placeholder="ÇëÊäÈëÕıÈ·µÄµç×ÓÓÊÏäµØÖ·" required></td>
+                      <td  align = "center">ç”µå­é‚®ç®±</td>
+                         <td><input type = "text" class="form-control" name="email" placeholder="è¯·è¾“å…¥æ­£ç¡®çš„ç”µå­é‚®ç®±åœ°å€" required></td>
                  </tr>                  
                   <tr>
-                         <td  align = "center">ÃÜÂë</td>
-                         <td><input type = "password" class="form-control" name="password" maxlength="15" placeholder="²»ÄÜ³¬¹ı15Î»×Ö·û" required></td>
+                         <td  align = "center">å¯†ç </td>
+                         <td><input type = "password" class="form-control" name="password" maxlength="15" placeholder="ä¸èƒ½è¶…è¿‡15ä½å­—ç¬¦" required></td>
                  </tr>
                   <tr>
-                         <td  align = "center">ÔÙÊäÒ»´ÎÃÜÂë</td>
-                         <td><input type = "password" class="form-control" name="password2" maxlength="15" placeholder="²»ÄÜ³¬¹ı15Î»×Ö·û" required></td>
+                         <td  align = "center">å†è¾“ä¸€æ¬¡å¯†ç </td>
+                         <td><input type = "password" class="form-control" name="password2" maxlength="15" placeholder="ä¸èƒ½è¶…è¿‡15ä½å­—ç¬¦" required></td>
                  </tr>       
                   <tr>
-                         <td  align = "center">ÑéÖ¤Âë</td>
-                         <td><input type = "text" class="form-control" name="code" maxlength="4" placeholder="µã»÷Í¼Æ¬¿É»»Ò»ÕÅ" required>
+                         <td  align = "center">éªŒè¯ç </td>
+                         <td><input type = "text" class="form-control" name="code" maxlength="4" placeholder="ç‚¹å‡»å›¾ç‰‡å¯æ¢ä¸€å¼ " required>
                          <img id="checkpic" onclick="changing();" src='../common/checkcode.php' /></td>
                  </tr>                 
                  <tr>
              <td colspan = "2" align = "center">
-                         <input name="reg" type = "submit" class="btn btn-primary" value = "×¢²á">
+                         <input name="reg" type = "submit" class="btn btn-primary" value = "æ³¨å†Œ">
                          </tr></table>            
             	</form></center>
             </div>
             </div>
     </body>
     <footer>
-    <div>&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">Ğ¡°²ÉçÇø</a>Ø­V0.2.0</div>
+    <div>&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">å°å®‰ç¤¾åŒº</a>ä¸¨V0.2.0</div>
     </footer>
 </html>

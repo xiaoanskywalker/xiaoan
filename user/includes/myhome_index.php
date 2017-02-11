@@ -1,5 +1,5 @@
 <div id="fundetail">
-<center><h4>个人中心首页--我的资料</h4></center>
+<center><h4>涓汉涓績棣栭〉--鎴戠殑璧勬枡</h4></center>
 <?php
 if(@$_SESSION["user"]==null){header("Location:../");}	
 ?>

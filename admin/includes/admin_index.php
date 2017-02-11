@@ -3,14 +3,14 @@ session_start();
 if(@$_SESSION["user"]==null or @$_SESSION["admin"]==null){header("Location:../");}
 ?>
 <div id="fundetail">
-    <center><h4>¹ÜÀíÖÐÐÄÊ×Ò³</h4></center>
-    µ±Ç°³ÌÐò°æ±¾£ºÐ¡°²ÉçÇø XiaoanBBS 0.2.0 Alpha<p>
-    ³ÌÐò¹Ù·½ÍøÕ¾£º<a href="http://xiaoanbbs.cn" target="_blank">http://xiaoanbbs.cn</a><p>
-    µ±Ç°µÇÂ¼µÄ¹ÜÀíÔ±ÕÊºÅ£º<?php echo $_SESSION["admin"];?>
-    <hr>·þÎñÆ÷ÐÅÏ¢£º<br>
-    ·þÎñÆ÷²Ù×÷ÏµÍ³£º<?php echo php_uname();?><br><p><p>
-    ·þÎñÆ÷½âÊÍÒýÇæ£º<?php echo $_SERVER['SERVER_SOFTWARE'];?><br><p>
-    PHP°æ±¾£º<?php echo PHP_VERSION;?><br><p>
-    ·þÎñÆ÷IPµØÖ·£º<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br><p>
-    ·þÎñÆ÷ÓòÃû£º<?php echo $_SERVER["HTTP_HOST"];?><br>
+    <center><h4>ç®¡ç†ä¸­å¿ƒé¦–é¡µ</h4></center>
+    å½“å‰ç¨‹åºç‰ˆæœ¬ï¼šå°å®‰ç¤¾åŒº XiaoanBBS 0.2.0 Alpha<p>
+    ç¨‹åºå®˜æ–¹ç½‘ç«™ï¼š<a href="http://xiaoanbbs.cn" target="_blank">http://xiaoanbbs.cn</a><p>
+    å½“å‰ç™»å½•çš„ç®¡ç†å‘˜å¸å·ï¼š<?php echo $_SESSION["admin"];?>
+    <hr>æœåŠ¡å™¨ä¿¡æ¯ï¼š<br>
+    æœåŠ¡å™¨æ“ä½œç³»ç»Ÿï¼š<?php echo php_uname();?><br><p><p>
+    æœåŠ¡å™¨è§£é‡Šå¼•æ“Žï¼š<?php echo $_SERVER['SERVER_SOFTWARE'];?><br><p>
+    PHPç‰ˆæœ¬ï¼š<?php echo PHP_VERSION;?><br><p>
+    æœåŠ¡å™¨IPåœ°å€ï¼š<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br><p>
+    æœåŠ¡å™¨åŸŸåï¼š<?php echo $_SERVER["HTTP_HOST"];?><br>
 </div>

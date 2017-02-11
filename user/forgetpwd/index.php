@@ -1,24 +1,24 @@
-<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="../../css/login.css" />
 <body bgcolor="#F0F8FF">
-<title>ÕÒ»ØÃÜÂë</title>
+<title>æ‰¾å›å¯†ç </title>
 <center>
 <div id="login">
-<h2>ÕÒ»ØÃÜÂë</h2><p>
+<h2>æ‰¾å›å¯†ç </h2><p>
 <form name="login" action="checkemail.php" method=post>
-ÓÃ»§Ãû:<input type=text name="email" placeholder="¿ÉÒÔÊÇÓÃ»§Ãû»òÓÊÏä" style="border:0px;border-bottom:red 2px solid;background:none;outline: none;"><p>
-ÑéÖ¤Âë:<input type=text name="code" maxlength="4" placeholder="µã»÷Í¼Æ¬¿É»»Ò»ÕÅ" style="border:0px;border-bottom:red 2px solid;background:none;outline: none;"><p>
+ç”¨æˆ·å:<input type=text name="email" placeholder="å¯ä»¥æ˜¯ç”¨æˆ·åæˆ–é‚®ç®±" style="border:0px;border-bottom:red 2px solid;background:none;outline: none;"><p>
+éªŒè¯ç :<input type=text name="code" maxlength="4" placeholder="ç‚¹å‡»å›¾ç‰‡å¯æ¢ä¸€å¼ " style="border:0px;border-bottom:red 2px solid;background:none;outline: none;"><p>
 <p>
-<input name="log" type=submit value="¼ÌĞø">&nbsp;<a href="../login.php">·µ»Ø</a>&nbsp;
+<input name="log" type=submit value="ç»§ç»­">&nbsp;<a href="../login.php">è¿”å›</a>&nbsp;
 <img id="checkpic" onclick="changing();" src='../../source/checkcode.php' />
 </form>
 <script type="text/javascript" >
 function changing(){document.getElementById('checkpic').src="../../source/checkcode.php?"+Math.random();} 
 </script>
 <?php 
-/*Ğ¡°²ÔÆÆ½Ì¨-Î¢Ìù°É ÕÒ»ØÃÜÂëÖ÷Ò³ ¿ª·¢ÓïÑÔ£ºPHP Êı¾İ¿â£ºMYSQL ¹Ù·½ÍøÕ¾http://www.xiaoan.gq/
-ÇëÎğÎ´¾­³ÌĞòÔ­×÷ÕßÍ¬Òâ¶øËæÒâ¸ü¸Ä°æÈ¨ĞÅÏ¢ºóÔÙ´Î·¢²¼¡£Çë±£Áô³ÌĞòµ×²¿µÄÔ­×÷ÕßĞÅÏ¢¡£
-½¨ÒéÇëÊ¹ÓÃPHP5.3»·¾³£¬·ñÔòmysql_query()º¯Êı¿ÉÄÜÎŞ·¨±»Ö´ĞĞ£¬³ÌĞòÎŞ·¨Ö´ĞĞÒ»ÇĞÊı¾İ¿â²Ù×÷£¡*/ 
+/*å°å®‰äº‘å¹³å°-å¾®è´´å§ æ‰¾å›å¯†ç ä¸»é¡µ å¼€å‘è¯­è¨€ï¼šPHP æ•°æ®åº“ï¼šMYSQL å®˜æ–¹ç½‘ç«™http://www.xiaoan.gq/
+è¯·å‹¿æœªç»ç¨‹åºåŸä½œè€…åŒæ„è€Œéšæ„æ›´æ”¹ç‰ˆæƒä¿¡æ¯åå†æ¬¡å‘å¸ƒã€‚è¯·ä¿ç•™ç¨‹åºåº•éƒ¨çš„åŸä½œè€…ä¿¡æ¯ã€‚
+å»ºè®®è¯·ä½¿ç”¨PHP5.3ç¯å¢ƒï¼Œå¦åˆ™mysql_query()å‡½æ•°å¯èƒ½æ— æ³•è¢«æ‰§è¡Œï¼Œç¨‹åºæ— æ³•æ‰§è¡Œä¸€åˆ‡æ•°æ®åº“æ“ä½œï¼*/ 
 session_start();
 if(@$_SESSION["user"]!=null)
 { header("Location:../");}	

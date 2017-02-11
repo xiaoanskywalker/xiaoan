@@ -6,15 +6,15 @@ $user=@$_SESSION["user"];
 if($user==null){header("Location:../user/login.php");}
 $row=mysql_fetch_row(mysql_query("SELECT * FROM wtb_users WHERE usr='$user'"));
 if ($row[4]==0){header("Location:../");}
-/* $row[4]£ºÊý¾Ý±íwtb_users ×Ö¶Îadmingp½á¹û
- * $row[4]=0£º¸ÃÓÃ»§·ÇÆ½Ì¨¹ÜÀíÔ±£¬²»ÓµÓÐ¹ÜÀíÈ¨ÏÞ
- * $row[4]=1£º¸ÃÓÃ»§ÎªÆ½Ì¨ÆÕÍ¨¹ÜÀíÔ±£¬ÓµÓÐ²¿·Ö¹ÜÀíÈ¨ÏÞ
- * $row[4]=2£º¸ÃÓÃ»§ÎªÆ½Ì¨³¬¼¶¹ÜÀíÔ±£¬ÓµÓÐÈ«²¿¹ÜÀíÈ¨ÏÞ
+/* $row[4]ï¼šæ•°æ®è¡¨wtb_users å­—æ®µadmingpç»“æžœ
+ * $row[4]=0ï¼šè¯¥ç”¨æˆ·éžå¹³å°ç®¡ç†å‘˜ï¼Œä¸æ‹¥æœ‰ç®¡ç†æƒé™
+ * $row[4]=1ï¼šè¯¥ç”¨æˆ·ä¸ºå¹³å°æ™®é€šç®¡ç†å‘˜ï¼Œæ‹¥æœ‰éƒ¨åˆ†ç®¡ç†æƒé™
+ * $row[4]=2ï¼šè¯¥ç”¨æˆ·ä¸ºå¹³å°è¶…çº§ç®¡ç†å‘˜ï¼Œæ‹¥æœ‰å…¨éƒ¨ç®¡ç†æƒé™
 */
 ?>
 <html>
     <head>
-        <title>Ð¡°²ÉçÇø¹ÜÀíÖÐÐÄ</title>
+        <title>å°å®‰ç¤¾åŒºç®¡ç†ä¸­å¿ƒ</title>
         <link rel="stylesheet" type="text/css" href="../common/css/home.css" />
         <link rel="stylesheet" href="../common/css/bootstrap.css">
         <style>
@@ -22,14 +22,14 @@ if ($row[4]==0){header("Location:../");}
         </style>
         <script src="../common/js/jquery.min.js"></script>
         <script src="../common/js/bootstrap.min.js"></script>
-        <meta http-equiv="content-type" content="text/html;charset=gb2312">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     </head>
     <body onload="systemTime()">
         <div id="myhome">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="../">Ê×Ò³</a></li>
-                <li class="active"><a href="./myhome.php">¹ÜÀíÖÐÐÄ</a></li>
+                <li><a href="#"><a href="../">é¦–é¡µ</a></li>
+                <li class="active"><a href="./myhome.php">ç®¡ç†ä¸­å¿ƒ</a></li>
                 </ol>
             </div>
             <?php
@@ -38,14 +38,14 @@ if ($row[4]==0){header("Location:../");}
             exit;}
             ?>
             <div id="funlist">
-                <div id="mainzt">È«¾Ö¹ÜÀí<p></div>
-                <a href="./index.php?action=index">¹ÜÀíÖÐÐÄÊ×Ò³</a><p><p>
-                <a href="./index.php?action=serverinfo">·þÎñÆ÷ÏêÏ¸ÐÅÏ¢</a><p>
-                <a href="./index.php?action=settings">Õ¾µã»ù±¾ÉèÖÃ</a><p>
-                <div id="mainzt">Ìû×Ó¹ÜÀí<p></div>
-                <a href="./index.php?action=topics">Ö÷ÌâÌû¹ÜÀí</a><p><p>
-                <div id="mainzt">ÓÃ»§¹ÜÀí<p></div>
-                <a href="./index.php?action=users">ÓÃ»§¹ÜÀí</a><p>
+                <div id="mainzt">å…¨å±€ç®¡ç†<p></div>
+                <a href="./index.php?action=index">ç®¡ç†ä¸­å¿ƒé¦–é¡µ</a><p><p>
+                <a href="./index.php?action=serverinfo">æœåŠ¡å™¨è¯¦ç»†ä¿¡æ¯</a><p>
+                <a href="./index.php?action=settings">ç«™ç‚¹åŸºæœ¬è®¾ç½®</a><p>
+                <div id="mainzt">å¸–å­ç®¡ç†<p></div>
+                <a href="./index.php?action=topics">ä¸»é¢˜å¸–ç®¡ç†</a><p><p>
+                <div id="mainzt">ç”¨æˆ·ç®¡ç†<p></div>
+                <a href="./index.php?action=users">ç”¨æˆ·ç®¡ç†</a><p>
             </div>
             <?php
             $action=@$_REQUEST["action"];

@@ -1,53 +1,53 @@
-<meta http-equiv="content-type" content="text/html;charset=gb2312">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <?php 
-/*Ð¡°²Î¢Ìù°É Ö÷Ìâ²Ù×÷Ò³ ¿ª·¢ÓïÑÔ£ºPHP Êý¾Ý¿â£ºMYSQL ¹Ù·½ÍøÕ¾http://www.xiaoan.gq/
-ÇëÎðÎ´¾­³ÌÐòÔ­×÷ÕßÍ¬Òâ¶øËæÒâ¸ü¸Ä°æÈ¨ÐÅÏ¢ºóÔÙ´Î·¢²¼¡£Çë±£Áô³ÌÐòµ×²¿µÄÔ­×÷ÕßÐÅÏ¢¡£
-½¨ÒéÇëÊ¹ÓÃPHP5.3»·¾³£¬·ñÔòmysql_query()º¯Êý¿ÉÄÜÎÞ·¨±»Ö´ÐÐ£¬³ÌÐòÎÞ·¨Ö´ÐÐÒ»ÇÐÊý¾Ý¿â²Ù×÷£¡*/ 
+/*å°å®‰å¾®è´´å§ ä¸»é¢˜æ“ä½œé¡µ å¼€å‘è¯­è¨€ï¼šPHP æ•°æ®åº“ï¼šMYSQL å®˜æ–¹ç½‘ç«™http://www.xiaoan.gq/
+è¯·å‹¿æœªç»ç¨‹åºåŽŸä½œè€…åŒæ„è€Œéšæ„æ›´æ”¹ç‰ˆæƒä¿¡æ¯åŽå†æ¬¡å‘å¸ƒã€‚è¯·ä¿ç•™ç¨‹åºåº•éƒ¨çš„åŽŸä½œè€…ä¿¡æ¯ã€‚
+å»ºè®®è¯·ä½¿ç”¨PHP5.3çŽ¯å¢ƒï¼Œå¦åˆ™mysql_query()å‡½æ•°å¯èƒ½æ— æ³•è¢«æ‰§è¡Œï¼Œç¨‹åºæ— æ³•æ‰§è¡Œä¸€åˆ‡æ•°æ®åº“æ“ä½œï¼*/ 
 session_start();
 if(@$_SESSION["user"]==null)
 {header("Location:../user/login.php");}
 if($_SESSION["admin"]==null)
 {header("Location:./adminlogin.php");}
-require_once("../conn.php");//°üº¬Êý¾Ý¿âÁ¬½ÓÎÄ¼þ
-$action=@$_REQUEST['action'];//»ñÈ¡²ÎÊý
+require_once("../conn.php");//åŒ…å«æ•°æ®åº“è¿žæŽ¥æ–‡ä»¶
+$action=@$_REQUEST['action'];//èŽ·å–å‚æ•°
 $tid=@$_REQUEST['tid'];
 if($action=="del")
 {
 	$sql = "DELETE FROM wtb_titles WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(1)<a href='topic.php'>·µ»Ø</a>");}
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(1)<a href='topic.php'>è¿”å›ž</a>");}
 	$sql = "DELETE FROM wtb_reply WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(2)<a href='topic.php'>·µ»Ø</a>");}
-	echo "<b><font color='green'>É¾Ìù³É¹¦!</font></b><a href='topic.php'>·µ»Ø</a>";
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(2)<a href='topic.php'>è¿”å›ž</a>");}
+	echo "<b><font color='green'>åˆ è´´æˆåŠŸ!</font></b><a href='topic.php'>è¿”å›ž</a>";
 	exit;
 }
 elseif($action=="top")
 {
 	$sql = "UPDATE wtb_titles SET iftop='yes' WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(3)<a href='topic.php'>·µ»Ø</a>");}
-	echo "<b><font color='green'>ÖÃ¶¥³É¹¦!</font></b><a href='topic.php'>·µ»Ø</a>";
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(3)<a href='topic.php'>è¿”å›ž</a>");}
+	echo "<b><font color='green'>ç½®é¡¶æˆåŠŸ!</font></b><a href='topic.php'>è¿”å›ž</a>";
 }
 elseif($action=="ctop")
 {
 	$sql = "UPDATE wtb_titles SET iftop='no' WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(4)<a href='topic.php'>·µ»Ø</a>");}
-	echo "<b><font color='green'>È¡ÏûÖÃ¶¥³É¹¦!</font></b><a href='topic.php'>·µ»Ø</a>";
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(4)<a href='topic.php'>è¿”å›ž</a>");}
+	echo "<b><font color='green'>å–æ¶ˆç½®é¡¶æˆåŠŸ!</font></b><a href='topic.php'>è¿”å›ž</a>";
 }
 elseif($action=="good")
 {
 	$sql = "UPDATE wtb_titles SET ifgood='yes' WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(5)<a href='topic.php'>·µ»Ø</a>");}
-	echo "<b><font color='green'>¼Ó¾«³É¹¦!</font></b><a href='topic.php'>·µ»Ø</a>";
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(5)<a href='topic.php'>è¿”å›ž</a>");}
+	echo "<b><font color='green'>åŠ ç²¾æˆåŠŸ!</font></b><a href='topic.php'>è¿”å›ž</a>";
 }
 elseif($action=="cgood")
 {
 	$sql = "UPDATE wtb_titles SET ifgood='no' WHERE tid='$tid'";
     $rs = mysql_query($sql);
-    if(!$rs){die("´íÎó£ºÎÞ·¨Á¬½Óµ½Êý¾Ý¿â!(6)<a href='topic.php'>·µ»Ø</a>");}
-	echo "<b><font color='green'>È¡Ïû¼Ó¾«³É¹¦!</font></b><a href='topic.php'>·µ»Ø</a>";
+    if(!$rs){die("é”™è¯¯ï¼šæ— æ³•è¿žæŽ¥åˆ°æ•°æ®åº“!(6)<a href='topic.php'>è¿”å›ž</a>");}
+	echo "<b><font color='green'>å–æ¶ˆåŠ ç²¾æˆåŠŸ!</font></b><a href='topic.php'>è¿”å›ž</a>";
 }
 ?>

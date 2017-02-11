@@ -1,19 +1,19 @@
 <?php
-/*UserID²ÎÊı´¦Àí*/
+/*UserIDå‚æ•°å¤„ç†*/
 $uid=@$_REQUEST["uid"];
-if($uid==null){die("<script> alert('UserID²ÎÊı²»ÄÜÎª¿Õ!');</script>");}
-is_numeric($uid) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');</script>");
-if($uid<=0){die("<script> alert('UserID²ÎÊı·ÇÕıÕûÊı!');</script>");}
+if($uid==null){die("<script> alert('UserIDå‚æ•°ä¸èƒ½ä¸ºç©º!');</script>");}
+is_numeric($uid) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');</script>");
+if($uid<=0){die("<script> alert('UserIDå‚æ•°éæ­£æ•´æ•°!');</script>");}
 $uid=round($uid);
 require_once '../common/config.php';
 require_once '../common/conn.php';
 $rs=mysql_query("SELECT * FROM wtb_users WHERE uid=$uid");
-if(mysql_num_rows($rs)<1){die("<script> alert('¸ÃÓÃ»§²»´æÔÚ!uid=$uid');</script>");}
+if(mysql_num_rows($rs)<1){die("<script> alert('è¯¥ç”¨æˆ·ä¸å­˜åœ¨!uid=$uid');</script>");}
 $row = mysql_fetch_row($rs);
 $username=$row[1];
 $usrgroup=$row[4];
 $rs=mysql_query("SELECT * FROM wtb_userinfo WHERE uid=$uid");
-if(mysql_num_rows($rs)<1){die("<script> alert('³ÌĞòÔËĞĞÊ±³öÏÖÒì³£!uid=$uid');</script>");}
+if(mysql_num_rows($rs)<1){die("<script> alert('ç¨‹åºè¿è¡Œæ—¶å‡ºç°å¼‚å¸¸!uid=$uid');</script>");}
 $row = mysql_fetch_row($rs);
 $sex=$row[1];
 $birthday=$row[2];
@@ -22,7 +22,7 @@ $email=$row[4];
 ?>
 <html>
     <head>
-        <title>¸öÈËÖĞĞÄ-<?php echo $username;?></title>
+        <title>ä¸ªäººä¸­å¿ƒ-<?php echo $username;?></title>
         <style>
         a img{border:none}
         .testdiv *{vertical-align:middle;}
@@ -32,14 +32,14 @@ $email=$row[4];
         <link rel="stylesheet" href="../common/css/bootstrap.css">
         <script src="../common/js/jquery.min.js"></script>
         <script src="../common/js/bootstrap.min.js"></script>
-        <meta http-equiv="content-type" content="text/html;charset=gb2312">
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     </head>
     <body>
         <div id="myhome">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="../">Ê×Ò³</a></li>
-                <li class="active"><a href="./myhome.php">¸öÈËÖĞĞÄ-<?php echo $username;?></a></li>
+                <li><a href="#"><a href="../">é¦–é¡µ</a></li>
+                <li class="active"><a href="./myhome.php">ä¸ªäººä¸­å¿ƒ-<?php echo $username;?></a></li>
                 </ol>
             </div>
             <div class="testdiv" >
@@ -50,31 +50,31 @@ $email=$row[4];
                 else
                   {echo "default_avatar";}
                 ?>.png"  height="80" width ="80" />
-                <span><font size='6' color="purple">¸öÈËÖĞĞÄ-<?php echo $username;?></font></span>
+                <span><font size='6' color="purple">ä¸ªäººä¸­å¿ƒ-<?php echo $username;?></font></span>
             </div>
             <hr style=" height:4px;border:none;border-top:2px dotted green;" />
             <div id="fundetail">
                 <table class="table">
                     <tr>
                         <td>
-                            <b>ÓÃ»§Ãû:<p></b><?php echo $username;?>
+                            <b>ç”¨æˆ·å:<p></b><?php echo $username;?>
                         </td>
                         <td>
                             <b>uid:<p></b><?php echo $uid;?> 
                         </td>
                         <td>
-                            <b>ĞÔ±ğ£º<p></b><?php if($sex==1){echo"ÄĞ";}else{echo"Å®";}?>
+                            <b>æ€§åˆ«ï¼š<p></b><?php if($sex==1){echo"ç”·";}else{echo"å¥³";}?>
                         </td>
                         <td>
-                            <b>ÉúÈÕ:<p></b><?php echo $birthday; ?>
+                            <b>ç”Ÿæ—¥:<p></b><?php echo $birthday; ?>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <b>×¢²áÊ±¼ä£º<p></b><?php echo $regtime;?>
+                            <b>æ³¨å†Œæ—¶é—´ï¼š<p></b><?php echo $regtime;?>
                         </td>
                         <td>
-                            <b>µç×ÓÓÊÏä£º<p></b><?php echo $email;?>
+                            <b>ç”µå­é‚®ç®±ï¼š<p></b><?php echo $email;?>
                         </td>
                     </tr>
                 </table>

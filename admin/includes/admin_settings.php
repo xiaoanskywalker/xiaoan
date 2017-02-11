@@ -7,34 +7,34 @@ $keywords=$row[2];
 $description=$row[3];
 ?>
 <div id="fundetail">
-    <center><h4>Õ¾µã»ù±¾ÉèÖÃ</h4></center>
+    <center><h4>ç«™ç‚¹åŸºæœ¬è®¾ç½®</h4></center>
     <form name="c" action="" method=post>
         <table class="table">
-            SEOÉèÖÃ:<p>
+            SEOè®¾ç½®:<p>
             <tr>
-                <td>ÍøÕ¾Ãû³Æ£¨title£©:</td>
+                <td>ç½‘ç«™åç§°ï¼ˆtitleï¼‰:</td>
                 <td>
                     <input type=text name="webname"  value="<?php echo $webname; ?>" class="form-control" required>
                 </td>
-                <td>±ØÌîÑ¡Ïî</td>
+                <td>å¿…å¡«é€‰é¡¹</td>
             </tr>
             <tr>
-                <td>¹Ø¼ü´Ê£¨keywords£©:</td>
+                <td>å…³é”®è¯ï¼ˆkeywordsï¼‰:</td>
                 <td>
                     <input type=text name="keywords" value="<?php echo $keywords; ?>" class="form-control">
                 </td>
-                <td>Ñ¡ÌîÑ¡Ïî£¬¿ÉÁô¿Õ</td>
+                <td>é€‰å¡«é€‰é¡¹ï¼Œå¯ç•™ç©º</td>
             </tr>
             <tr>
-                <td>ÃèÊö£¨description£©:</td>
+                <td>æè¿°ï¼ˆdescriptionï¼‰:</td>
                 <td>
                     <input type=text name="description" value="<?php echo $description; ?>" class="form-control">
                 </td>
-                <td>Ñ¡ÌîÑ¡Ïî£¬¿ÉÁô¿Õ</td>
+                <td>é€‰å¡«é€‰é¡¹ï¼Œå¯ç•™ç©º</td>
             </tr>
         </table>
-        <input name="c" type=submit value="±£´æÉèÖÃ" class="btn btn-success btn-lg">
-        <a href="./index.php?action=settings"><button class="btn btn-info">ÖØÖÃ</button></a>
+        <input name="c" type=submit value="ä¿å­˜è®¾ç½®" class="btn btn-success btn-lg">
+        <a href="./index.php?action=settings"><button class="btn btn-info">é‡ç½®</button></a>
     </form>
 </div>
 </body>
@@ -43,6 +43,6 @@ if(empty($_POST['c'])){exit;}
 $webname=@$_POST['webname'];
 $keywords=@$_POST['keywords'];
 $description=@$_POST['description'];
-if($webname==null){die ("<script> alert('ÍøÕ¾Ãû³ÆÎª¿Õ!');window.navigate('./index.php?action=settings');</script>");}
+if($webname==null){die ("<script> alert('ç½‘ç«™åç§°ä¸ºç©º!');window.navigate('./index.php?action=settings');</script>");}
 mysql_query("update wtb_general_settings set name='$webname',keywords='$keywords',description='$description' where gid=1");
-die ("<script> alert('ÉèÖÃ±£´æ³É¹¦!');window.navigate('./index.php?action=settings');</script>");
+die ("<script> alert('è®¾ç½®ä¿å­˜æˆåŠŸ!');window.navigate('./index.php?action=settings');</script>");

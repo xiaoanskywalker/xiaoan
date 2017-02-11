@@ -7,19 +7,19 @@ if(@$_SESSION["admin"]!=null){header("Location:./");}
 <div id="login">
     <div style="padding: 50px 100px 19px 50px;">
         <center><form class="form-inline" name="login" role="form" action="" method=post>
-            ¹ÜÀíµÇÂ¼£ºÎªÁËÈ·±£±¾ÏµÍ³µÄ°²È«£¬ÇëÔÙ´ÎÊäÈëÄúµÄÃÜÂë¡£ÇëÈ·±£ÄúÊÇÆ½Ì¨¹ÜÀíÔ±¡£
+            ç®¡ç†ç™»å½•ï¼šä¸ºäº†ç¡®ä¿æœ¬ç³»ç»Ÿçš„å®‰å…¨ï¼Œè¯·å†æ¬¡è¾“å…¥æ‚¨çš„å¯†ç ã€‚è¯·ç¡®ä¿æ‚¨æ˜¯å¹³å°ç®¡ç†å‘˜ã€‚
             <table  border = "0" cellpadding = "4">
                 <tr>
-                    <td  align = "center">ÓÃ»§Ãû</td>
+                    <td  align = "center">ç”¨æˆ·å</td>
                     <td><input type = "text" class="form-control" name="username"value="<?php echo $user;?>" disabled= "true " required></td>
                 </tr>
                 <tr>
-                    <td  align = "center">ÃÜÂë</td>
-                    <td><input type = "password" class="form-control" name="password" placeholder="ÇëÊäÈëÃÜÂë" required></td>
+                    <td  align = "center">å¯†ç </td>
+                    <td><input type = "password" class="form-control" name="password" placeholder="è¯·è¾“å…¥å¯†ç " required></td>
                 </tr>
                 <tr>
                     <td colspan = "2" align = "center">
-                        <input name="log" type = "submit" class="btn btn-primary" value = "µÇÂ¼">
+                        <input name="log" type = "submit" class="btn btn-primary" value = "ç™»å½•">
                     </td>
                 </tr>
             </table>            
@@ -29,7 +29,7 @@ if(@$_SESSION["admin"]!=null){header("Location:./");}
 <?php 
 if(empty($_POST['log'])){exit;}
 $passowrd=@$_POST['password'];
-if ($passowrd==null){die ("<script> alert('ÇëÊäÈëÃÜÂë!');window.navigate('./');</script>");}
+if ($passowrd==null){die ("<script> alert('è¯·è¾“å…¥å¯†ç !');window.navigate('./');</script>");}
 $passowrd=md5($passowrd);
 $rows=mysql_num_rows(mysql_query("SELECT * FROM wtb_users WHERE usr = '$user' AND pwd='$passowrd' AND (admingp=1 OR admingp=2)"));
 if($rows){
@@ -38,6 +38,6 @@ if($rows){
     exit;
 }
 else{
-    die ("<script> alert('¹ÜÀíÔ±ÃÜÂë´íÎó!');window.navigate('./');</script>");
+    die ("<script> alert('ç®¡ç†å‘˜å¯†ç é”™è¯¯!');window.navigate('./');</script>");
 }
 ?>

@@ -1,61 +1,61 @@
 <?php 
-header("Content-type:text/html;charset=gb312");
+header("Content-type:text/html;charset=UTF-8");
 include("../common/install_header.php");
-echo "<h3>µÚÈý²½-<span class='label label-info'>ÌîÐ´Êý¾Ý¿â¼°´´Ê¼ÈËÐÅÏ¢</span></h3>";
+echo "<h3>ç¬¬ä¸‰æ­¥-<span class='label label-info'>å¡«å†™æ•°æ®åº“åŠåˆ›å§‹äººä¿¡æ¯</span></h3>";
 if(file_exists("../common/config.php"))
-{die ("ÇëÉ¾³ý./common/config.php ºó²ÅÄÜ°²×°£¡<a href='index.php' class='btn btn-primary'>·µ»Ø</a>");}
+{die ("è¯·åˆ é™¤./common/config.php åŽæ‰èƒ½å®‰è£…ï¼<a href='index.php' class='btn btn-primary'>è¿”å›ž</a>");}
 ?>
-<p>°²×°³ÌÐòÒªÇóÄúÌîÐ´ÄúÍøÕ¾µÄÊý¾Ý¿â¼°´´Ê¼ÈËÐÅÏ¢¡£<br>
-Ö»ÓÐÌîÐ´ÕýÈ·µÄÐÅÏ¢ºó£¬°²×°³ÌÐò²ÅÄÜÔÚÄúÍøÕ¾µÄÊý¾Ý¿âÏÂ²åÈëÊý¾Ý±íÒÔ¼°ÍøÕ¾´´Ê¼ÈËÊý¾Ý²¢¼ÌÐøÔËÐÐ¡£ÌîÐ´´íÎóµÄÐÅÏ¢½«»áµ¼ÖÂ±¾³ÌÐò°²×°Ê§°Ü¡£
+<p>å®‰è£…ç¨‹åºè¦æ±‚æ‚¨å¡«å†™æ‚¨ç½‘ç«™çš„æ•°æ®åº“åŠåˆ›å§‹äººä¿¡æ¯ã€‚<br>
+åªæœ‰å¡«å†™æ­£ç¡®çš„ä¿¡æ¯åŽï¼Œå®‰è£…ç¨‹åºæ‰èƒ½åœ¨æ‚¨ç½‘ç«™çš„æ•°æ®åº“ä¸‹æ’å…¥æ•°æ®è¡¨ä»¥åŠç½‘ç«™åˆ›å§‹äººæ•°æ®å¹¶ç»§ç»­è¿è¡Œã€‚å¡«å†™é”™è¯¯çš„ä¿¡æ¯å°†ä¼šå¯¼è‡´æœ¬ç¨‹åºå®‰è£…å¤±è´¥ã€‚
 </p>
 <form name="login" action="step-4.php" method=post >  
 <fieldset id="tb">
-<legend><strong>1.Êý¾Ý¿âÐÅÏ¢</strong></legend>
+<legend><strong>1.æ•°æ®åº“ä¿¡æ¯</strong></legend>
     <table width="635" border="0">
      <tr>
-        <td width="112">Êý¾Ý¿â·þÎñÆ÷£º</td>
+        <td width="112">æ•°æ®åº“æœåŠ¡å™¨ï¼š</td>
         <td width="245"><input type="text" value="localhost" class="form-control" name="db_host" ></td>
-        <td>*Êý¾Ý¿âµÄ·þÎñÆ÷µØÖ·£¬Ò»°ãÎªlocalhost</td>
+        <td>*æ•°æ®åº“çš„æœåŠ¡å™¨åœ°å€ï¼Œä¸€èˆ¬ä¸ºlocalhost</td>
       </tr>
       <tr>
-        <td>Êý¾Ý¿âÓÃ»§Ãû£º</td>
+        <td>æ•°æ®åº“ç”¨æˆ·åï¼š</td>
         <td><input type="text" value="root" class="form-control" name="db_usr"></td>
         <td>*</td>
        </tr>
        <tr>
-        <td>Êý¾Ý¿âÃÜÂë£º</td>
+        <td>æ•°æ®åº“å¯†ç ï¼š</td>
         <td><input type="text" value="" class="form-control" name="db_pwd"></td>
         <td>&nbsp;</td>
        </tr>
        <tr>
-        <td>Êý¾Ý¿âÃû£º</td>
+        <td>æ•°æ®åº“åï¼š</td>
         <td><input type="text" class="form-control" name="db_name"></td>
         <td>*</td>
        </tr>
      </table>
 </fieldset>
 <fieldset id="tb">
-<legend><strong>2.¹ÜÀíÔ±ÐÅÏ¢</strong></legend>
+<legend><strong>2.ç®¡ç†å‘˜ä¿¡æ¯</strong></legend>
 <table width="635" border="0">
        <tr>
-        <td>¹ÜÀíÓÃ»§Ãû</td>
+        <td>ç®¡ç†ç”¨æˆ·å</td>
         <td><input type="text"class="form-control" name="admin_usr"></td>
         <td>*</td>
        </tr>
        <tr>
-        <td>¹ÜÀíÔ±ÃÜÂë</td>
+        <td>ç®¡ç†å‘˜å¯†ç </td>
         <td><input type="text"class="form-control" name="admin_pwd"></td>
         <td>*</td>
        </tr>
        <tr>
-        <td>¹ÜÀíÔ±ÓÊÏä</td>
+        <td>ç®¡ç†å‘˜é‚®ç®±</td>
         <td><input type="text"class="form-control" name="admin_email"></td>
-        <td>*ÓÃÓÚ½ÓÊÜÉý¼¶ÌáÐÑ¡¢Â©¶´ÐÞ¸´µÈ</td>
+        <td>*ç”¨äºŽæŽ¥å—å‡çº§æé†’ã€æ¼æ´žä¿®å¤ç­‰</td>
        </tr>
      </table>
   </fieldset>
-<center>ÎÒÒÑÈ·ÈÏÉÏÊöÐÅÏ¢¾ùÌîÐ´ÕýÈ·£¬²¢<input name="log" type = "submit" class="btn btn-success btn-lg" value = "¼ÌÐø°²×°">
-»ò<a href="step-2.php" class="btn btn-primary">·µ»Ø</a></center>
+<center>æˆ‘å·²ç¡®è®¤ä¸Šè¿°ä¿¡æ¯å‡å¡«å†™æ­£ç¡®ï¼Œå¹¶<input name="log" type = "submit" class="btn btn-success btn-lg" value = "ç»§ç»­å®‰è£…">
+æˆ–<a href="step-2.php" class="btn btn-primary">è¿”å›ž</a></center>
 </form>
 </body>
 </html>

@@ -1,3 +1,3 @@
 <td>
-<a href='#' onclick= if(confirm('È·¶¨É¾³ıÓÃ»§¡¸<?php echo $row[1]; ?>¡¹Âğ')){location.href='./index.php?action=users&mode=del&uid=<?php echo $rows[0]; ?>';}>É¾³ı</a>
+<a href='#' onclick= if(confirm('ç¡®å®šåˆ é™¤ç”¨æˆ·ã€Œ<?php echo $row[1]; ?>ã€å—')){location.href='./index.php?action=users&mode=del&uid=<?php echo $rows[0]; ?>';}>åˆ é™¤</a>
 </td>
