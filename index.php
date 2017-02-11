@@ -66,8 +66,10 @@ while ($row = mysql_fetch_row($rs)) {
     $discussion['time'] = $row[3];
     $discussion['preview'] = $row[4];
 
+    $discussion['url'] = 'showtopic.php?tid=' . $row[0];
+
     $temp = explode("-", $row[3]);
-    $discussion['time'] = date('mm月dd日', mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]));
+    $discussion['time'] = date('m月d日', mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]));
 
 
     array_push($discussions, $discussion);
@@ -172,13 +174,14 @@ for ($i = -5; $i <= 5; $i++) {
                                     <div class="avatar-area">
                                         <?php
                                         //TODO 获取每个发帖用户的头像
+                                        //TODO 点击头像、名称进入用户主页
                                         ?>
                                         <a href="#"><img src="./static/img/avatar.jpg" class="avatar"
                                                          alt="<?= $discussion['author'] ?>"></a>
                                     </div>
 
                                     <div class="profile">
-                                        <h3 class="title"><a href="#"><?= $discussion['title'] ?></a></h3>
+                                        <h3 class="title"><a href="<?= $discussion['url'] ?>"><?= $discussion['title'] ?></a></h3>
                                         <div class="preview">
                                             <?= $discussion['preview'] ?>
                                         </div>
