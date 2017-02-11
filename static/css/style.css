@@ -1,0 +1,121 @@
+body {
+  margin: 0; }
+
+body, input, button, textarea {
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Arial", "sans-serif"; }
+
+/*
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, .15);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #2aabd2;
+  border-radius: 6px;
+}
+*/
+.avatar {
+  width: 1em;
+  height: 1em;
+  border-radius: 50%; }
+
+.top-bar .user-nav .user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+  height: 100%; }
+
+body {
+  background: url("../img/bg2.jpg");
+  background-size: cover; }
+
+.top-bar > nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 0; }
+.top-bar .container-fluid {
+  max-width: 1000px; }
+.top-bar .user-nav-dropdown {
+  width: 150px; }
+.top-bar .user-nav .user-profile {
+  width: 200px;
+  padding: 1em; }
+  .top-bar .user-nav .user-profile .avatar {
+    width: 80px;
+    height: 80px;
+    margin: auto; }
+  .top-bar .user-nav .user-profile .username {
+    margin: 1em auto 0;
+    font-size: 1.2em; }
+
+.container {
+  max-width: 1000px;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.9); }
+  .container .header {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    color: #fff;
+    background: #66afe9; }
+  .container .sidebar {
+    width: 200px;
+    float: left; }
+  .container .content {
+    margin-left: 200px; }
+
+.sidebar ul {
+  padding: 0;
+  list-style: none; }
+  .sidebar ul li {
+    width: 180px;
+    height: 2em;
+    text-align: center;
+    font-weight: 200; }
+    .sidebar ul li a {
+      text-decoration: none; }
+    .sidebar ul li i {
+      margin-right: 1em; }
+
+.content .discussion-list .discussions {
+  list-style: none;
+  padding: 0; }
+
+.discussion {
+  display: flex;
+  height: 4em;
+  margin: .8em 0;
+  color: #5e5e5e; }
+  .discussion a {
+    text-decoration: none; }
+  .discussion .avatar-area {
+    font-size: 3em; }
+    .discussion .avatar-area img {
+      vertical-align: text-top; }
+  .discussion .profile {
+    padding-left: 1em;
+    flex-grow: 1; }
+    .discussion .profile .title {
+      margin: 5px 0;
+      font-size: 1em; }
+    .discussion .profile .preview {
+      font-size: .8em; }
+    .discussion .profile .info {
+      font-size: .8em; }
+  .discussion .count {
+    width: 3em;
+    font-size: 1.2em;
+    margin-right: 2em; }
+    .discussion .count i {
+      margin-right: .6em; }
+
+.toorbar .pagination {
+  margin: .6em 0 .6em 25%; }
+
+/*# sourceMappingURL=style.css.map */
