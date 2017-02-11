@@ -1,0 +1,20 @@
+#foot{
+    background:white;
+    opacity:0.5;
+}
+#main{
+    width:80%;
+    margin:0px auto;
+    background:white;
+    height:100%;
+}
+#box{
+    border:0px;
+    border-bottom:red 2px solid;
+    background:none;
+    outline: none;
+}
+#login{
+    text-align:center;
+    border:1px solid #00F;
+}
