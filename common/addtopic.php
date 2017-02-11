@@ -16,7 +16,7 @@ function _newtopic(){
     $user=$_SESSION["user"];
     if ($title && $topic)
     {
-        mysql_query("insert into wtb_titles values (null,'$user','$title','$time','$topic','no','no')") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('../');</script>");
+        mysql_query("insert into wtb_titles values (null,'$user','$title','$time','$topic',1)") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('../');</script>");
 	die("<script> alert('发帖成功!');window.navigate('../');</script>");
     }
     else{die("<script> alert('请输入帖子标题和内容!');window.navigate('../');</script>");}
