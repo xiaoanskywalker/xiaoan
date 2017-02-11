@@ -1,69 +1,69 @@
-<?php header("Content-type:text/html;charset=gb2312");?>
+<?php header("Content-type:text/html;charset=UTF-8");?>
 <?php include("../common/install_header.php"); ?>
-<h3>µÚËÄ²½-<span class="label label-info">°²×°Êý¾Ý¿â</span></h3>
-°²×°³ÌÐòÕýÔÚÖ´ÐÐ°²×°Êý¾Ý¿â²Ù×÷£¬ÇëÉÔ°²ÎðÔê^_^¡£<br>
+<h3>ç¬¬å››æ­¥-<span class="label label-info">å®‰è£…æ•°æ®åº“</span></h3>
+å®‰è£…ç¨‹åºæ­£åœ¨æ‰§è¡Œå®‰è£…æ•°æ®åº“æ“ä½œï¼Œè¯·ç¨å®‰å‹¿èº^_^ã€‚<br>
 <p>
 <?php 
 $stime=microtime(true); 
 if(file_exists("../common/config.php"))
-{die ("ÇëÉ¾³ý./common/config.php ºó²ÅÄÜ°²×°£¡<a href='index.php' class='btn btn-primary'>·µ»Ø</a>");}
- $db_name= @$_POST['db_name'];//Êý¾Ý¿âÃû
- $db_host= @$_POST['db_host'];//Ö÷»úµØÖ·£¬Ä¬ÈÏÎªlocalhost
- $db_usr= @$_POST['db_usr'];//Êý¾Ý¿âÓÃ»§Ãû
- $db_pwd= @$_POST['db_pwd'];//Êý¾Ý¿âÃÜÂë
+{die ("è¯·åˆ é™¤./common/config.php åŽæ‰èƒ½å®‰è£…ï¼<a href='index.php' class='btn btn-primary'>è¿”å›ž</a>");}
+ $db_name= @$_POST['db_name'];//æ•°æ®åº“å
+ $db_host= @$_POST['db_host'];//ä¸»æœºåœ°å€ï¼Œé»˜è®¤ä¸ºlocalhost
+ $db_usr= @$_POST['db_usr'];//æ•°æ®åº“ç”¨æˆ·å
+ $db_pwd= @$_POST['db_pwd'];//æ•°æ®åº“å¯†ç 
  $admin_usr= @$_POST['admin_usr'];
  $admin_email= @$_POST['admin_email'];
  $admin_pwd= @$_POST['admin_pwd'];
- if($db_name==null){die("<b><font color='red'>Êý¾Ý¿âÃûÎª¿Õ£¬ÇëÖØÐÂÌîÐ´¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>");}
- /*¿ªÊ¼Á¬½ÓÊý¾Ý¿â ÐÐ24-26*/
-mysql_connect( $db_host,$db_usr ,$db_pwd) or die("<b><font color='red'>Á¬½ÓÊý¾Ý¿âÊ±·¢Éú´íÎó£¬Çë¼ì²éÊý¾Ý¿âÃû¡¢Êý¾Ý¿âÖ÷»úÃû¡¢Êý¾Ý¿âÓÃ»§Ãû¡¢Êý¾Ý¿âÃÜÂëÌîÐ´ÊÇ·ñÕýÈ·²¢ÖØÐÂÌîÐ´¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>");
-mysql_select_db( $db_name); //Ñ¡ÔñÊý¾Ý¿â
-MySQL_query("SET NAMES 'gbk'");//Êý¾Ý¿â±àÂë
-if($admin_usr==null){die("<b><font color='red'>ÓÃ»§ÃûÎª¿Õ£¬ÇëÖØÐÂÌîÐ´¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>");}
-if($admin_email==null){die("<b><font color='red'>ÓÊÏäÎª¿Õ£¬ÇëÖØÐÂÌîÐ´¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>");}
-if($admin_pwd==null){die("<b><font color='red'>ÕËºÅÃÜÂëÎª¿Õ£¬ÇëÖØÐÂÌîÐ´¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>");}
+ if($db_name==null){die("<b><font color='red'>æ•°æ®åº“åä¸ºç©ºï¼Œè¯·é‡æ–°å¡«å†™ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>");}
+ /*å¼€å§‹è¿žæŽ¥æ•°æ®åº“ è¡Œ24-26*/
+mysql_connect( $db_host,$db_usr ,$db_pwd) or die("<b><font color='red'>è¿žæŽ¥æ•°æ®åº“æ—¶å‘ç”Ÿé”™è¯¯ï¼Œè¯·æ£€æŸ¥æ•°æ®åº“åã€æ•°æ®åº“ä¸»æœºåã€æ•°æ®åº“ç”¨æˆ·åã€æ•°æ®åº“å¯†ç å¡«å†™æ˜¯å¦æ­£ç¡®å¹¶é‡æ–°å¡«å†™ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>");
+mysql_select_db( $db_name); //é€‰æ‹©æ•°æ®åº“
+MySQL_query("SET NAMES 'utf8'");//æ•°æ®åº“ç¼–ç 
+if($admin_usr==null){die("<b><font color='red'>ç”¨æˆ·åä¸ºç©ºï¼Œè¯·é‡æ–°å¡«å†™ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>");}
+if($admin_email==null){die("<b><font color='red'>é‚®ç®±ä¸ºç©ºï¼Œè¯·é‡æ–°å¡«å†™ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>");}
+if($admin_pwd==null){die("<b><font color='red'>è´¦å·å¯†ç ä¸ºç©ºï¼Œè¯·é‡æ–°å¡«å†™ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>");}
 ?>   
 <fieldset id="tb"> 
-<legend>°²×°½ø¶È</legend>
+<legend>å®‰è£…è¿›åº¦</legend>
 <?php
-echo "ÕýÔÚµ¼Èë°²×°³ÌÐòËùÐèµÄ±Ø±¸Êý¾Ý±í...<br>";
+echo "æ­£åœ¨å¯¼å…¥å®‰è£…ç¨‹åºæ‰€éœ€çš„å¿…å¤‡æ•°æ®è¡¨...<br>";
 $lines=file("install.sql");
 foreach($lines as $line){
   $line=trim($line);
   if($line!=""){
     if(!($line{0}=="#" || $line{0}.$line{1}=="--")){  
-    mysql_query($line) or die("<b><font color='red'>Ö´ÐÐÊý¾Ý¿âÓï¾ä$line Ê±·¢Éú´íÎó¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>"); 
-    echo "<b><font color='green'>³É¹¦</font></b>Ö´ÐÐSQLÓï¾ä".$line."<br>";
+    mysql_query($line) or die("<b><font color='red'>æ‰§è¡Œæ•°æ®åº“è¯­å¥$line æ—¶å‘ç”Ÿé”™è¯¯ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>"); 
+    echo "<b><font color='green'>æˆåŠŸ</font></b>æ‰§è¡ŒSQLè¯­å¥".$line."<br>";
     }
   }
 }
-echo "ÕýÔÚµ¼ÈëÕ¾µã´´Ê¼ÈËÐÅÏ¢...<br>";
+echo "æ­£åœ¨å¯¼å…¥ç«™ç‚¹åˆ›å§‹äººä¿¡æ¯...<br>";
 $admin_pwd=md5($admin_pwd);
 $sql="INSERT INTO `wtb_users` (`uid`, `usr`, `pwd`, `email`, `admingp`) VALUES(1, '$admin_usr', '$admin_pwd', '$admin_email',2)";
-mysql_query($sql) or die("<b><font color='red'>Ö´ÐÐÊý¾Ý¿âÓï¾ä$sql Ê±·¢Éú´íÎó¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>"); 
-echo "<b><font color='green'>³É¹¦</font></b>Ö´ÐÐSQLÓï¾ä".$sql."<br>£¬²¢µ¼ÈëÕ¾µãÐÅÏ¢";
+mysql_query($sql) or die("<b><font color='red'>æ‰§è¡Œæ•°æ®åº“è¯­å¥$sql æ—¶å‘ç”Ÿé”™è¯¯ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>"); 
+echo "<b><font color='green'>æˆåŠŸ</font></b>æ‰§è¡ŒSQLè¯­å¥".$sql."<br>ï¼Œå¹¶å¯¼å…¥ç«™ç‚¹ä¿¡æ¯";
 $time = date('Y-m-d h:m:s');
 $sql="INSERT INTO `wtb_userinfo` VALUES(1,1, '0000-00-00', '$time','$admin_email')";
-mysql_query($sql) or die("<b><font color='red'>Ö´ÐÐÊý¾Ý¿âÓï¾ä$sql Ê±·¢Éú´íÎó¡£</font></b><p>°²×°³ÌÐòÍ£Ö¹ÔËÐÐ¡£<a href='./step-3.php'>·µ»Ø</a>"); 
-echo "<b><font color='green'>³É¹¦</font></b>Ö´ÐÐSQLÓï¾ä".$sql."<br>£¬²¢µ¼ÈëÕ¾µãÐÅÏ¢";
+mysql_query($sql) or die("<b><font color='red'>æ‰§è¡Œæ•°æ®åº“è¯­å¥$sql æ—¶å‘ç”Ÿé”™è¯¯ã€‚</font></b><p>å®‰è£…ç¨‹åºåœæ­¢è¿è¡Œã€‚<a href='./step-3.php'>è¿”å›ž</a>"); 
+echo "<b><font color='green'>æˆåŠŸ</font></b>æ‰§è¡ŒSQLè¯­å¥".$sql."<br>ï¼Œå¹¶å¯¼å…¥ç«™ç‚¹ä¿¡æ¯";
 $myfile = fopen("../common/config.php", "w") or die("Unable to open file!");
 $txt = "<?php
 error_reporting (E_ALL &~E_NOTICE &~E_DEPRECATED);
-/*ÒÔÏÂÊÇÊý¾Ý¿âÁ¬½Ó´úÂë£¬ÇëÎðËæÒâ¸ü¸Ä£¡*/ 
-define('mysql_servername','$db_host'); //Ö÷»úµØÖ·£¬Ä¬ÈÏÎªlocalhost
-define('mysql_username','$db_usr'); //Êý¾Ý¿âÓÃ»§Ãû
-define('mysql_password','$db_pwd');//Êý¾Ý¿âÃÜÂë
-define('mysql_database','$db_name'); //Êý¾Ý¿âÃû
+/*ä»¥ä¸‹æ˜¯æ•°æ®åº“è¿žæŽ¥ä»£ç ï¼Œè¯·å‹¿éšæ„æ›´æ”¹ï¼*/ 
+define('mysql_servername','$db_host'); //ä¸»æœºåœ°å€ï¼Œé»˜è®¤ä¸ºlocalhost
+define('mysql_username','$db_usr'); //æ•°æ®åº“ç”¨æˆ·å
+define('mysql_password','$db_pwd');//æ•°æ®åº“å¯†ç 
+define('mysql_database','$db_name'); //æ•°æ®åº“å
 ?>
 ";
 fwrite($myfile, $txt);
 fclose($myfile);
-$etime=microtime(true);//»ñÈ¡³ÌÐòÖ´ÐÐ½áÊøµÄÊ±¼ä
-$total=$etime-$stime;   //¼ÆËã²îÖµ
-echo "<p>°²×°Íê³É¡£°²×°¹ý³Ì¹²ºÄÊ±$total Ãë";
+$etime=microtime(true);//èŽ·å–ç¨‹åºæ‰§è¡Œç»“æŸçš„æ—¶é—´
+$total=$etime-$stime;   //è®¡ç®—å·®å€¼
+echo "<p>å®‰è£…å®Œæˆã€‚å®‰è£…è¿‡ç¨‹å…±è€—æ—¶$total ç§’";
 ?>
 </fieldset>
-<span class="label label-danger">¹§Ï²£¬°²×°Íê³É£¡</span>
-<div class="well" align="center">Äú¿ÉÒÔ<a href="../" class="btn btn-primary">²é¿´Õ¾µã</a>Òà»òÕß<a href="../user/login.php" class="btn btn-primary">µÇÂ½</a></div>
+<span class="label label-danger">æ­å–œï¼Œå®‰è£…å®Œæˆï¼</span>
+<div class="well" align="center">æ‚¨å¯ä»¥<a href="../" class="btn btn-primary">æŸ¥çœ‹ç«™ç‚¹</a>äº¦æˆ–è€…<a href="../user/login.php" class="btn btn-primary">ç™»é™†</a></div>
 </body>
 </html>
