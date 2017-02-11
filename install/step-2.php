@@ -28,21 +28,21 @@ if(file_exists("../common/config.php"))
         <?php echo PHP_VERSION;?>
         </font></b></td></tr>
       <tr>
-        <td>连接数据库函数：mysql_connect</td>
+        <td>连接数据库函数：mysqli_connect</td>
         <td>支持</td>
         <td><b>
         <?php
-        if (function_exists('mysql_connect'))
+        if (function_exists('mysqli_connect'))
         {echo "<font color='green'>支持</font>";}
         else
         {echo "<font color='red'>不支持</font>";}
         ?></b></td></tr>
       <tr>
-        <td>执行SQL语句函数：mysql_query</td>
+        <td>执行SQL语句函数：mysqli_query</td>
         <td>支持</td>
         <td><b>
         <?php
-        if (function_exists('mysql_query'))
+        if (function_exists('mysqli_query'))
         {echo "<font color='green'>支持</font>";}
         else
         {echo "<font color='red'>不支持</font>";}
