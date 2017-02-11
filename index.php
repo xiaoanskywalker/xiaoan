@@ -3,13 +3,13 @@ if((file_exists("./common/config.php"))==false){
     header("location:./install/");
 }
 session_start();
-/*Ìû×Ó·ÖÒ³Ô¤´¦Àí*/
+/*å¸–å­åˆ†é¡µé¢„å¤„ç†*/
 $page=@$_REQUEST["page"];
 if($page==null){$page=1;}
-is_numeric($page) or die("<script> alert('ÎŞĞ§µÄ²ÎÊı!');window.navigate('./');</script>");
+is_numeric($page) or die("<script> alert('æ— æ•ˆçš„å‚æ•°!');window.navigate('./');</script>");
 if($page<=0){
     $page=1;
-    die("<script> alert('page²ÎÊı·ÇÕıÕûÊı!');window.navigate('./');</script>");
+    die("<script> alert('pageå‚æ•°éæ­£æ•´æ•°!');window.navigate('./');</script>");
 }
 $pagestart=round(($page-1)*40);
 $pageend=round($page*40+1);
@@ -17,7 +17,7 @@ $pageend=round($page*40+1);
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="gb2312">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./common/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="./common/css/style.css" />
@@ -27,23 +27,23 @@ $pageend=round($page*40+1);
         <?php
         require_once './common/config.php';
         require_once './common/conn.php';
-        $rs=mysql_query("SELECT * FROM wtb_general_settings where gid=1") or die("Á¬½Óµ½Êı¾İ¿âÊ±³öÏÖ´íÎó¡£");
+        $rs=mysql_query("SELECT * FROM wtb_general_settings where gid=1") or die("è¿æ¥åˆ°æ•°æ®åº“æ—¶å‡ºç°é”™è¯¯ã€‚");
         $row = mysql_fetch_row($rs);
         echo "<title>$row[1]</title><meta name='keywords' content='$row[2]' /><meta name='description' content='$row[3]' />" ;
         ?>
          <script language="javascript"> 
-         function keypress1() //·¢Ìû±êÌâÊäÈë³¤¶È´¦Àí 
+         function keypress1() //å‘å¸–æ ‡é¢˜è¾“å…¥é•¿åº¦å¤„ç† 
          { 
          var text1=document.getElementById("mytext1").value; 
          var len=50-text1.length; 
-         var show="Äã»¹¿ÉÒÔÊäÈë"+len+"¸ö×Ö"; 
+         var show="ä½ è¿˜å¯ä»¥è¾“å…¥"+len+"ä¸ªå­—"; 
          document.getElementById("name").innerText=show; 
          } 
-         function keypress2() //·¢ÌûÄÚÈİÊäÈë³¤¶È´¦Àí 
+         function keypress2() //å‘å¸–å†…å®¹è¾“å…¥é•¿åº¦å¤„ç† 
          { 
          var text1=document.getElementById("myarea").value; 
-         var len;//¼ÇÂ¼Ê£Óà×Ö·û´®µÄ³¤¶È 
-         if(text1.length>=10000)//textarea¿Ø¼ş²»ÄÜÓÃmaxlengthÊôĞÔ£¬¾ÍÍ¨¹ıÕâÑùÏÔÊ¾ÊäÈë×Ö·ûÊıÁË 
+         var len;//è®°å½•å‰©ä½™å­—ç¬¦ä¸²çš„é•¿åº¦ 
+         if(text1.length>=10000)//textareaæ§ä»¶ä¸èƒ½ç”¨maxlengthå±æ€§ï¼Œå°±é€šè¿‡è¿™æ ·æ˜¾ç¤ºè¾“å…¥å­—ç¬¦æ•°äº† 
          { 
          document.getElementById("myarea").value=text1.substr(0,300); 
          len=0; 
@@ -52,7 +52,7 @@ $pageend=round($page*40+1);
          { 
          len=10000-text1.length; 
          } 
-         var show="Äã»¹¿ÉÒÔÊäÈë"+len+"¸ö×Ö"; 
+         var show="ä½ è¿˜å¯ä»¥è¾“å…¥"+len+"ä¸ªå­—"; 
          document.getElementById("pinglun").innerText=show; 
          } 
          </script> 
@@ -79,13 +79,13 @@ $pageend=round($page*40+1);
                 <div id="loginbtn">
                     <?php
                     if($_SESSION["user"]==null){
-                        echo "µÇÂ¼ºóÄÚÈİ¸ü¾«²Ê<p>";
-                        echo"<button onclick='login()' class=lgbtn>µÇÂ¼</button>
-                    <button onclick='register()' class=regbtn>×¢²á</button>";
+                        echo "ç™»å½•åå†…å®¹æ›´ç²¾å½©<p>";
+                        echo"<button onclick='login()' class=lgbtn>ç™»å½•</button>
+                    <button onclick='register()' class=regbtn>æ³¨å†Œ</button>";
                     }
                     else{
                         echo ($_SESSION["user"])."<p>";
-                        echo "<button onclick='logout()') class=lgbtn>ÍË³öµÇÂ¼</button>";
+                        echo "<button onclick='logout()') class=lgbtn>é€€å‡ºç™»å½•</button>";
                     }
                     ?>
                 </div>
@@ -93,7 +93,7 @@ $pageend=round($page*40+1);
         <div id="main">
             <div id="search">
                 <ol class="breadcrumb">
-                <li><a href="#"><a href="./">Ê×Ò³</a></li>
+                <li><a href="#"><a href="./">é¦–é¡µ</a></li>
                 </ol>
             </div>
             <div id="show">
@@ -101,22 +101,22 @@ $pageend=round($page*40+1);
                  $rs = mysql_query("SELECT * FROM wtb_titles ORDER BY tid DESC limit $pagestart,$pageend");
                  while($row = mysql_fetch_row($rs)) {
                  echo "<div id='showtopic'>";
-                     /*Ìû×Ó±êÌâ*/
+                     /*å¸–å­æ ‡é¢˜*/
                      echo "<div id='showtopictitle'>";
                      echo "<a href='showtopic.php?tid=$row[0]' target='_blank'>";
                      echo(substr($row[2],0,46)."</a>");
                      echo "</div>";
-                     /*Ìû×ÓÄÚÈİ*/
-                     echo "<div id=¡¯showtopicinclude'>";
+                     /*å¸–å­å†…å®¹*/
+                     echo "<div id=â€™showtopicinclude'>";
                      echo (substr($row[4],0,100)."...");
                      echo "</div>";
-                     /*·¢Ìû×÷Õß¼°·¢²¼Ê±¼ä*/
-                     echo "<div id=¡¯showtopicuser'>";
-                     echo($row[1]."·¢±íÓÚ".$row[3]);
+                     /*å‘å¸–ä½œè€…åŠå‘å¸ƒæ—¶é—´*/
+                     echo "<div id=â€™showtopicuser'>";
+                     echo($row[1]."å‘è¡¨äº".$row[3]);
                      echo "</div></div><p></p>";
                  }
-                 /*ÏÔÊ¾Ò³Âë*/
-                 if (mysql_num_rows($rs)<1){echo"¼ÇÂ¼¼¯Îª¿Õ";}
+                 /*æ˜¾ç¤ºé¡µç */
+                 if (mysql_num_rows($rs)<1){echo"è®°å½•é›†ä¸ºç©º";}
                  echo"<div id='page'>";       
                  for($i=-5;$i<=5;$i++){
                     $pge=$page+$i;
@@ -125,8 +125,8 @@ $pageend=round($page*40+1);
                     } 
                  }
                 ?>
-                <a href="./">Ê×Ò³</a>
-                <input type = "text" id="pagea" name="pagea" placeholder="ÊäÈëÒ³Âë..."></input>
+                <a href="./">é¦–é¡µ</a>
+                <input type = "text" id="pagea" name="pagea" placeholder="è¾“å…¥é¡µç ..."></input>
                 <a href="#" onclick="pagego()">GO</a>
                 <script type="text/javascript">
                     function pagego(){
@@ -144,13 +144,13 @@ $pageend=round($page*40+1);
                     }     
                 </script><p>
                 <div id="addtopic">      
-                        <b>·¢±íÖ÷Ìâ New Topic</b>
+                        <b>å‘è¡¨ä¸»é¢˜ New Topic</b>
                         <form method="POST" action="./common/addtopic.php?action=newtopic">
-                        <input type=text name="title" id="mytext1" onKeyUp="keypress1()" placeholder="ÇëÊäÈë±êÌâ...²»ÄÜ³¬¹ı50¸ö×Ö" maxlength="50" size="80" id="addtopictitle">
-                        <font color="gray"><label id="name">Äã»¹¿ÉÒÔÊäÈë50¸ö×Ö</label></font> <p>
-                        <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="topic" cols="150" placeholder="ÇëÊäÈëÄÚÈİ...²»ÄÜ³¬¹ı10000¸ö×Ö" maxlength="10000" style="outline: none;">
-                        </textarea><p><input type="submit" value="·¢Ìû" name="ok">
-                        <font color="gray">&nbsp;&nbsp;<label id="pinglun">Äã»¹¿ÉÒÔÊäÈë10000¸ö×Ö</label></font>
+                        <input type=text name="title" id="mytext1" onKeyUp="keypress1()" placeholder="è¯·è¾“å…¥æ ‡é¢˜...ä¸èƒ½è¶…è¿‡50ä¸ªå­—" maxlength="50" size="80" id="addtopictitle">
+                        <font color="gray"><label id="name">ä½ è¿˜å¯ä»¥è¾“å…¥50ä¸ªå­—</label></font> <p>
+                        <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="topic" cols="150" placeholder="è¯·è¾“å…¥å†…å®¹...ä¸èƒ½è¶…è¿‡10000ä¸ªå­—" maxlength="10000" style="outline: none;">
+                        </textarea><p><input type="submit" value="å‘å¸–" name="ok">
+                        <font color="gray">&nbsp;&nbsp;<label id="pinglun">ä½ è¿˜å¯ä»¥è¾“å…¥10000ä¸ªå­—</label></font>
                         </form>
                 </div>
             </div>
@@ -158,7 +158,7 @@ $pageend=round($page*40+1);
     </div>
          </div>    
     <hr><footer>
-    <div id="foot">&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">Ğ¡°²ÉçÇø</a>Ø­V0.2.0</div>
+    <div id="foot">&copy; <a rel="nofollow" href="http://xiaoanbbs.cn">å°å®‰ç¤¾åŒº</a>ä¸¨V0.2.0</div>
     </footer>
 </body>
 </html><p>
