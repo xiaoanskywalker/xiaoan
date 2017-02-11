@@ -3,7 +3,7 @@ if((file_exists("./common/config.php"))==false){
     header("location:./install/");
 }
 session_start();
-/*帖子分页预处理*/
+/*帖子分页预处理1*/
 $page=@$_REQUEST["page"];
 if($page==null){$page=1;}
 is_numeric($page) or die("<script> alert('无效的参数!');window.navigate('./');</script>");
