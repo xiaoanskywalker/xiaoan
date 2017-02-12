@@ -14,10 +14,10 @@ function _login(){
     if(preg_match("/[\'.,:;*?~`!#$%^&+=)(<>{}]|\]|\[|\/|\\\|\"|\|/",$username)){ 
         echo "<script> alert('用户名或密码中有非法字符！');window.navigate('./login.php'); </script>";
     }
-    $res = mysql_query("SELECT * FROM wtb_users WHERE (usr = '$username' or email = '$username') and pwd='$passowrd'") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('./login.php');</script>");
-    $rows=mysql_num_rows($res);
+    $res = mysqli_query($con,"SELECT * FROM wtb_users WHERE (usr = '$username' or email = '$username') and pwd='$passowrd'");
+    $rows=mysqli_num_rows($res);
     if($rows){
-        $rows=mysql_fetch_row($res);
+        $rows=mysqli_fetch_row($res);
         $_SESSION["user"] = $rows[1];
         echo "<script>alert('亲爱的".$rows[1]."，欢迎回来！');window.navigate('../');</script>";
     }

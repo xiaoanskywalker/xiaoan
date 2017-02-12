@@ -23,24 +23,23 @@ function _register(){
     if (strstr($email,"@")==false){
         die ("<script> alert('电子邮箱格式错误!');window.navigate('./register.php');</script>"); 
     }
-    $res = mysql_query("SELECT * FROM wtb_users WHERE usr = '$username' ") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员 error in register.php line 25！'); window.navigate('./register.php');</script>");
-    $rows=mysql_num_rows($res);
+    $res = mysqli_query($con,"SELECT * FROM wtb_users WHERE usr = '$username' ") ;
+    $rows=mysqli_num_rows($res);
     if($rows){
         die ("<script> alert('该用户名已被注册!');window.navigate('./register.php');</script>");        
     }
-    $res = mysql_query("SELECT * FROM wtb_users WHERE email = '$email'") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员 error in register.php line 30！'); window.navigate('./register.php');</script>");
-    $rows=mysql_num_rows($res);
+    $res = mysqli_query($con,"SELECT * FROM wtb_users WHERE email = '$email'") ;
+    $rows=mysqli_num_rows($res);
     if($rows){
         die ("<script> alert('该电子邮箱已被注册!');window.navigate('./register.php');</script>");        
     }
     $password=md5($password);
-    mysql_query("insert into wtb_users  values (null,'".$username."' ,'".$password."','".$email."',0)") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员 error in register.php line 36！'); window.navigate('./register.php');</script>");
-    $rs = mysql_query("SELECT * FROM wtb_users where usr='".$username."'") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员 error in register.php line 37！'); window.navigate('./register.php');</script>");
-    $row = mysql_fetch_row($rs) ;
+    mysqli_query($con,"insert into wtb_users  values (null,'".$username."' ,'".$password."','".$email."',0)");
+    $rs = mysqli_query($con,"SELECT * FROM wtb_users where usr='".$username."'");    $row = mysqli_fetch_row($rs) ;
     $uid=$row[0];
     $time = date('Y-m-d h:m:s');
-    mysql_query("insert into wtb_userinfo  values ('".$uid."',1,'2016-1-1','".$time."','".$email."')") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员 error in register.php line 41！'); window.navigate('./register.php');</script>");
-    die ("<script> alert('亲爱的 ".$username."，注册成功!');window.navigate('./login.php');</script>");     
+    mysqli_query($con,"insert into wtb_userinfo  values ('".$uid."',1,'2016-1-1','".$time."','".$email."')");
+    die ("<script> alert('亲爱的 ".$username."，注册成功!');window.navigate('./login.php');</script>");
 }
 ?>
 <!DOCTYPE html>
