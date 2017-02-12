@@ -47,10 +47,10 @@ $pageend=round($page*21+1);
         <?php
         require_once './common/config.php';
         require_once './common/conn.php';
-        $rs=mysql_query("SELECT * FROM wtb_titles where tid=$tid") or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('./');</script>");
-        $row = mysql_fetch_row($rs);
+        $rs=mysqli_query($con,"SELECT * FROM wtb_titles where tid=$tid");
+        $row = mysqli_fetch_row($rs);
         echo "<title>$row[2]</title>" ;
-        if (mysql_num_rows($rs)<1){die("<script> alert('帖子不存在！!');window.navigate('./');</script>");}
+        if (mysqli_num_rows($rs)<1){die("<script> alert('帖子不存在！!');window.navigate('./');</script>");}
         ?>
          <script language="javascript"> 
          function keypress2() //发帖内容输入长度处理 
@@ -85,8 +85,8 @@ $pageend=round($page*21+1);
                 <div id="stcon">
                    <div id="user">
                       <img src='./common/images/avatar/<?php
-                      $rs=mysql_query("SELECT * FROM wtb_titles WHERE tid=$tid")or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('./');</script>");
-                      $row = mysql_fetch_row($rs);
+                      $rs=mysqli_query($con,"SELECT * FROM wtb_titles WHERE tid=$tid");
+                      $row = mysqli_fetch_row($rs);
                       $file = "./common/images/avatar/".$row[1].".png";
                       if(file_exists($file)){echo $row[1];}
                       else{echo "default_avatar";}
@@ -101,8 +101,8 @@ $pageend=round($page*21+1);
             <div id="showtopicreply">
             <?php
             /*输出回帖内容*/
-            $rs=mysql_query("SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $pagestart,$pageend")or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('./');</script>");
-            while($row = mysql_fetch_row($rs)){
+            $rs=mysqli_query($con,"SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $pagestart,$pageend")or die("<script> alert('执行数据库查询时出现错误，请联系网站管理员！'); window.navigate('./');</script>");
+            while($row = mysqli_fetch_row($rs)){
                 echo"<div id='showtoc'> <div id='ston'><div id='user'><img src='./common/images/avatar/";
                 $file = "./common/images/avatar/".$row[2].".png";
                 if(file_exists($file)){echo $row[2];}
