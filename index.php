@@ -210,7 +210,7 @@ for ($i = -5; $i <= 5; $i++) {
                 <div id="addtopic">
                     发表主题 New Topic
                     <form method="POST" action="">
-                        <input type=text id="mytext1" onKeyUp="keypress1()" name="title" placeholder="请输入标题...不能超过50个字" maxlength="50" size="50%" id="addtopictitle" >
+                        <input type=text id="mytext1" onKeyUp="keypress1()" name="title" placeholder="请输入标题...不能超过50个字" maxlength="50" size="50%" required >
                         <font color="gray">
                             <label id="name">你还可以输入50个字</label>
                         </font> <p>
@@ -255,4 +255,21 @@ for ($i = -5; $i <= 5; $i++) {
 <script src="./static/js/addtopic.js"></script>
 </body>
 </html>
+<?php
+if(empty($_POST['ok'])){
+    exit;
+}
+$title=@$_POST['title'];
+$topic=@$_POST['topic'];
+$time = date('Y-m-d h:m:s');
+$user=$_SESSION["user"];
+if ($user== null){
+    die("<script> alert('请先登录!!');window.navigate('./');</script>");
+}
+if ($title && $topic){
+    mysqli_query($con,"INSERT INTO wtb_titles VALUES (null,'$user','$title','$time','$topic',1)");
+    die("<script> alert('发帖成功!');window.navigate('./');</script>");
+} else{
+    die("<script> alert('请输入帖子标题和内容!');window.navigate('./');</script>");
+}
 
