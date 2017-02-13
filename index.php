@@ -210,13 +210,12 @@ for ($i = -5; $i <= 5; $i++) {
                 <div id="addtopic">
                     发表主题 New Topic
                     <form method="POST" action="">
-                        <input type=text name="title" id="mytext1" onKeyUp="keypress1()" placeholder="请输入标题...不能超过50个字" maxlength="50" size="50%" id="addtopictitle">
+                        <input type=text id="mytext1" onKeyUp="keypress1()" name="title" placeholder="请输入标题...不能超过50个字" maxlength="50" size="50%" id="addtopictitle" >
                         <font color="gray">
                             <label id="name">你还可以输入50个字</label>
                         </font> <p>
-                        <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="topic" cols="100%" placeholder="请输入内容...不能超过10000个字" maxlength="10000" style="outline: none;">
-                        </textarea>
-                        <p><input type="submit" value="发帖" name="ok">
+                        <textarea class="form-control" id="myarea" name = "topic" required nKeyUp="keypress2()" onblur="keypress2()" placeholder="请输入内容...不能超过10000个字" maxlength="10000"></textarea>
+                        <p><input type="submit" value="发帖" name="ok" class="btn btn-primary">
                             <font color="gray">
                                 &nbsp;&nbsp;<label id="pinglun">你还可以输入10000个字</label>
                             </font>
@@ -253,7 +252,7 @@ for ($i = -5; $i <= 5; $i++) {
 
 <script src="./static/js/jquery-2.2.4.min.js"></script>
 <script src="./static/js/bootstrap.min.js"></script>
-
+<script src="./static/js/addtopic.js"></script>
 </body>
 </html>
 
