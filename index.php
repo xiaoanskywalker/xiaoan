@@ -13,67 +13,33 @@ if ($page <= 0) {
     $page = 1;
     die("<script> alert('page参数非正整数!');window.navigate('./');</script>");
 }
-$pagestart = round(($page - 1) * 40);
-$pageend = round($page * 40 + 1);
-
-
-/**
- * 未实现内容
- * 获取每个发帖用户的头像
- * 获取每个帖子评论数量
- */
 
 
 /**
  * 站点信息
  */
-
-require_once './common/config.php';
 require_once './common/conn.php';
-$rs = mysql_query("SELECT * FROM wtb_general_settings where gid=1") or die("连接到数据库时出现错误。");
-$row = mysql_fetch_row($rs);
+require_once './model/Site.php';
+require_once './model/User.php';
+require_once './model/Post.php';
 
-$site_info = array('title' => $row[1], 'keywords' => $row[2], 'description' => $row[3]);
+
+$site = Site::get();
 
 /**
  * 用户
  */
 
-$user = array('name' => $_SESSION["user"]);
-
-if ($user['name'] != null) {
-    $file = "./common/images/avatar/" . $user['name'] . ".png";
-    if (file_exists($file)) {
-        $user['avatar'] = $file;
-    } else {
-        $user['avatar'] = './static/img/avatar.jpg';
-    }
-} else {
-    $user['avatar'] = './static/img/avatar.jpg';
+if ($_SESSION["user"]) {
+    $user = User::getByName($_SESSION["user"]);
 }
+
 
 /**
  * 帖子
  */
-$discussions = array();
 
-$rs = mysql_query("SELECT * FROM wtb_titles ORDER BY tid DESC limit $pagestart,$pageend");
-while ($row = mysql_fetch_row($rs)) {
-    $discussion = array();
-    $discussion['tid'] = $row[0];
-    $discussion['author'] = $row[1];
-    $discussion['title'] = $row[2];
-    $discussion['time'] = $row[3];
-    $discussion['preview'] = $row[4];
-
-    $discussion['url'] = 'showtopic.php?tid=' . $row[0];
-
-    $temp = explode("-", $row[3]);
-    $discussion['time'] = date('m月d日', mktime(0, 0, 0, $temp[1], $temp[2], $temp[0]));
-
-
-    array_push($discussions, $discussion);
-}
+$discussions = Post::getPage($page);
 
 /**
  * 页码
@@ -96,11 +62,11 @@ for ($i = -5; $i <= 5; $i++) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <?php
-    echo "<title>$site_info[title]</title>";
-    echo "<meta name='keywords' content='$site_info[keywords]' />";
-    echo "<meta name='description' content='$site_info[description]' />";
-    ?>
+
+    <title><?= $site->title ?></title>
+    <meta name='keywords' content='<?= $site->keywords ?>'/>
+    <meta name='description' content='<?= $site->description ?>'/>
+
     <link href="./static/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./static/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="./static/css/style.css">
@@ -128,13 +94,13 @@ for ($i = -5; $i <= 5; $i++) {
                             ?>
                             <li class="dropdown user-nav-dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
-                                    <span><?= $user['name'] ?></span>
+                                    <span><?= $user->name ?></span>
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu user-nav">
                                     <li class="user-profile">
-                                        <img src="<?= $user['avatar'] ?>" class="avatar">
-                                        <span class="username"><?= $user['name'] ?></span>
+                                        <img src=".<?= $user->avatar ?>" class="avatar">
+                                        <span class="username"><?= $user->name ?></span>
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#">我的空间</a></li>
@@ -177,17 +143,19 @@ for ($i = -5; $i <= 5; $i++) {
                                         //TODO 点击头像、名称进入用户主页
                                         ?>
                                         <a href="#"><img src="./static/img/avatar.jpg" class="avatar"
-                                                         alt="<?= $discussion['author'] ?>"></a>
+                                                         alt="<?= $discussion->username ?>"></a>
                                     </div>
 
                                     <div class="profile">
-                                        <h3 class="title"><a href="<?= $discussion['url'] ?>"><?= $discussion['title'] ?></a></h3>
+                                        <h3 class="title"><a
+                                                    href=".<?= $discussion->url ?>"><?= $discussion->title ?></a>
+                                        </h3>
                                         <div class="preview">
-                                            <?= $discussion['preview'] ?>
+                                            <?= $discussion->content ?>
                                         </div>
                                         <div class="info">
-                                            <a href="#" class="author"><?= $discussion['author'] ?></a>
-                                            <span class="time"><?= $discussion['time'] ?></span>
+                                            <a href="#" class="author"><?= $discussion->username ?></a>
+                                            <span class="time"><?= $discussion->getDate() ?></span>
                                         </div>
                                     </div>
 
