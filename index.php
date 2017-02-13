@@ -3,7 +3,7 @@ if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
 session_start();
-/*帖子分页预处理31*/
+/*帖子分页预处理*/
 $page = @$_REQUEST["page"];
 if ($page == null) {
     $page = 1;
@@ -30,8 +30,8 @@ $pageend = round($page * 40 + 1);
 
 require_once './common/config.php';
 require_once './common/conn.php';
-$rs = mysql_query("SELECT * FROM wtb_general_settings where gid=1") or die("连接到数据库时出现错误。");
-$row = mysql_fetch_row($rs);
+$rs = mysqli_query($con,"SELECT * FROM wtb_general_settings where gid=1");
+$row = mysqli_fetch_row($rs);
 
 $site_info = array('title' => $row[1], 'keywords' => $row[2], 'description' => $row[3]);
 
@@ -57,8 +57,8 @@ if ($user['name'] != null) {
  */
 $discussions = array();
 
-$rs = mysql_query("SELECT * FROM wtb_titles ORDER BY tid DESC limit $pagestart,$pageend");
-while ($row = mysql_fetch_row($rs)) {
+$rs = mysqli_query($con,"SELECT * FROM wtb_titles ORDER BY tid DESC limit $pagestart,$pageend");
+while ($row = mysqli_fetch_row($rs)) {
     $discussion = array();
     $discussion['tid'] = $row[0];
     $discussion['author'] = $row[1];
