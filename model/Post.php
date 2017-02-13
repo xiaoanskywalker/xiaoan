@@ -72,13 +72,35 @@ class Post
         return $arr;
     }
 
+    static function getStickTop()
+    {
+        global $con;
+        $result = $con->query("SELECT * FROM wtb_titles WHERE topictype=2 OR topictype=4");
+
+        $arr = array();
+
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Post::from($row));
+        }
+        return $arr;
+    }
+
     /**
      * @param int $num 从第几页开始，1开始数
      * @return array
      */
     static function getPage($num = 1)
     {
-        return Post::getPosts(($num - 1) * Post::$page_count, Post::$page_count);
+
+        $res = Post::getPosts(($num - 1) * Post::$page_count, Post::$page_count);
+        /**
+         * 得到置顶帖
+         */
+        if ($num == 1) {
+            $top = Post::getStickTop();
+            return array_merge($top, $res);
+        }
+        return $res;
     }
 
 }

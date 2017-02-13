@@ -24,7 +24,7 @@ class Site
     static function get()
     {
         global $con;
-        $result = $con->query("SELECT * FROM wtb_general_settings where gid=1") or die("连接到数据库时出现错误。");
+        $result = $con->query("SELECT * FROM wtb_general_settings where gid=1");
         $row = $result->fetch_array();
         return Site::from($row);
     }
