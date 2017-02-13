@@ -164,6 +164,11 @@ for ($i = -5; $i <= 5; $i++) {
             </aside>
             <div class="content">
                 <div class="discussion-list">
+                    <div id="search">
+                        <ol>
+                            <a href="#"><a href="./">首页</a>
+                        </ol>
+                    </div>
                     <ul class="discussions">
 
                         <?php
@@ -201,6 +206,21 @@ for ($i = -5; $i <= 5; $i++) {
                         }
                         ?>
                     </ul>
+                </div>
+                <div id="addtopic">
+                    发表主题 New Topic
+                    <form method="POST" action="">
+                        <input type=text name="title" id="mytext1" onKeyUp="keypress1()" placeholder="请输入标题...不能超过50个字" maxlength="50" size="50%" id="addtopictitle">
+                        <font color="gray">
+                            <label id="name">你还可以输入50个字</label>
+                        </font> <p>
+                        <textarea rows="15" id="myarea" onKeyUp="keypress2()" onblur="keypress2()" name="topic" cols="100%" placeholder="请输入内容...不能超过10000个字" maxlength="10000" style="outline: none;">
+                        </textarea>
+                        <p><input type="submit" value="发帖" name="ok">
+                            <font color="gray">
+                                &nbsp;&nbsp;<label id="pinglun">你还可以输入10000个字</label>
+                            </font>
+                    </form>
                 </div>
                 <div class="toorbar">
                     <nav aria-label="Page navigation">
