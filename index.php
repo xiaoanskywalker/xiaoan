@@ -87,7 +87,7 @@ for ($i = -5; $i <= 5; $i++) {
                         <?php
                         if ($user['name'] == null) {
                             ?>
-                            <li><a href="./user/login.php">登录</a></li>
+                            <li><a href="./user/passport.php">登录</a></li>
                             <li><a href="./user/register.php">注册</a></li>
                             <?php
                         } else {
@@ -170,28 +170,38 @@ for ($i = -5; $i <= 5; $i++) {
                         ?>
                     </ul>
                 </div>
-                <div class="toorbar">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <?php
-                            foreach ($pagination as $temp) {
-                                ?>
-                                <li><a href="<?= $temp['url'] ?>"><?= $temp['id'] ?></a></li>
-                                <?php
-                            }
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <?php
+                        foreach ($pagination as $temp) {
                             ?>
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                            <li><a href="<?= $temp['url'] ?>"><?= $temp['id'] ?></a></li>
+                            <?php
+                        }
+                        ?>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="new-post">
+                    <form method="post" action="">
+                        <div class="post-title">
+                            <input type="text" name="title" placeholder="话题标题">
+                        </div>
+                        <div class="post-content">
+                            <textarea name="topic" class="input-area" placeholder="写点什么..."></textarea>
+                        </div>
+                        <button class="button send-button">Send</button>
+                    </form>
                 </div>
             </div>
         </main>
