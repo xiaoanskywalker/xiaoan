@@ -56,7 +56,7 @@ class Post
 
 
         global $con;
-        $stat = $con->prepare("SELECT * FROM wtb_titles ORDER BY tid DESC limit ?,?");
+        $stat = $con->prepare("SELECT * FROM wtb_titles WHERE topictype=1 OR topictype=3 ORDER BY tid DESC limit ?,?");
         $stat->bind_param('ii', $offset, $limit);
         $stat->execute();
         $result = $stat->get_result();
