@@ -43,6 +43,7 @@ $bg-color: rgba(255, 255, 255, 0.9);
 body {
   background: url("../img/bg2.jpg");
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .top-bar {
@@ -121,11 +122,16 @@ body {
 }
 
 .content {
+  padding-bottom: 2em;
   .discussion-list {
     .discussions {
       list-style: none;
       padding: 0;
     }
+  }
+
+  > * {
+    margin-top: 2em;
   }
 }
 
@@ -167,9 +173,51 @@ body {
   }
 }
 
-.toorbar {
+.content {
   .pagination {
     margin: .6em 0 .6em 25%;
   }
+}
 
+.new-post {
+
+  position: relative;
+  width: 80%;
+  .send-button {
+    position: absolute;
+    padding: .4em 1.4em;
+    bottom: .6em;
+    right: 1.2em;
+    border: 0;
+    border-radius: .3em;
+    background: #0aa8e3;
+    color: #fff;
+  }
+
+  .post-title {
+    input {
+      display: block;
+      width: 100%;
+      padding: .6em 2em;
+      border: 0;
+      outline: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
+  }
+
+  .input-area {
+    display: block;
+    width: 100%;
+    height: 144px;
+    margin-top: 36px;
+    resize: none;
+    box-sizing: border-box;
+    padding: 1em 2em;
+    border: 0;
+    background: #f7f7f7;
+    color: #222;
+    outline: 0;
+  }
 }
