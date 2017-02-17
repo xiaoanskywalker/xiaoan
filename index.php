@@ -22,10 +22,10 @@ require_once './common/conn.php';
 require_once './model/Site.php';
 require_once './model/User.php';
 require_once './model/Post.php';
-require_once './model/prefix.php';
+//require_once './model/prefix.php';
 
 $site = Site::get();
-showprefix();
+//showprefix();
 /**
  * 用户
  */

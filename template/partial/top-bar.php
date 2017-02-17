@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <?php
-                    if ($_SESSION["user"] == null) {
+                    if ($user == null) {
                         require 'top-bar-unlogged.php';
                     } else {
                         require 'top-bar-logged.php';
