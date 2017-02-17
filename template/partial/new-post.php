@@ -1,6 +1,16 @@
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
+            <select>
+            <?php
+            $arr = explode(" ", " ".$row[1]);
+            $index =count($arr);
+            while($index>0){
+                echo "<option value ='$arr[$index]'>$arr[$index]</option>";
+                $index=$index-1;
+            }
+            ?>
+            </select>
             <input type="text" name="title" placeholder="话题标题">
         </div>
         <div class="post-content">
