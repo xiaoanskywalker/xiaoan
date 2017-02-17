@@ -33,6 +33,9 @@ class Post
 
     static function from($row)
     {
+        if (!$row) {
+            return null;
+        }
         return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts']);
     }
 

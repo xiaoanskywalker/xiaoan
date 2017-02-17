@@ -156,4 +156,7 @@ body {
     color: #222;
     outline: 0; }
 
+body.login .header {
+  background: #4ae94f; }
+
 /*# sourceMappingURL=style.css.map */

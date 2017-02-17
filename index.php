@@ -55,7 +55,16 @@ for ($i = -5; $i <= 5; $i++) {
 }
 
 $baseurl = '.';
-$body = 'index.partial.php'
+$body = 'index.partial.php';
+
+$page = array();
+
+$page['body'] = array();
+$page['body']['class'] = 'index';
+
+$page['header'] = array();
+$page['header']['title'] = $site->description;
+
 ?>
 
 <?php require './template/layout.php' ?>

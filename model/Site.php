@@ -1,7 +1,6 @@
 <?php
 
 
-
 class Site
 {
 
@@ -18,6 +17,9 @@ class Site
 
     static function from($row)
     {
+        if (!$row) {
+            return null;
+        }
         return new Site($row['name'], $row['keywords'], $row['description']);
     }
 
