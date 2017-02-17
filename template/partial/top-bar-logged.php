@@ -9,6 +9,7 @@
             <span class="username"><?= $user->name ?></span>
         </li>
         <li role="separator" class="divider"></li>
-        <li><a href="#">我的空间</a></li>
+        <li><a href="./user/myhome.php" target="_blank">我的空间</a></li>
+        <li><a href="./user/passport.php?action=logout">退出登录</a></li>
     </ul>
 </li>
