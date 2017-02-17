@@ -2,10 +2,14 @@
     <form method="post" action="">
         <div class="post-title">
             <select>
-                <option value ="volvo">Volvo</option>
-                <option value ="saab">Saab</option>
-                <option value="opel">Opel</option>
-                <option value="audi">Audi</option>
+            <?php
+            $arr = explode(" ", " ".$row[1]);
+            $index =count($arr);
+            while($index>0){
+                echo "<option value ='$arr[$index]'>$arr[$index]</option>";
+                $index=$index-1;
+            }
+            ?>
             </select>
             <input type="text" name="title" placeholder="话题标题">
         </div>
