@@ -50,5 +50,15 @@ class User
         return User::from($row);
     }
 
+    static function Login($uar,$pwd,$emi)
+    {
+        global $con;
+        $stat = $con->prepare("SELECT * FROM wtb_users WHERE (usr=? or email=?) and pwd=?");
+        $stat->bind_param('sss', $uar,$emi,$pwd);
+        $stat->execute();
+        $row = $stat->get_result()->fetch_array();
+        return User::from($row);
+    }
+
 }
 

@@ -2,9 +2,9 @@
 
     <form class="form-inline" name="login" role="form" action="" method=post>
 
-        <input type="text" class="form-control" placeholder="Username" name="username">
+        <input type="text" class="form-control" placeholder="Username" name="username" required>
 
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password" name="password" required>
 
         <div class="button-line">
             <a class="btn btn-primary">注册</a>

@@ -1,3 +1,4 @@
+<?php if ($_SESSION["user"]==null){exit;}?>
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">

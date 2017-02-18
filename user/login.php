@@ -3,6 +3,7 @@ if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
 }
 session_start();
+//require_once '../common/config.php';
 require_once '../common/conn.php';
 $action = $_REQUEST["action"];
 ?>
@@ -44,7 +45,6 @@ $page['header']['title'] = '登录，享受更多精彩!';
 $page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
 
-?>
-
-
-<?php require '../template/layout.php'; ?>
+require '../template/layout.php';
+$user = User::Login($uar,$pwd,$emi);
+echo $row;
