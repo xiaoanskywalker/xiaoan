@@ -46,5 +46,10 @@ $page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
 
 require '../template/layout.php';
-$user = User::Login($uar,$pwd,$emi);
-echo $row;
+$uar=$_POST["username"];
+$pwd=md5($_POST["password"]);
+$user = User::login($uar,$pwd);
+if ($user != null){
+    $_SESSION["user"]=$user;
+    header("location:../");
+}
