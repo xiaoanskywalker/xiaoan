@@ -5,12 +5,14 @@ class User
 
     public $id;
     public $name;
+    public $password;
     public $avatar;
 
-    function __construct($id, $name)
+    function __construct($id, $name, $password)
     {
         $this->id = $id;
         $this->name = $name;
+        $this->password = $password;
 
         //TODO 路劲绝对地址
         $file = "/common/images/avatar/" . $name . ".png";
@@ -26,7 +28,7 @@ class User
         if (!$row) {
             return null;
         }
-        return new User($row['uid'], $row['usr']);
+        return new User($row['uid'], $row['usr'], $row['pwd']);
     }
 
 
@@ -50,15 +52,30 @@ class User
         return User::from($row);
     }
 
-    static function login($uar,$pwd)
+    static function getByMail($mail)
     {
         global $con;
-        $stat = $con->prepare("SELECT * FROM wtb_users WHERE (usr=? or email=?) and pwd=?");
-        $stat->bind_param('sss', $uar,$pwd,$pwd);
+        $stat = $con->prepare("SELECT * FROM wtb_users where email=?");
+        $stat->bind_param('s', $mail);
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
         return User::from($row);
     }
+
+
+    static function login($uar, $pwd)
+    {
+        global $con;
+        $user = User::getByName($uar);
+        if ($user == null) {
+            $user = User::getByMail($uar);
+        }
+        if ($user != null && $user->password == md5($pwd)) {
+            return $user;
+        }
+        return null;
+    }
+
 
 }
 

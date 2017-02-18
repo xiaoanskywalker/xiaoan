@@ -2,7 +2,14 @@
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
+
+require_once './common/conn.php';
+require_once './model/Site.php';
+require_once './model/User.php';
+require_once './model/Post.php';
+
 session_start();
+
 /*帖子分页预处理31*/
 $page = @$_REQUEST["page"];
 if ($page == null) {
@@ -18,10 +25,7 @@ if ($page <= 0) {
 /**
  * 站点信息
  */
-require_once './common/conn.php';
-require_once './model/Site.php';
-require_once './model/User.php';
-require_once './model/Post.php';
+
 //require_once './model/prefix.php';
 
 $site = Site::get();
@@ -29,9 +33,11 @@ $site = Site::get();
 /**
  * 用户
  */
-
-if ($_SESSION["user"]) {
-    $user = User::getByName($_SESSION["user"]);
+echo $_SESSION["user"] != null;
+if ($_SESSION["user"] != null) {
+    //$user = User::getByName($_SESSION["user"]);
+    $user = $_SESSION["user"];
+    echo $user->name;
 }
 
 

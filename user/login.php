@@ -20,6 +20,7 @@ if ($action == "login") {
 }
 */
 
+
 require_once '../common/conn.php';
 require_once '../model/Site.php';
 require_once '../model/User.php';
@@ -27,7 +28,16 @@ require_once '../model/User.php';
 $site = Site::get();
 
 if ($_SESSION["user"]) {
-    $user = User::getByName($_SESSION["user"]);
+    //$user = User::getByName($_SESSION["user"]);
+    header("location:../");
+}
+
+$uar = $_POST["username"];
+$pwd = $_POST["password"];
+$user = User::login($uar, $pwd);
+if ($user != null) {
+    $_SESSION["user"] = $user;
+    header("location:../index.php");
 }
 
 
@@ -46,10 +56,3 @@ $page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
 
 require '../template/layout.php';
-$uar=$_POST["username"];
-$pwd=md5($_POST["password"]);
-$user = User::login($uar,$pwd);
-if ($user != null){
-    $_SESSION["user"]=$uar;
-    header("location:../");
-}
