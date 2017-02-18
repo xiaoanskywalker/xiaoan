@@ -1,6 +1,6 @@
 <div class="login-box">
 
-    <form action="">
+    <form class="form-inline" name="login" role="form" action="" method=post>
 
         <input type="text" class="form-control" placeholder="Username" name="username">
 
@@ -8,7 +8,7 @@
 
         <div class="button-line">
             <a class="btn btn-primary">注册</a>
-            <button class="btn btn-success">登录</button>
+            <input name="log" type = "submit" class="btn btn-success" value = "登录">
             <a class="btn btn-warning">忘记密码?</a>
         </div>
 
