@@ -23,6 +23,9 @@ class User
 
     static function from($row)
     {
+        if (!$row) {
+            return null;
+        }
         return new User($row['uid'], $row['usr']);
     }
 

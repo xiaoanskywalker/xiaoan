@@ -3,7 +3,7 @@
 
 <?php require 'partial/head.php'; ?>
 
-<body>
+<body class="<?= $page['body']['class'] ?>">
 
 <div class="layout">
 

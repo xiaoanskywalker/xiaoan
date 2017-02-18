@@ -5,6 +5,10 @@ body, input, button, textarea {
   font-size: 16px;
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Arial", "sans-serif"; }
 
+.button-line {
+  display: flex;
+  justify-content: space-around; }
+
 /*
 ::-webkit-scrollbar {
   width: 6px;
@@ -55,6 +59,7 @@ body {
 
 .container {
   max-width: 1000px;
+  min-height: 75vh;
   padding: 0;
   box-sizing: border-box;
   border-radius: 5px;
@@ -155,5 +160,19 @@ body {
     background: #f7f7f7;
     color: #222;
     outline: 0; }
+
+body.login .header {
+  background: #4ae94f; }
+body.login .content {
+  display: flex;
+  margin: 0; }
+body.login .login-box {
+  margin-left: 25%;
+  min-width: 260px; }
+  body.login .login-box form {
+    display: flex;
+    flex-direction: column; }
+    body.login .login-box form > * {
+      margin: .4em 0; }
 
 /*# sourceMappingURL=style.css.map */

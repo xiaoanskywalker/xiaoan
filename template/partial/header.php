@@ -1,4 +1,4 @@
 <header class="header jumbotron">
-    <p><?= $site->description ?></p>
+    <p><?= $page['header']['title'] ?></p>
 </header>
 

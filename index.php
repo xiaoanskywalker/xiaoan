@@ -22,10 +22,10 @@ require_once './common/conn.php';
 require_once './model/Site.php';
 require_once './model/User.php';
 require_once './model/Post.php';
-require_once './model/prefix.php';
+//require_once './model/prefix.php';
 
 $site = Site::get();
-showprefix();
+//showprefix();
 /**
  * 用户
  */
@@ -55,7 +55,16 @@ for ($i = -5; $i <= 5; $i++) {
 }
 
 $baseurl = '.';
-$body = 'index.partial.php'
+$body = 'index.partial.php';
+
+$page = array();
+
+$page['body'] = array();
+$page['body']['class'] = 'index';
+
+$page['header'] = array();
+$page['header']['title'] = $site->description;
+
 ?>
 
 <?php require './template/layout.php' ?>

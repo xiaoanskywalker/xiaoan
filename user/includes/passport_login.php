@@ -51,7 +51,7 @@ if(@$_SESSION["user"]!=null){ header("Location:../");}
             die ("<script>alert('亲爱的".$rows[1]."，欢迎回来！');window.navigate('../');</script>");
         }
         else{
-            die ("<script> alert('用户名或密码错误！'); window.navigate('./passport.php?action=login');</script>");
+            die ("<script> alert('用户名或密码错误！'); window.navigate(login.php/script>");
         }
 
         ?>

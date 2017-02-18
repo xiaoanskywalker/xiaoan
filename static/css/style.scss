@@ -9,6 +9,11 @@ body, input, button, textarea {
   font-family: $font;
 }
 
+.button-line {
+  display: flex;
+  justify-content: space-around;
+}
+
 /*
 ::-webkit-scrollbar {
   width: 6px;
@@ -79,6 +84,7 @@ body {
 
 .container {
   max-width: $page-width;
+  min-height: 75vh;
   padding: 0;
   box-sizing: border-box;
   border-radius: 5px;
@@ -219,5 +225,26 @@ body {
     background: #f7f7f7;
     color: #222;
     outline: 0;
+  }
+}
+
+body.login {
+  .header {
+    background: #4ae94f;
+  }
+  .content {
+    display: flex;
+    margin: 0;
+  }
+  .login-box {
+    margin-left: 25%;
+    min-width: 260px;
+    form {
+      display: flex;
+      flex-direction: column;
+      > * {
+        margin: .4em 0;
+      }
+    }
   }
 }
