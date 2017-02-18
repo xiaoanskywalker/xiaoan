@@ -50,6 +50,6 @@ $uar=$_POST["username"];
 $pwd=md5($_POST["password"]);
 $user = User::login($uar,$pwd);
 if ($user != null){
-    $_SESSION["user"]=$user;
+    $_SESSION["user"]=$uar;
     header("location:../");
 }
