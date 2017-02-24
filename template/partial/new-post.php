@@ -4,7 +4,8 @@
         <div class="post-title">
             <select>
             <?php
-            $arr = explode(" ", " ".$row[1]);
+            $per=User::showprefix();
+            $arr = explode(" ", " ".$per);
             $index =count($arr);
             while($index>0){
                 echo "<option value ='$arr[$index]'>$arr[$index]</option>";
