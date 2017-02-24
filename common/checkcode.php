@@ -1,14 +1,14 @@
 <?php  
 session_start();
- function random($len) {
-     $srcstr = "1a2s3d4f5g6hj8k9qwertyupzxcvbnm";
-     mt_srand();
-     $strs = "";
-     for ($i = 0; $i < $len; $i++) {
-         $strs .= $srcstr[mt_rand(0, 30)];
-     }
-     return $strs;
- }
+function random($len) {
+    $srcstr = "1a2s3d4f5g6hj8k9qwertyupzxcvbnm";
+    mt_srand();
+    $strs = "";
+    for ($i = 0; $i < $len; $i++) {
+        $strs .= $srcstr[mt_rand(0, 30)];
+    }
+    return $strs;
+}
  $str = random(4); //随机生成的字符串
  $width  = 50;  //验证码图片的宽度
  $height = 25;//验证码图片的高度

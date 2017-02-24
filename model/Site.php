@@ -7,6 +7,7 @@ class Site
     public $title;
     public $keywords;
     public $description;
+    public $code;
 
     function __construct($title, $keywords, $description)
     {
@@ -31,5 +32,13 @@ class Site
         return Site::from($row);
     }
 
+    static function checkcode($code){
+        $code=md5($code);
+        if($code==$_SESSION["verification"]){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }
