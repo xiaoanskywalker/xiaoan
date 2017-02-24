@@ -5,21 +5,10 @@ if ((file_exists("../common/config.php")) == false) {
 session_start();
 //require_once '../common/config.php';
 require_once '../common/conn.php';
-$action = $_REQUEST["action"];
-?>
-
-<?php
-/*
-if ($action == "login") {
-    //require_once "./includes/passport_login.php";
-} elseif ($action == "register") {
-    //require_once "./includes/passport_register.php";
-} else {
-    unset($_SESSION["user"]);
+if ($_SESSION["user"]) {
+    //$user = User::getByName($_SESSION["user"]);
     header("location:../");
 }
-*/
-
 
 require_once '../common/conn.php';
 require_once '../model/Site.php';
@@ -27,18 +16,6 @@ require_once '../model/User.php';
 
 $site = Site::get();
 
-if ($_SESSION["user"]) {
-    //$user = User::getByName($_SESSION["user"]);
-    header("location:../");
-}
-
-$uar = $_POST["username"];
-$pwd = $_POST["password"];
-$user = User::login($uar, $pwd);
-if ($user != null) {
-    $_SESSION["user"] = $user;
-    header("location:../index.php");
-}
 
 
 $baseurl = '..';
@@ -56,3 +33,16 @@ $page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
 
 require '../template/layout.php';
+
+
+if(!empty($_POST['log'])){
+    $uar = $_POST["username"];
+    $pwd = $_POST["password"];
+    $user = User::login($uar, $pwd);
+    if ($user != null) {
+        $_SESSION["user"] = $user;
+        header("location:../index.php");
+    }else{
+        die ("<script> alert('用户名或密码错误!');window.navigate('./login.php');</script>");
+    }
+}
