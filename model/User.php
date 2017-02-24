@@ -76,6 +76,11 @@ class User
         return null;
     }
 
+    static function showprefix(){
+        global $con;
+        $row = mysqli_fetch_row(mysqli_query($con,"SELECT * FROM wtb_topic_settings where tsid=1"));
+        return $row[1];
+    }
 
 }
 

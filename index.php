@@ -25,19 +25,16 @@ if ($page <= 0) {
 /**
  * 站点信息
  */
-
-//require_once './model/prefix.php';
-
 $site = Site::get();
 //showprefix();
 /**
  * 用户
  */
-echo $_SESSION["user"] != null;
+//echo $_SESSION["user"] != null;
 if ($_SESSION["user"] != null) {
     //$user = User::getByName($_SESSION["user"]);
     $user = $_SESSION["user"];
-    echo $user->name;
+    //echo $user->name;
 }
 
 
