@@ -65,26 +65,44 @@ class User
 
     static function login($uar, $pwd)
     {
-        global $con;
         $user = User::getByName($uar);
         if ($user == null) {
             $user = User::getByMail($uar);
         }
-        if ($user != null && $user->password == md5($pwd)) {
-            return $user;
+        if ($user == null) {
+            throw new Exception('用户不存在');
         }
-        return null;
+        if ($user->password == md5($pwd)) {
+            return $user;
+        } else {
+            throw new Exception('密码错误');
+        }
     }
 
-    static function showprefix(){
+    static function show_prefix()
+    {
         global $con;
-        $row = mysqli_fetch_row(mysqli_query($con,"SELECT * FROM wtb_topic_settings where tsid=1"));
+        $row = $con->query("SELECT * FROM wtb_topic_settings where tsid=1")->fetch_row();
         return $row[1];
     }
-/*
-    static function register($usr,$pwd,$email){
 
+    static function register($usr, $pwd, $email)
+    {
+        global $con;
+        $user = User::getByName($usr);
+        if ($user) {
+            throw new Exception('用户已存在');
+        }
+        $user = User::getByMail($email);
+        if ($user) {
+            throw new Exception('该邮箱已被注册');
+        }
+
+        $stat = $con->prepare("insert into wtb_users  values (null,?,?,?,0)");
+        $stat->bind_param('sss', $usr, $pwd, $email);
+        $stat->execute();
+        return User::getByName($usr);
     }
-*/
+
 }
 

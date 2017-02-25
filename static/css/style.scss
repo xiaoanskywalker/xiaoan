@@ -228,16 +228,24 @@ body {
   }
 }
 
-body.login {
-  .header {
-    background: #4ae94f;
+body.login, body.register {
+  #main {
+    position: relative;
+  }
+  .sidebar {
+    position: absolute;
   }
   .content {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 0;
+    > * {
+      width: 300px;
+      margin-top: 1em;
+    }
   }
-  .login-box {
-    margin-left: 25%;
+  .login-box, .register-box {
     min-width: 260px;
     form {
       display: flex;
@@ -247,4 +255,26 @@ body.login {
       }
     }
   }
+}
+
+body.login {
+  .header {
+    background: #4ae94f;
+  }
+}
+
+body.register {
+  .header {
+    background: #f78d32;
+  }
+}
+
+.message {
+  padding: 1em;
+  border-radius: 8px;
+}
+
+.message-error {
+  color: #fff;
+  background: #ff4141;
 }

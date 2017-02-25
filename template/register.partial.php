@@ -8,7 +8,7 @@
 
         <?php require 'partial/message.php'; ?>
 
-        <?php require 'partial/login-box.php'; ?>
+        <?php require 'partial/register-box.php'; ?>
 
     </div>
 

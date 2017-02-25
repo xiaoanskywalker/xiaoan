@@ -161,18 +161,38 @@ body {
     color: #222;
     outline: 0; }
 
-body.login .header {
-  background: #4ae94f; }
-body.login .content {
+body.login #main, body.register #main {
+  position: relative; }
+body.login .sidebar, body.register .sidebar {
+  position: absolute; }
+body.login .content, body.register .content {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 0; }
-body.login .login-box {
-  margin-left: 25%;
+  body.login .content > *, body.register .content > * {
+    width: 300px;
+    margin-top: 1em; }
+body.login .login-box, body.login .register-box, body.register .login-box, body.register .register-box {
   min-width: 260px; }
-  body.login .login-box form {
+  body.login .login-box form, body.login .register-box form, body.register .login-box form, body.register .register-box form {
     display: flex;
     flex-direction: column; }
-    body.login .login-box form > * {
+    body.login .login-box form > *, body.login .register-box form > *, body.register .login-box form > *, body.register .register-box form > * {
       margin: .4em 0; }
+
+body.login .header {
+  background: #4ae94f; }
+
+body.register .header {
+  background: #f78d32; }
+
+.message {
+  padding: 1em;
+  border-radius: 8px; }
+
+.message-error {
+  color: #fff;
+  background: #ff4141; }
 
 /*# sourceMappingURL=style.css.map */

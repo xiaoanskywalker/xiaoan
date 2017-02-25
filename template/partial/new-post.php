@@ -4,7 +4,7 @@
         <div class="post-title">
             <select>
             <?php
-            $per=User::showprefix();
+            $per=User::show_prefix();
             $arr = explode(" ", " ".$per);
             $index =count($arr);
             while($index>0){
