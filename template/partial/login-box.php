@@ -7,7 +7,7 @@
         <input type="password" class="form-control" placeholder="Password" name="password" required>
 
         <div class="button-line">
-            <a class="btn btn-primary">注册</a>
+            <a class="btn btn-primary" href="./register.php">注册</a>
             <input name="log" type = "submit" class="btn btn-success" value = "登录">
             <a class="btn btn-warning">忘记密码?</a>
         </div>

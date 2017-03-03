@@ -35,9 +35,9 @@ class Site
     static function checkcode($code){
         $code=md5($code);
         if($code==$_SESSION["verification"]){
-            return true;
+            return 1;
         }else{
-            return false;
+            return 0;
         }
     }
 

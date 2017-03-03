@@ -23,6 +23,7 @@ if (!empty($_POST['log'])) {
     $pwd = $_POST["password"];
     $pwd2 = $_POST["password2"];
     $eml = $_POST["email"];
+    $code = $_POST["checkcode"];
 
     if (empty($uar)) {
         array_push($page['message']['error'], '用户名为空');
@@ -43,8 +44,15 @@ if (!empty($_POST['log'])) {
         array_push($page['message']['error'], '邮箱格式错误');
     }
 
+    $check = Site::checkcode($code);
+    if ($check==0){
+        array_push($page['message']['error'], '验证码错误');
+    }
+
+    $pwd=md5($pwd);//密码MD5加密
     if (empty($errors)) {
         try {
+            die ("ok");
             $user = User::register($uar, $pwd, $eml);
             $_SESSION["user"] = $user;
             header("location:../index.php");
