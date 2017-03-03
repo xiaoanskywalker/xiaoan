@@ -50,9 +50,8 @@ if (!empty($_POST['log'])) {
     }
 
     $pwd=md5($pwd);//密码MD5加密
-    if (empty($errors)) {
+    if (empty($page['message']['error'])) {
         try {
-            die ("ok");
             $user = User::register($uar, $pwd, $eml);
             $_SESSION["user"] = $user;
             header("location:../index.php");
