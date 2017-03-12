@@ -101,7 +101,14 @@ class User
         $stat = $con->prepare("insert into wtb_users  values (null,?,?,?,0)");
         $stat->bind_param('sss', $usr, $pwd, $email);
         $stat->execute();
-        return User::getByName($usr);
+        $user=User::getByName($usr);
+        $uid=$user->id;
+        $time = date('Y-m-d h:m:s');
+        $stat = $con->prepare("insert into wtb_userinfo  values (?,1,'0000-00-00',?,?)");
+        $stat->bind_param('sss', $uid, $time, $email);
+        $stat->execute();
+        return $user;
+        //return User::getByName($usr);
     }
 
 }
