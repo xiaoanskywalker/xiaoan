@@ -21,6 +21,7 @@ $page['message']['error'] = array();
 if (!empty($_POST['log'])) {
     $uar = $_POST["username"];
     $pwd = $_POST["password"];
+    $code = $_POST["checkcode"];
 
     if (empty($uar)) {
         array_push($page['message']['error'], '用户名为空');
@@ -29,7 +30,12 @@ if (!empty($_POST['log'])) {
         array_push($page['message']['error'], '密码为空');
     }
 
-    if (empty($errors)) {
+    $check = Site::checkcode($code);
+    if ($check==0){
+        array_push($page['message']['error'], '验证码错误');
+    }
+
+    if (empty($page['message']['error'])) {
         try {
             $user = User::login($uar, $pwd);
             $_SESSION["user"] = $user;
