@@ -2,7 +2,8 @@
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
-            <select>
+            选择一个发帖前缀：
+            <select name="prefix">
             <?php
             $per=User::show_prefix();
             $arr = explode(" ", " ".$per);
@@ -12,12 +13,12 @@
                 $index=$index-1;
             }
             ?>
-            </select>
-            <input type="text" name="title" placeholder="话题标题">
+            </select><p></p>
+            <input type="text" name="title" placeholder="话题标题" required>
         </div>
         <div class="post-content">
-            <textarea name="topic" class="input-area" placeholder="写点什么..."></textarea>
+            <textarea name="topic" class="input-area" placeholder="写点什么..." required></textarea>
         </div>
-        <button class="button send-button">Send</button>
+        <input name="send" type = "submit" class="button send-button" value = "发送">
     </form>
 </div>

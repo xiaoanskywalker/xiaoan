@@ -16,7 +16,6 @@
 
         <div class="button-line">
             <input name="log" type="submit" class="btn btn-success" value="注册">
-            <a class="btn btn-primary" href="./login.php">登录</a>
             <img id="checkpic" onclick="changing();" src='../common/checkcode.php' />
         </div>
 

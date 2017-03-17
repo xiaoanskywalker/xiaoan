@@ -30,11 +30,8 @@ $site = Site::get();
 /**
  * 用户
  */
-//echo $_SESSION["user"] != null;
 if ($_SESSION["user"] != null) {
-    //$user = User::getByName($_SESSION["user"]);
     $user = $_SESSION["user"];
-    //echo $user->name;
 }
 
 
@@ -57,6 +54,38 @@ for ($i = -5; $i <= 5; $i++) {
     }
 }
 
+
+if (!empty($_POST['send'])) {
+    $prefix = $_POST["prefix"];
+    $title = $_POST["title"];
+    $topic = $_POST["topic"];
+
+    $page = array();
+
+    $page['message'] = array();
+    $page['message']['error'] = array();
+
+    if (empty($title)) {
+        array_push($page['message']['error'], '帖子标题为空');
+    }
+    if (empty($topic)) {
+        array_push($page['message']['error'], '帖子内容为空');
+    }
+    if (empty($user)) {
+        array_push($page['message']['error'], '用户未登录');
+    }
+
+    if (empty($page['message']['error'])) {
+        try {
+            $user = Post::newtopic($prefix,$title,$topic);
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+
+    }
+}
+
+
 $baseurl = '.';
 $body = 'index.partial.php';
 
@@ -67,8 +96,4 @@ $page['body']['class'] = 'index';
 
 $page['header'] = array();
 $page['header']['title'] = $site->description;
-
-?>
-
-<?php require './template/layout.php' ?>
-
+require './template/layout.php';
