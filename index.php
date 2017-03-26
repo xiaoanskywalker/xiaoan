@@ -2,59 +2,27 @@
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
-
 require_once './common/conn.php';
 require_once './model/Site.php';
 require_once './model/User.php';
 require_once './model/Post.php';
-
 session_start();
 
-/*帖子分页预处理31*/
-$page = @$_REQUEST["page"];
-if ($page == null) {
-    $page = 1;
-}
-is_numeric($page) or die("<script> alert('无效的参数!');window.navigate('./');</script>");
-if ($page <= 0) {
-    $page = 1;
-    die("<script> alert('page参数非正整数!');window.navigate('./');</script>");
-}
-
-
-/**
- * 站点信息
- */
+/*帖子分页预处理*/
+$page=Site::pagefirst(@$_REQUEST["page"]);
+/*站点信息 */
 $site = Site::get();
-//showprefix();
-/**
- * 用户
- */
+/*用户*/
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-
-
-/**
- * 帖子
- */
-
+/*帖子*/
 $discussions = Post::getPage($page);
-
-/**
- * 页码
- */
+/*页码*/
 $pagination = array();
+Site::pagination($page);
 
-for ($i = -5; $i <= 5; $i++) {
-    $id = $page + $i;
-    if ($id >= 1) {
-        $temp = array('id' => $id, 'url' => './?page=' . $id);
-        array_push($pagination, $temp);
-    }
-}
-
-
+/*发帖模块*/
 if (!empty($_POST['send'])) {
     $prefix = $_POST["prefix"];
     $title = $_POST["title"];

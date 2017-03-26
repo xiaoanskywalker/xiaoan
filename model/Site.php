@@ -32,13 +32,40 @@ class Site
         return Site::from($row);
     }
 
-    static function checkcode($code){
-        $code=md5($code);
-        if($code==$_SESSION["verification"]){
+    static function checkcode($code)
+    {
+        $code = md5($code);
+        if ($code == $_SESSION["verification"]) {
             return 1;
-        }else{
+        } else {
             return 0;
         }
     }
 
+    static function pagefirst($page)
+    {
+        if ($page == null) {
+            return 1;
+        }
+        if (!is_numeric($page)) {
+            return 1;
+        };
+        if ($page <= 0) {
+            return 1;
+        }
+        return round($page);
+    }
+
+    static function pagination($page)
+    {
+        global $pagination;
+        for ($i = -5; $i <= 5; $i++) {
+            $id = $page + $i;
+            if ($id >= 1) {
+                $temp = array('id' => $id, 'url' => './?page=' . $id);
+                array_push($pagination, $temp);
+            }
+        }
+        return null;
+    }
 }

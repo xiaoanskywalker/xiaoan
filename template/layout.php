@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 
-<?php require 'partial/head.php'; ?>
+<?php
+require 'partial/head.php';
+?>
 
 <body class="<?= $page['body']['class'] ?>">
 
