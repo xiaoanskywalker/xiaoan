@@ -8,8 +8,9 @@ require_once './model/User.php';
 require_once './model/Post.php';
 session_start();
 
-/*帖子分页预处理*/
+/*帖子分页帖子ID预处理*/
 $page=Site::pagefirst(@$_REQUEST["page"]);
+$tid=Site::pagefirst(@$_REQUEST["tid"]);
 /*站点信息 */
 $site = Site::get();
 /*用户*/
