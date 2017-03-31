@@ -20,7 +20,7 @@ if ($_SESSION["user"] != null) {
 $discussions = Post::getPage($page);
 /*页码*/
 $pagination = array();
-Site::pagination($page);
+Site::pagination($page,"./?page=");
 
 /*发帖模块*/
 if (!empty($_POST['send'])) {

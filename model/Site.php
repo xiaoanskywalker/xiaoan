@@ -56,13 +56,13 @@ class Site
         return round($page);
     }
 
-    static function pagination($page)
+    static function pagination($page,$url)
     {
         global $pagination;
         for ($i = -5; $i <= 5; $i++) {
             $id = $page + $i;
             if ($id >= 1) {
-                $temp = array('id' => $id, 'url' => './?page=' . $id);
+                $temp = array('id' => $id, 'url' => $url. $id);
                 array_push($pagination, $temp);
             }
         }

@@ -17,11 +17,11 @@ $site = Site::get();
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-/*帖子*/
-//$discussions = Post::getPage($page);
+/*回复*/
+$replies = Post::getreply($tid,$page);
 /*页码*/
 $pagination = array();
-Site::pagination($page);
+Site::pagination($page,"./showtopic.php?tid=$tid&page=");
 
 $baseurl = '.';
 $body = 'showtopic.partial.php';

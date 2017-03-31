@@ -36,7 +36,7 @@ class Post
         if (!$row) {
             return null;
         }
-        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts']);
+        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['user'],$row['reply']);
     }
 
     static function get($id)
@@ -56,22 +56,15 @@ class Post
      */
     static function getPosts($offset, $limit = 1)
     {
-
-
         global $con;
         $stat = $con->prepare("SELECT * FROM wtb_titles WHERE topictype=1 OR topictype=3 ORDER BY tid DESC limit ?,?");
         $stat->bind_param('ii', $offset, $limit);
         $stat->execute();
         $result = $stat->get_result();
-
         $arr = array();
-
         while ($row = $result->fetch_array()) {
             array_push($arr, Post::from($row));
         }
-
-//        echo '<script>alert' . '(' . $arr[0]->title . ')' . '</script>';
-
         return $arr;
     }
 
@@ -109,12 +102,34 @@ class Post
     static function newtopic($prefix,$title,$topic){
         global $con;
         global $user;
-        $usr=$user->name;
+        $usr = $user->name;
         $time = date('Y-m-d h:m:s');
-        $posts=$prefix.$title;
+        $posts = $prefix.$title;
         $stat = $con->prepare("INSERT INTO wtb_titles VALUES (null,?,?,?,?,1)");
         $stat->bind_param('ssss',$usr,$posts,$time,$topic);
         $stat->execute();
         throw new Exception('发帖成功！');
+    }
+
+    static function getreply($tid,$page){
+        $limit = array();
+        $limit[0] = ($page-1) * Post::$page_count;
+        $limit[1] = $page * Post::$page_count;
+        $top = Post::getReplyDetails($tid,$limit);
+        return array_merge($top, $res);
+    }
+
+    static function getReplyDetails($tid,$limit){
+        global $con;
+       // $result = $con->query("SELECT * FROM wtb_reply WHERE topictype=2 OR topictype=4");
+        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? LIMIT ?,?");
+        $stat->bind_param('sss', $tid,$limit[0],$limit[1]);
+        $stat->execute();
+        $arr = array();
+
+        while ($row = $stat->fetch_array()) {
+            array_push($arr, Post::from($row));
+        }
+        return $arr;
     }
 }
