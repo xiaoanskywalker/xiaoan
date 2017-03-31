@@ -44,7 +44,7 @@ class Site
 
     static function pagefirst($page)
     {
-        if ($page == null) {
+        if (@$page == null) {
             return 1;
         }
         if (!is_numeric($page)) {

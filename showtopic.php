@@ -1,1 +1,35 @@
 <?php
+if ((file_exists("./common/config.php")) == false) {
+    header("location:./install/");
+}
+require_once './common/conn.php';
+require_once './model/Site.php';
+require_once './model/User.php';
+require_once './model/Post.php';
+session_start();
+
+/*帖子分页预处理*/
+$page=Site::pagefirst(@$_REQUEST["page"]);
+/*站点信息 */
+$site = Site::get();
+/*用户*/
+if ($_SESSION["user"] != null) {
+    $user = $_SESSION["user"];
+}
+/*帖子*/
+//$discussions = Post::getPage($page);
+/*页码*/
+$pagination = array();
+Site::pagination($page);
+
+$baseurl = '.';
+$body = 'showtopic.partial.php';
+
+$page = array();
+
+$page['body'] = array();
+$page['body']['class'] = 'index';
+
+$page['header'] = array();
+$page['header']['title'] = $site->description;
+require './template/layout.php';
