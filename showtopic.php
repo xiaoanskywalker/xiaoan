@@ -9,7 +9,7 @@ require_once './model/Post.php';
 session_start();
 
 /*帖子分页帖子ID预处理*/
-$page=Site::pagefirst(@$_REQUEST["page"]);
+$pages=Site::pagefirst(@$_REQUEST["page"]);
 $tid=Site::pagefirst(@$_REQUEST["tid"]);
 /*站点信息 */
 $site = Site::get();
@@ -18,7 +18,7 @@ if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
 /*回复*/
-$replies = Post::getreply($tid,$page);
+
 /*页码*/
 $pagination = array();
 Site::pagination($page,"./showtopic.php?tid=$tid&page=");

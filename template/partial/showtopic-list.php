@@ -2,13 +2,7 @@
     <ul class="discussions">
 
         <?php
-        foreach ($top as $replys) {
-            ?>
-            <li>
-                <?php require 'showreply-preview.php'; ?>
-            </li>
-            <?php
-        }
+        $replies = Post::getreply($tid,$pages);
         ?>
 </ul>
 </div>

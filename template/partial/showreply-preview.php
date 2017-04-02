@@ -1,28 +1,24 @@
-<div class="discussion">
+<li><div class="discussion">
     <div class="avatar-area">
         <?php
         //TODO 获取每个发帖用户的头像
         //TODO 点击头像、名称进入用户主页
         ?>
-        <a href="#"><img src="<?= $baseurl ?>/static/img/avatar.jpg" class="avatar"
-                         alt="<?= $top->username ?>"></a>
+        <a href="#"><img src="<?= $baseurl ?>/static/img/avatar.jpg" class="avatar" alt="1" /></a>
     </div>
 
     <div class="profile">
+        <!--
         <h3 class="title">
-            <a href=".<?= $top->url ?>"><?= $top->title ?></a>
+            <a href=".<?//= $replies->url ?>"><?//= $replies->title ?></a>
         </h3>
+        -->
         <div class="preview">
-            <?= $top->content ?>
+            <?= $row[3];?>
         </div>
         <div class="info">
-            <a href="#" class="author"><?= $top->username ?></a>
-            <span class="time"><?= $top->getDate() ?></span>
+            <a href="#" class="author"><?= $row[2]; ?></a>
+            <span class="time">回复于 <?= $row[4]; ?></span>
         </div>
     </div>
-
-    <?php
-    //TODO 获取每个帖子评论数量
-    ?>
-    <div class="count"><i class="zmdi zmdi-comments"></i>NaN</div>
-</div>
+</div></li>
