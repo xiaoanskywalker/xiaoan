@@ -116,18 +116,18 @@ class Post
         $limit[0] = ($page-1) * Post::$page_count;
         $limit[1] = $page * Post::$page_count;
         $top = Post::getReplyDetails($tid,$limit);
-        return array_merge($top, $res);
+        return $top;
     }
 
     static function getReplyDetails($tid,$limit){
         global $con;
-       // $result = $con->query("SELECT * FROM wtb_reply WHERE topictype=2 OR topictype=4");
         $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? LIMIT ?,?");
         $stat->bind_param('sss', $tid,$limit[0],$limit[1]);
         $stat->execute();
+        $result = $stat->get_result();
         $arr = array();
 
-        while ($row = $stat->fetch_array()) {
+        while ($row = $result->fetch_array()) {
             array_push($arr, Post::from($row));
         }
         return $arr;
