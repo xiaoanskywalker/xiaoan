@@ -115,23 +115,15 @@ class Post
         global $con;
         global $baseurl;
         $limit = array();
-        //$arr = array();
+
         $limit[0] = ($page-1) * Post::$page_count;
         $limit[1] = $page * Post::$page_count;
-        //$top = array();
-        //$top = Post::getReplyDetails($tid,$limit);
+
         $sql = mysqli_query($con,"SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $limit[0],$limit[1]");
-        //$stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? LIMIT ?,?");
-        //$stat->bind_param('sss', $tid,$limit[0],$limit[1]);
-        //$stat->execute();
-        //$result = $stat->get_result();
-
-
         while ($row = mysqli_fetch_row($sql)) {
             require "./template/partial/showreply-preview.php";
-            //array_push($arr, Post::from($row));
+
         }
-        //return $arr;
-        //return $top;
+
     }
 }

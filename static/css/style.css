@@ -35,7 +35,7 @@ body, input, button, textarea {
   height: 100%; }
 
 body {
-  background: url("../img/bg2.jpg");
+  background: url("../img/bg1.jpg");
   background-size: cover;
   background-attachment: fixed; }
 
@@ -63,7 +63,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   border-radius: 5px;
-  background: rgba(255, 255, 255, 0.9); }
+  background: rgba(255, 255, 255, 0.85); }
   .container .header {
     width: 100%;
     text-align: center;
