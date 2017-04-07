@@ -124,6 +124,14 @@ class Post
             require "./template/partial/showreply-preview.php";
 
         }
+    }
 
+    static function getReplyTopic($tid){
+        global $con;
+        $stat=$con->prepare("SELECT * FROM wtb_titles WHERE tid=?");
+        $stat->bind_param('i',$tid);
+        $stat->execute();
+        $row = $stat->get_result()->fetch_array();
+        return Post::from($row);
     }
 }

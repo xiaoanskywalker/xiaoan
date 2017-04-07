@@ -1,7 +1,7 @@
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
-            选择一个发帖前缀：
+            发帖前缀：
             <select name="prefix">
             <?php
             $per=User::show_prefix();
