@@ -1,6 +1,6 @@
 <?php 
 header("Content-type:text/html;charset=UTF-8");
-include("../common/install_header.php");
+include("header.php");
 echo "<h3>第三步-<span class='label label-info'>填写数据库及创始人信息</span></h3>";
 if(file_exists("../common/config.php"))
 {die ("请删除./common/config.php 后才能安装！<a href='index.php' class='btn btn-primary'>返回</a>");}

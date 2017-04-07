@@ -1,4 +1,5 @@
 <?php
+error_reporting (E_ALL &~E_NOTICE &~E_DEPRECATED);
 require_once 'config.php';
 //require_once 'error.php';
 $con = new mysqli(constant("mysql_servername"), constant("mysql_username"), constant("mysql_password"), constant("mysql_database"));

@@ -1,6 +1,6 @@
 <?php
 header("Content-type:text/html;charset=UTF-8");
-include("../common/install_header.php");
+include("header.php");
 ?>
 <center><h1 class="text-primary">小安社区安装向导</h1></center>
 <h3>第一步-<span class="label label-info">阅读使用协议</span></h3>

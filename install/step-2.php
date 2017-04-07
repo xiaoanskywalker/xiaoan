@@ -1,12 +1,10 @@
 <?php
 header("Content-type:text/html;charset=UTF-8");
-include("../common/install_header.php");
+include("header.php");
 echo "<h3>第二步-<span class='label label-info'>服务器配置检查</span></h3>";
 if(file_exists("../common/config.php"))
 {die ("请删除./common/config.php 后才能安装！<a href='index.php' class='btn btn-primary'>返回</a>");}
 ?>
-<p>安装程序将对您的服务器配置环境进行检测，请确保所有项目均符合最低配置要求。
-如果不符合要求而强行安装，则可能会导致安装失败或者安装后无法使用的后果。</p>
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -47,12 +45,13 @@ if(file_exists("../common/config.php"))
         else
         {echo "<font color='red'>不支持</font>";}
         ?></b></td></tr>
+
       <tr>
         <td>配置文件conn.php支持写入情况</td>
         <td>支持</td>
         <td><b>
         <?php
-        if (is_writable("../common/conn.php"))
+        if (is_writable("../common/config.php"))
         {echo "<font color='green'>支持</font>";}
         else
         {echo "<font color='red'>不支持</font>";}

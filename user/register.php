@@ -52,7 +52,7 @@ if (!empty($_POST['log'])) {
     $pwd=md5($pwd);//密码MD5加密
     if (empty($page['message']['error'])) {
         try {
-            $user = User::register($uar, $pwd, $eml);
+            $user = User::register($uar, $pwd, $eml,0);
             $_SESSION["user"] = $user;
             header("location:../index.php");
         } catch (Exception $e) {

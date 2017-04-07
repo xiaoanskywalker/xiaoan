@@ -86,7 +86,7 @@ class User
         return $row[1];
     }
 
-    static function register($usr, $pwd, $email)
+    static function register($usr, $pwd, $email,$group;)
     {
         global $con;
         $user = User::getByName($usr);
@@ -98,8 +98,8 @@ class User
             throw new Exception('该邮箱已被注册');
         }
 
-        $stat = $con->prepare("insert into wtb_users  values (null,?,?,?,0)");
-        $stat->bind_param('sss', $usr, $pwd, $email);
+        $stat = $con->prepare("insert into wtb_users  values (null,?,?,?,?)");
+        $stat->bind_param('sssi', $usr, $pwd, $email,$group);
         $stat->execute();
         $user=User::getByName($usr);
         $uid=$user->id;
