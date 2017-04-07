@@ -86,7 +86,7 @@ class User
         return $row[1];
     }
 
-    static function register($usr, $pwd, $email,$group;)
+    static function register($usr, $pwd, $email,$group)
     {
         global $con;
         $user = User::getByName($usr);

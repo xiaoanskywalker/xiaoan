@@ -65,8 +65,7 @@ define('mysql_servername','$db_host'); //主机地址，默认为localhost
 define('mysql_username','$db_usr'); //数据库用户名
 define('mysql_password','$db_pwd');//数据库密码
 define('mysql_database','$db_name'); //数据库名
-?>
-";
+?>";
     fwrite($myfile, $txt);
     fclose($myfile);
     $etime = microtime(true);//获取程序执行结束的时间
