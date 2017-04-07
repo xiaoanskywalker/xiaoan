@@ -119,7 +119,7 @@ class Post
         $limit[0] = ($page-1) * Post::$page_count;
         $limit[1] = $page * Post::$page_count;
 
-        $sql = mysqli_query($con,"SELECT * FROM wtb_reply WHERE tid=$tid LIMIT $limit[0],$limit[1]");
+        $sql = mysqli_query($con,"SELECT * FROM wtb_reply WHERE tid=$tid ORDER BY rid DESC LIMIT $limit[0],$limit[1] ");
         while ($row = mysqli_fetch_row($sql)) {
             require "./template/partial/showreply-preview.php";
 
@@ -133,5 +133,16 @@ class Post
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
         return Post::from($row);
+    }
+
+    static function newReply($tid,$reply){
+        global $con;
+        global $user;
+        $usr = $user->name;
+        $time = date('Y-m-d h:m:s');
+        $stat = $con->prepare("INSERT INTO wtb_reply VALUES (null,?,?,?,?)");
+        $stat->bind_param('ssss',$tid,$usr,$reply,$time);
+        $stat->execute();
+        echo "<script> alert('回帖成功！'); window.navigate('./showtopic.php?tid=$tid');</script>";
     }
 }

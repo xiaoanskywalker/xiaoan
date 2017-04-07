@@ -8,7 +8,7 @@
         <?php
         require 'partial/showtopic-list.php';
         require 'partial/pagination.php';
-        require 'partial/new-post.php';
+        require 'partial/new-reply.php';
         //require 'partial/message.php';
         ?>
     </div>

@@ -23,6 +23,32 @@ $topic=Post::getReplyTopic($tid);
 $pagination = array();
 Site::pagination($page,"./showtopic.php?tid=$tid&page=");
 
+/*回帖模块*/
+if (!empty($_POST['send'])) {
+    $reply = $_POST["reply"];
+
+    $page = array();
+    $page['message'] = array();
+    $page['message']['error'] = array();
+
+
+    if (empty($reply)) {
+        array_push($page['message']['error'], '回帖内容为空');
+    }
+    if (empty($user)) {
+        array_push($page['message']['error'], '用户未登录');
+    }
+
+    if (empty($page['message']['error'])) {
+        try {
+            $doreply = Post::newReply($tid,$reply);
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+
+    }
+}
+
 $baseurl = '.';
 $body = 'showtopic.partial.php';
 
