@@ -8,7 +8,9 @@
         <?php
         require 'partial/post-list.php';
         require 'partial/pagination.php';
-        require 'partial/new-post.php';
+        if ($_SESSION["user"]!=null){
+            require 'partial/new-post.php';
+        }
         require 'partial/message.php';
         ?>
     </div>

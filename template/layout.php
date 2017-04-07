@@ -13,12 +13,16 @@ require 'partial/head.php';
 
     <div class="container">
 
-        <?php require $body; ?>
+        <?php
+        require $body;
+        require 'partial/footer.php';
+        ?>
 
     </div>
 </div>
 
-<?php require 'partial/import-js.php' ?>
+<?php require 'partial/import-js.php'; ?>
+
 
 </body>
 </html>
