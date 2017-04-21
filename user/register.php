@@ -19,13 +19,13 @@ $page['message'] = array();
 $page['message']['error'] = array();
 
 if (!empty($_POST['log'])) {
-    $uar = $_POST["username"];
+    $usr = $_POST["username"];
     $pwd = $_POST["password"];
     $pwd2 = $_POST["password2"];
     $eml = $_POST["email"];
     $code = $_POST["checkcode"];
 
-    if (empty($uar)) {
+    if (empty($usr)) {
         array_push($page['message']['error'], '用户名为空');
     }
     if (empty($pwd)) {
@@ -52,7 +52,7 @@ if (!empty($_POST['log'])) {
     $pwd=md5($pwd);//密码MD5加密
     if (empty($page['message']['error'])) {
         try {
-            $user = User::register($uar, $pwd, $eml,0);
+            $user = User::register($usr, $pwd, $eml,0);
             $_SESSION["user"] = $user;
             header("location:../index.php");
         } catch (Exception $e) {

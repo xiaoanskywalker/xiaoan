@@ -89,26 +89,20 @@ class User
     static function register($usr, $pwd, $email,$group)
     {
         global $con;
-        $user = User::getByName($usr);
-        if ($user) {
-            throw new Exception('用户已存在');
-        }
         $user = User::getByMail($email);
         if ($user) {
             throw new Exception('该邮箱已被注册');
         }
+        $user = User::getByName($usr);
+        if ($user) {
+            throw new Exception('用户已存在');
+        }
 
-        $stat = $con->prepare("insert into wtb_users  values (null,?,?,?,?)");
-        $stat->bind_param('sssi', $usr, $pwd, $email,$group);
-        $stat->execute();
-        $user=User::getByName($usr);
-        $uid=$user->id;
         $time = date('Y-m-d h:m:s');
-        $stat = $con->prepare("insert into wtb_userinfo  values (?,1,'0000-00-00',?,?)");
-        $stat->bind_param('sss', $uid, $time, $email);
+        $stat = $con->prepare("INSERT INTO wtb_users VALUES (null,?,?,?,?,1,'2017-01-01',?)");
+        $stat->bind_param('sssis',$usr,$pwd,$email,$group,$time);
         $stat->execute();
         return $user;
-        //return User::getByName($usr);
     }
 
 }
