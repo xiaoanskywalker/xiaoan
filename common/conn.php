@@ -7,6 +7,6 @@ $con = new mysqli(constant("mysql_servername"), constant("mysql_username"), cons
 if ($con->connect_error) {
     die("Connection failed: " . $con->connect_error);
 }
-/*数据库编码及时区*/
+/*数据库编码及时区1*/
 $con->query("SET NAMES 'utf8'");
 $con->query("SET time_zone = '+8:00'");
