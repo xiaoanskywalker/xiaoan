@@ -88,7 +88,7 @@ class User
 
     static function register($usr, $pwd, $email,$group)
     {
-        /*用户注册*/
+        /*用户注册1*/
         global $con;
         $user = User::getByMail($email);
         if ($user) {

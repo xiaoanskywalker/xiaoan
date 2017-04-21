@@ -1,5 +1,5 @@
 <?php
-/*sidebar*/
+/*sideba*/
 if ($page['sidebar']['content']) {
     require $page['sidebar']['content'];
 } else {
