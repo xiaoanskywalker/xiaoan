@@ -1,6 +1,6 @@
 <?php include("header.php"); ?>
 <h3>
-    <span class="label label-info">第一步</span>-阅读使用协议
+    <span class="label label-info">第一步</span>--阅读使用协议
 </h3>
 <p>感谢您将 <b>小安社区</b> 用作您网站的论坛系统。<br>
 本软件遵照<a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL协议</a>开放源代码，您可以自由传播和修改，在遵照下面的约束条件的前提下：</p>

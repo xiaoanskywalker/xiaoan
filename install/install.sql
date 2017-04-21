@@ -1,6 +1,4 @@
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
 DROP TABLE IF EXISTS `wtb_general_settings`;
 CREATE TABLE IF NOT EXISTS `wtb_general_settings` (
   `gid` int(11) NOT NULL AUTO_INCREMENT,
@@ -8,7 +6,7 @@ CREATE TABLE IF NOT EXISTS `wtb_general_settings` (
   `keywords` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`gid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 INSERT INTO `wtb_general_settings` (`gid`, `name`, `keywords`, `description`) VALUES
 (1, '小安社区', '小安社区', '小安社区，追求简单、极致');
@@ -31,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `wtb_reply` (
   `reply` text NOT NULL,
   `date` datetime NOT NULL,
   PRIMARY KEY (`rid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `wtb_titles`;
 CREATE TABLE IF NOT EXISTS `wtb_titles` (
@@ -46,21 +44,13 @@ CREATE TABLE IF NOT EXISTS `wtb_titles` (
 
 DROP TABLE IF EXISTS `wtb_topic_settings`;
 CREATE TABLE IF NOT EXISTS `wtb_topic_settings` (
-  `tsid` int(11) DEFAULT NULL,
-  `prefix` text
+  `tsid` int(11) NOT NULL DEFAULT '0',
+  `prefix` text,
+  PRIMARY KEY (`tsid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO `wtb_topic_settings` (`tsid`, `prefix`) VALUES
-(1, NULL);
-
-DROP TABLE IF EXISTS `wtb_userinfo`;
-CREATE TABLE IF NOT EXISTS `wtb_userinfo` (
-  `uid` int(11) NOT NULL,
-  `sex` int(11) NOT NULL,
-  `birthday` date NOT NULL,
-  `regtime` datetime NOT NULL,
-  `email` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+(1, '【发帖前缀】');
 
 DROP TABLE IF EXISTS `wtb_users`;
 CREATE TABLE IF NOT EXISTS `wtb_users` (
@@ -69,5 +59,8 @@ CREATE TABLE IF NOT EXISTS `wtb_users` (
   `pwd` text NOT NULL,
   `email` text NOT NULL,
   `admingp` int(11) NOT NULL,
+  `sex` int(11) NOT NULL,
+  `birthday` date NOT NULL,
+  `regtime` datetime NOT NULL,
   PRIMARY KEY (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

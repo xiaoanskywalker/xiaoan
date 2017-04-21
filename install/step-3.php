@@ -1,5 +1,5 @@
 <?php include("header.php"); ?>
-<h3><span class='label label-info'>第三步</span>-填写数据库及创始人信息</h3>
+<h3><span class='label label-info'>第三步</span>--填写数据库及创始人信息</h3>
 <form name="login" action="step-4.php" method=post >
     <fieldset id="tb">
         <legend>

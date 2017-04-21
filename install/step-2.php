@@ -1,5 +1,5 @@
 <?php include("header.php"); ?>
-<h3><span class='label label-info'>第二步</span>-服务器配置检查</h3>
+<h3><span class='label label-info'>第二步</span>--服务器配置检查</h3>
 <div class="table-responsive">
   <table class="table">
     <thead>

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="install">
-    <center><h1 class="text-primary">小安社区-安装向导</h1></center>
+    <center><h1 class="text-primary">小安社区--安装向导</h1></center>
     <hr>
     <?php
     if(file_exists("../common/config.php")) {
