@@ -17,7 +17,7 @@ $site = Site::get();
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-/*回复*/
+/*回复*/;
 $topic=Post::getReplyTopic($tid);
 /*页码*/
 $pagination = array();
