@@ -211,3 +211,9 @@ body.register .header {
 .showreply-title{
   font-size: 22px;
 }
+.install{
+  width:80%;
+  height: 100%;
+  margin:0px auto;
+  background: rgba(255, 255, 255, 0.85);
+}
