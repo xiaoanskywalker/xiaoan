@@ -8,7 +8,9 @@
         <?php
         require 'partial/showtopic-list.php';
         require 'partial/pagination.php';
-        require 'partial/new-reply.php';
+        if ($_SESSION["user"]!=null){
+            require 'partial/new-reply.php';
+        }
         //require 'partial/message.php';
         ?>
     </div>

@@ -1,4 +1,5 @@
 <?php
+$stime=microtime(true);//页面开始执行时间
 error_reporting (E_ALL &~E_NOTICE &~E_DEPRECATED);
 require_once 'config.php';
 //require_once 'error.php';
