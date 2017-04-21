@@ -1,5 +1,5 @@
 <?php
-
+/*用户注册*/
 require_once '../common/conn.php';
 require_once '../model/Site.php';
 require_once '../model/User.php';
