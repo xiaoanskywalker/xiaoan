@@ -1,6 +1,8 @@
 <?php
 session_start();
-unset($_SESSION["user"]);
-unset($_SESSION["admin"]);
-header("location:../");
+require "../model/Site.php";
+require "../model/User.php";
+User::logout();
+$gotoo=Site::gotoo(@$_REQUEST["goto"]);
+header("location:$gotoo");
 ?>

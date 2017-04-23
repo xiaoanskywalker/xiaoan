@@ -65,6 +65,7 @@ class User
 
     static function login($uar, $pwd)
     {
+        /*用户登录*/
         $user = User::getByName($uar);
         if ($user == null) {
             $user = User::getByMail($uar);
@@ -88,7 +89,7 @@ class User
 
     static function register($usr, $pwd, $email,$group)
     {
-        /*用户注册1*/
+        /*用户注册*/
         global $con;
         $user = User::getByMail($email);
         if ($user) {
@@ -106,5 +107,10 @@ class User
         return $user;
     }
 
+    static function logout(){
+        /*退出登录*/
+        unset($_SESSION["user"]);
+        unset($_SESSION["admin"]);
+    }
 }
 
