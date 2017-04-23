@@ -1,8 +1,6 @@
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
-            发帖前缀：
-
             <SELECT name="prefix" onchange="document.getElementById('title').value=this.options[this.selectedIndex].value">
                 <?php
                 $per=User::show_prefix();
@@ -14,7 +12,6 @@
                 }
                 ?>
             </SELECT>
-
             <input type="text" id="title" name="title" placeholder="话题标题" required>
         </div>
         <div class="post-content">

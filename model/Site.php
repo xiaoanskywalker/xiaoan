@@ -68,4 +68,12 @@ class Site
         }
         return null;
     }
+
+    static function gotoo($url){
+        if ($url==null){
+            return "../";
+        }else{
+            return $url;
+        }
+    }
 }
