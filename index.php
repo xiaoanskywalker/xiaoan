@@ -7,7 +7,6 @@ require_once './model/Site.php';
 require_once './model/User.php';
 require_once './model/Post.php';
 session_start();
-
 /*帖子分页预处理*/
 $page=Site::pagefirst(@$_REQUEST["page"]);
 /*站点信息 */
