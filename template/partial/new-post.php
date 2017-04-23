@@ -2,18 +2,20 @@
     <form method="post" action="">
         <div class="post-title">
             发帖前缀：
-            <select name="prefix">
-            <?php
-            $per=User::show_prefix();
-            $arr = explode(" ", " ".$per);
-            $index =count($arr);
-            while($index>0){
-                echo "<option value ='$arr[$index]'>$arr[$index]</option>";
-                $index=$index-1;
-            }
-            ?>
-            </select><p></p>
-            <input type="text" name="title" placeholder="话题标题" required>
+
+            <SELECT name="prefix" onchange="document.getElementById('title').value=this.options[this.selectedIndex].value">
+                <?php
+                $per=User::show_prefix();
+                $arr = explode(" "," ".$per);
+                $index =count($arr)-1;
+                while($index>0){
+                    echo "<option value ='$arr[$index]'>$arr[$index]</option>";
+                    $index=$index-1;
+                }
+                ?>
+            </SELECT>
+
+            <input type="text" id="title" name="title" placeholder="话题标题" required>
         </div>
         <div class="post-content">
             <textarea name="topic" class="input-area" placeholder="写点什么..." required></textarea>

@@ -24,7 +24,6 @@ Site::pagination($page,"./?page=");
 
 /*发帖模块*/
 if (!empty($_POST['send'])) {
-    $prefix = $_POST["prefix"];
     $title = $_POST["title"];
     $topic = $_POST["topic"];
 
@@ -45,7 +44,7 @@ if (!empty($_POST['send'])) {
 
     if (empty($page['message']['error'])) {
         try {
-            $user = Post::newtopic($prefix,$title,$topic);
+            $user = Post::newtopic($title,$topic);
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
         }

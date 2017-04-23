@@ -99,15 +99,15 @@ class Post
         return $res;
     }
 
-    static function newtopic($prefix,$title,$topic){
+    static function newtopic($title,$topic){
         global $con;
         global $user;
         $usr = $user->name;
         $time = date('Y-m-d h:m:s');
-        $posts = $prefix.$title;
         $stat = $con->prepare("INSERT INTO wtb_titles VALUES (null,?,?,?,?,1)");
-        $stat->bind_param('ssss',$usr,$posts,$time,$topic);
+        $stat->bind_param('ssss',$usr,$title,$time,$topic);
         $stat->execute();
+        echo "<script> alert('发帖成功！'); window.navigate('./');</script>";
         throw new Exception('发帖成功！');
     }
 
