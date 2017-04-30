@@ -1,7 +1,9 @@
 <?php
+/*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
+/*引入Model类*/
 require_once './common/conn.php';
 require_once './model/Site.php';
 require_once './model/User.php';
@@ -9,15 +11,15 @@ require_once './model/Post.php';
 session_start();
 /*帖子分页预处理*/
 $page=Site::pagefirst(@$_REQUEST["page"]);
-/*站点信息 */
+/*获取站点信息 */
 $site = Site::get();
-/*用户*/
+/*获取用户*/
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-/*帖子*/
+/*获取帖子*/
 $discussions = Post::getPage($page);
-/*页码*/
+/*获取页码*/
 $pagination = array();
 Site::pagination($page,"./?page=");
 
@@ -40,7 +42,7 @@ if (!empty($_POST['send'])) {
     if (empty($user)) {
         array_push($page['message']['error'], '用户未登录');
     }
-
+    /*执行数据库中的插入主题帖操作*/
     if (empty($page['message']['error'])) {
         try {
             $user = Post::newtopic($title,$topic);
@@ -51,7 +53,7 @@ if (!empty($_POST['send'])) {
     }
 }
 
-
+/*参数赋值*/
 $baseurl = '.';
 $body = 'index.partial.php';
 
@@ -62,4 +64,5 @@ $page['body']['class'] = 'index';
 
 $page['header'] = array();
 $page['header']['title'] = $site->description;
+/*引入模板*/
 require './template/layout.php';

@@ -1,7 +1,9 @@
 <?php
+/*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
+/*引入Model类*/
 require_once './common/conn.php';
 require_once './model/Site.php';
 require_once './model/User.php';
@@ -11,15 +13,15 @@ session_start();
 /*帖子分页帖子ID预处理*/
 $pages=Site::pagefirst(@$_REQUEST["page"]);
 $tid=Site::pagefirst(@$_REQUEST["tid"]);
-/*站点信息 */
+/*获取站点信息 */
 $site = Site::get();
-/*用户*/
+/*获取用户*/
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-/*回复*/;
+/*获取回复*/;
 $topic=Post::getReplyTopic($tid);
-/*页码*/
+/*获取页码*/
 $pagination = array();
 Site::pagination($page,"./showtopic.php?tid=$tid&page=");
 
@@ -38,7 +40,7 @@ if (!empty($_POST['send'])) {
     if (empty($user)) {
         array_push($page['message']['error'], '用户未登录');
     }
-
+    /*执行数据库中的插入回复帖操作*/
     if (empty($page['message']['error'])) {
         try {
             $doreply = Post::newReply($tid,$reply);
@@ -48,7 +50,7 @@ if (!empty($_POST['send'])) {
 
     }
 }
-
+/*参数赋值*/
 $baseurl = '.';
 $body = 'showtopic.partial.php';
 
@@ -59,4 +61,5 @@ $page['body']['class'] = 'index';
 
 $page['header'] = array();
 $page['header']['title'] = $site->description;
+/*引入模板*/
 require './template/layout.php';
