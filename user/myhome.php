@@ -1,23 +1,21 @@
 <?php
-session_start();
-/*用户*/
-if ($_SESSION["user"] != null) {
-    $user = $_SESSION["user"];
-}else{
-    header("location:../");
-}
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
 }
 require_once '../common/conn.php';
 require_once '../model/Site.php';
 require_once '../model/User.php';
-require_once '../model/Home.php';
+//require_once '../model/Home.php';
+
 
 $site = Site::get();
-$page = array();
-
-
+/*用户*/
+session_start();
+if ($_SESSION["user"] != null) {
+    $user = $_SESSION["user"];
+}else{
+    header("location:../");
+}
 $baseurl = '..';
 $body = 'myhome.partial.php';
 
@@ -25,6 +23,7 @@ $page = array();
 
 $page['body'] = array();
 $page['body']['class'] = 'index';
+$page['body']['action'] = @$_REQUEST["action"];
 
 $page['header'] = array();
 $page['header']['title'] = $site->description;
