@@ -1,1 +1,1 @@
-<center><h4>个人中心首页--我的资料</h4></center>
+<center><h4>个人中心首页</h4></center>

@@ -15,7 +15,8 @@ class User
         $this->password = $password;
 
         //TODO 路劲绝对地址
-        $file = "/common/images/avatar/" . $name . ".png";
+        echo $name;
+        $file = "/static/img/avatars/" . $name . ".png";
         if (file_exists($file)) {
             $this->avatar = $file;
         } else {
@@ -31,6 +32,14 @@ class User
         return new User($row['uid'], $row['usr'], $row['pwd']);
     }
 
+    static function avatar($user,$baseurl){
+        $file = "$baseurl/static/img/avatars/$user.png";
+        if (file_exists($file)) {
+            return $file;
+        } else {
+            return  $baseurl.'/static/img/avatar.jpg';
+        }
+    }
 
     static function get($id)
     {

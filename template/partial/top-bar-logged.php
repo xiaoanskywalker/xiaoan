@@ -1,3 +1,4 @@
+<?php $avatar = User::avatar($user->name,$baseurl); ?>
 <li class="dropdown user-nav-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
         <span><?= $user->name ?></span>
@@ -5,7 +6,7 @@
     </a>
     <ul class="dropdown-menu user-nav">
         <li class="user-profile">
-            <img src="<?= $baseurl ?><?= $user->avatar ?>" class="avatar">
+            <img src="<?= $avatar ?>" class="avatar">
             <span class="username"><?= $user->name ?></span>
         </li>
         <li role="separator" class="divider"></li>
