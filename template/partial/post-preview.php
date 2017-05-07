@@ -1,11 +1,10 @@
 <div class="discussion">
     <div class="avatar-area">
         <?php
-        //TODO 获取每个发帖用户的头像
+        $avatar = User::avatar($discussion->username,$baseurl);
         //TODO 点击头像、名称进入用户主页
         ?>
-        <a href="#"><img src="<?= $baseurl ?>/static/img/avatar.jpg" class="avatar"
-                         alt="<?= $discussion->username ?>"></a>
+        <a href="#"><img src="<?= $avatar ?>" class="avatar" alt="<?= $discussion->username ?>"></a>
     </div>
 
     <div class="profile">
