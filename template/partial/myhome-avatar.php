@@ -5,4 +5,4 @@
     <input type="submit" value="上传文件">
 </form>
 <?php
-print_r(Home::Upload("./uploads/"));
+Home::Upload("$baseurl/static/img/avatars/$User->name.png")
