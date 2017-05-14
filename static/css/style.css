@@ -189,15 +189,19 @@ body.register .header {
 
 .message {
   padding: 1em;
-  border-radius: 8px; }
+  border-radius: 8px;
+  display:none;
+}
 
 .message-accept {
   color: #fff;
-  background: #14dc64; }
+  background: #14dc64;
+  display:none;}
 
 .message-error {
   color: #fff;
-  background: #ff4141; }
+  background: #ff4141;
+  display:none;}
 
 .copyright {
   box-shadow: 1px 2px 3px #ddd;

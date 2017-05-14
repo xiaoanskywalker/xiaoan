@@ -5,7 +5,7 @@
 require 'partial/head.php';
 ?>
 
-<body class="<?= $page['body']['class'] ?>">
+<body class="<?= $page['body']['class'] ?>" onload="show()">
 
 <div class="layout">
 

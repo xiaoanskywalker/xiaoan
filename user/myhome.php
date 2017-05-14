@@ -53,6 +53,11 @@ if (!empty($_POST['avatar'])) {
     }
 }
 
+if (!empty($_POST['c-avatar'])) {
+    unlink("$baseurl/static/img/avatars/$user->name.png");
+    array_push($page['message']['accept'], '默认头像恢复成功');
+}
+
 $page['header'] = array();
 $page['header']['title'] = '个人中心';
 /*引入模板*/
