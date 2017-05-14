@@ -191,6 +191,10 @@ body.register .header {
   padding: 1em;
   border-radius: 8px; }
 
+.message-accept {
+  color: #fff;
+  background: #14dc64; }
+
 .message-error {
   color: #fff;
   background: #ff4141; }

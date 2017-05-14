@@ -6,8 +6,8 @@
 
     <div class="content">
         <?php
-        require "partial/myhome-".$page['body']['action'].".php";
         require 'partial/message.php';
+        require "partial/myhome-".$page['body']['action'].".php";
         ?>
     </div>
 

@@ -22,6 +22,9 @@ $baseurl = '..';
 $body = 'myhome.partial.php';
 
 $page = array();
+$page['message'] = array();
+$page['message']['accept'] = array();
+$page['message']['error'] = array();
 
 $page['body'] = array();
 $page['body']['class'] = 'index';//获取action参数
@@ -40,7 +43,18 @@ if ($page['body']['nunber'] == 0){
     $page['body']['action']='index';
 }
 
+if (!empty($_POST['avatar'])) {
+    $upload=Home::Upload("$baseurl/static/img/avatars/$user->name.png");
+    //print_r($upload);
+    if ($upload[3]==0){
+        array_push($page['message']['accept'], '头像设置成功');
+    }else{
+        array_push($page['message']['error'], '头像设置失败');
+    }
+}
+
 $page['header'] = array();
 $page['header']['title'] = '个人中心';
 /*引入模板*/
 require '../template/layout.php';
+
