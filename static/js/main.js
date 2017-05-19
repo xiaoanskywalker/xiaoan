@@ -4,4 +4,4 @@ function show(){
 function down(){
     $("div.message").slideUp();
 }
-setTimeout(down,4000) 
+setTimeout(down,4000)
