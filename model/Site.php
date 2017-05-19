@@ -1,6 +1,4 @@
 <?php
-
-
 class Site
 {
 
@@ -74,6 +72,25 @@ class Site
             return "../";
         }else{
             return $url;
+        }
+    }
+
+    static function welcome($type,$user,$site){
+        /*首页欢迎信息 type数值意义：
+        1表示登录成功欢迎信息，2表示注册成功欢迎信息，3表示退出登录成功欢迎信息
+        */
+        switch ($type){
+            case 1:
+                return "欢迎回来，<b>$user->name</b>";
+                break;
+            case 2:
+                return "<b>$user->name</b>，欢迎加入$site->description 的大家庭";
+                break;
+            case 3:
+                return "您已经成功退出登录";
+                break;
+            default:
+                return null;
         }
     }
 }

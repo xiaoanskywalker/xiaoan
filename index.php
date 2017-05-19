@@ -28,6 +28,22 @@ $page['message'] = array();
 $page['message']['accept'] = array();
 $page['message']['error'] = array();
 
+$welcome=@$_REQUEST["welcome"];
+switch ($welcome){
+    case 1:
+        $type=1;break;
+    case 2:
+        $type=2;break;
+    case 3:
+        $type=3;break;
+    default:
+        $type=4;
+}
+$welcome=Site::welcome($type,$user,$site);
+if($welcome!=null){
+    array_push($page['message']['accept'],$welcome);
+}
+
 /*发帖模块*/
 if (!empty($_POST['send'])) {
     $title = $_POST["title"];

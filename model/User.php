@@ -113,6 +113,7 @@ class User
         $stat = $con->prepare("INSERT INTO wtb_users VALUES (null,?,?,?,?,1,'2017-01-01',?)");
         $stat->bind_param('sssis',$usr,$pwd,$email,$group,$time);
         $stat->execute();
+        $user = User::getByName($usr);
         return $user;
     }
 

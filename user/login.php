@@ -39,7 +39,7 @@ if (!empty($_POST['log'])) {
         try {
             $user = User::login($uar, $pwd);
             $_SESSION["user"] = $user;
-            $gotoo=Site::gotoo(@$_REQUEST["goto"]);
+            $gotoo=Site::gotoo(@$_REQUEST["goto"]."&welcome=1");
             header("location:$gotoo");
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
