@@ -23,15 +23,16 @@ $discussions = Post::getPage($page);
 $pagination = array();
 Site::pagination($page,"./?page=");
 
+$page = array();
+$page['message'] = array();
+$page['message']['accept'] = array();
+$page['message']['error'] = array();
+
 /*发帖模块*/
 if (!empty($_POST['send'])) {
     $title = $_POST["title"];
     $topic = $_POST["topic"];
 
-    $page = array();
-
-    $page['message'] = array();
-    $page['message']['error'] = array();
 
     if (empty($title)) {
         array_push($page['message']['error'], '帖子标题为空');
@@ -42,12 +43,13 @@ if (!empty($_POST['send'])) {
     if (empty($user)) {
         array_push($page['message']['error'], '用户未登录');
     }
+
     /*执行数据库中的插入主题帖操作*/
     if (empty($page['message']['error'])) {
         try {
             $user = Post::newtopic($title,$topic);
         } catch (Exception $e) {
-            array_push($page['message']['error'], $e->getMessage());
+            array_push($page['message']['accept'], $e->getMessage());
         }
 
     }
@@ -56,8 +58,6 @@ if (!empty($_POST['send'])) {
 /*参数赋值*/
 $baseurl = '.';
 $body = 'index.partial.php';
-
-$page = array();
 
 $page['body'] = array();
 $page['body']['class'] = 'index';
