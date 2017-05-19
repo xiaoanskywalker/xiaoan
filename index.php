@@ -22,12 +22,18 @@ $discussions = Post::getPage($page);
 /*获取页码*/
 $pagination = array();
 Site::pagination($page,"./?page=");
-
+/*参数及数组赋值*/
 $page = array();
 $page['message'] = array();
 $page['message']['accept'] = array();
 $page['message']['error'] = array();
-
+$page['body'] = array();
+$page['body']['class'] = 'index';
+$page['header'] = array();
+$page['header']['title'] = $site->description;
+$baseurl = '.';
+$body = 'index.partial.php';
+/*欢迎信息显示*/
 $welcome=@$_REQUEST["welcome"];
 switch ($welcome){
     case 1:
@@ -43,13 +49,12 @@ $welcome=Site::welcome($type,$user,$site);
 if($welcome!=null){
     array_push($page['message']['accept'],$welcome);
 }
-
 /*发帖模块*/
 if (!empty($_POST['send'])) {
+    /*获取帖子参数*/
     $title = $_POST["title"];
     $topic = $_POST["topic"];
-
-
+    /*帖子合法性检测*/
     if (empty($title)) {
         array_push($page['message']['error'], '帖子标题为空');
     }
@@ -59,7 +64,6 @@ if (!empty($_POST['send'])) {
     if (empty($user)) {
         array_push($page['message']['error'], '用户未登录');
     }
-
     /*执行数据库中的插入主题帖操作*/
     if (empty($page['message']['error'])) {
         try {
@@ -70,15 +74,5 @@ if (!empty($_POST['send'])) {
 
     }
 }
-
-/*参数赋值*/
-$baseurl = '.';
-$body = 'index.partial.php';
-
-$page['body'] = array();
-$page['body']['class'] = 'index';
-
-$page['header'] = array();
-$page['header']['title'] = $site->description;
 /*引入模板*/
 require './template/layout.php';

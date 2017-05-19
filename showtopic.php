@@ -1,4 +1,6 @@
 <?php
+//TODO 欢迎页
+//TODO 回帖成功页
 /*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");

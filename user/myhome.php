@@ -1,4 +1,5 @@
 <?php
+//TODO 解决用户名为中文的头像上传失败问题
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
@@ -17,15 +18,15 @@ if ($_SESSION["user"] != null) {
 }else{
     header("location:../");
 }
-/*参数赋值*/
+/*参数及数组赋值*/
 $baseurl = '..';
 $body = 'myhome.partial.php';
-
 $page = array();
+$page['header'] = array();
+$page['header']['title'] = '个人中心';
 $page['message'] = array();
 $page['message']['accept'] = array();
 $page['message']['error'] = array();
-
 $page['body'] = array();
 $page['body']['class'] = 'index';//获取action参数
 $page['body']['nunber'] = 0;
@@ -42,7 +43,7 @@ for($x=0;$x<$arrlength;$x++){
 if ($page['body']['nunber'] == 0){
     $page['body']['action']='index';
 }
-
+/*头像上传操作*/
 if (!empty($_POST['avatar'])) {
     $upload=Home::Upload("$baseurl/static/img/avatars/$user->name.png");
     //print_r($upload);
@@ -52,14 +53,11 @@ if (!empty($_POST['avatar'])) {
         array_push($page['message']['error'], '头像设置失败');
     }
 }
-
+/*恢复默认头像操作*/
 if (!empty($_POST['c-avatar'])) {
     unlink("$baseurl/static/img/avatars/$user->name.png");
     array_push($page['message']['accept'], '默认头像恢复成功');
 }
-
-$page['header'] = array();
-$page['header']['title'] = '个人中心';
 /*引入模板*/
 require '../template/layout.php';
 

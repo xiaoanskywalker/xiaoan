@@ -6,12 +6,12 @@
 
     <div class="content">
         <?php
+        require 'partial/message.php';
         require 'partial/showtopic-list.php';
         require 'partial/pagination.php';
         if ($_SESSION["user"]!=null){
             require 'partial/new-reply.php';
         }
-        //require 'partial/message.php';
         ?>
     </div>
 
