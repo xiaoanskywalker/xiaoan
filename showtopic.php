@@ -48,12 +48,6 @@ if($wel==4 or $wel==5){
 /*回帖模块*/
 if (!empty($_POST['send'])) {
     $reply = $_POST["reply"];
-
-    $page = array();
-    $page['message'] = array();
-    $page['message']['error'] = array();
-
-
     if (empty($reply)) {
         array_push($page['message']['error'], '回帖内容为空');
     }
@@ -65,11 +59,10 @@ if (!empty($_POST['send'])) {
         try {
             $doreply = Post::newReply($tid,$reply);
         } catch (Exception $e) {
-            array_push($page['message']['error'], $e->getMessage());
+            array_push($page['message']['accept'], $e->getMessage());
         }
 
     }
 }
-
 /*引入模板*/
 require './template/layout.php';

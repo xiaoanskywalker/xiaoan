@@ -142,6 +142,7 @@ class Post
         $stat = $con->prepare("INSERT INTO wtb_reply VALUES (null,?,?,?,?)");
         $stat->bind_param('ssss',$tid,$usr,$reply,$time);
         $stat->execute();
-        echo "<script> alert('回帖成功！'); window.navigate('./showtopic.php?tid=$tid');</script>";
+        throw new Exception('回帖成功！');
+        //echo "<script> alert('回帖成功！'); window.navigate('./showtopic.php?tid=$tid');</script>";
     }
 }
