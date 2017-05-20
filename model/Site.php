@@ -78,6 +78,7 @@ class Site
     static function welcome($type,$user,$site){
         /*首页欢迎信息 type数值意义：
         1表示登录成功欢迎信息，2表示注册成功欢迎信息，3表示退出登录成功欢迎信息
+        4表示您已经登录，请先退出登录后再重新登录。5表示您已经登录，请先退出登录后再注册新账号
         */
         switch ($type){
             case 1:

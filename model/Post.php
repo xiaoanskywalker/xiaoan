@@ -143,6 +143,5 @@ class Post
         $stat->bind_param('ssss',$tid,$usr,$reply,$time);
         $stat->execute();
         throw new Exception('回帖成功！');
-        //echo "<script> alert('回帖成功！'); window.navigate('./showtopic.php?tid=$tid');</script>";
     }
 }
