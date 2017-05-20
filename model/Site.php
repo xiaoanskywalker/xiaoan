@@ -69,7 +69,7 @@ class Site
 
     static function gotoo($url){
         if ($url==null){
-            return "../";
+            return "../index.php?";
         }else{
             return $url;
         }
@@ -88,6 +88,12 @@ class Site
                 break;
             case 3:
                 return "您已经成功退出登录";
+                break;
+            case 4:
+                return "您已经登录，请先退出登录后再重新登录";
+                break;
+            case 5:
+                return "您已经登录，请先退出登录后再注册新账号";
                 break;
             default:
                 return null;

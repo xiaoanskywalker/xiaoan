@@ -9,7 +9,7 @@ if ((file_exists("../common/config.php")) == false) {
 session_start();
 
 if ($_SESSION["user"]) {
-    header("location:../");
+    header("location:../?welcome=5");
 }
 
 $page = array();

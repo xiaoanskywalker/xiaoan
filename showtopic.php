@@ -1,5 +1,4 @@
 <?php
-//TODO 欢迎页
 //TODO 回帖成功页
 /*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
@@ -11,7 +10,6 @@ require_once './model/Site.php';
 require_once './model/User.php';
 require_once './model/Post.php';
 session_start();
-
 /*帖子分页帖子ID预处理*/
 $pages=Site::pagefirst(@$_REQUEST["page"]);
 $tid=Site::pagefirst(@$_REQUEST["tid"]);
@@ -26,7 +24,27 @@ $topic=Post::getReplyTopic($tid);
 /*获取页码*/
 $pagination = array();
 Site::pagination($page,"./showtopic.php?tid=$tid&page=");
-
+/*参数赋值*/
+$page = array();
+$page['message'] = array();
+$page['message']['accept'] = array();
+$page['message']['error'] = array();
+$page['body'] = array();
+$page['body']['class'] = 'index';
+$page['header'] = array();
+$page['header']['title'] = $site->description;
+$baseurl = '.';
+$body = 'showtopic.partial.php';
+/*欢迎信息显示*/
+$wel=@$_REQUEST["welcome"];
+if ($wel==1 or $wel==2 or $wel==3){
+    $wel=Site::welcome($wel,$user,$site);
+    array_push($page['message']['accept'],$wel);
+}
+if($wel==4 or $wel==5){
+    $wel=Site::welcome($wel,$user,$site);
+    array_push($page['message']['error'],$wel);
+}
 /*回帖模块*/
 if (!empty($_POST['send'])) {
     $reply = $_POST["reply"];
@@ -52,16 +70,6 @@ if (!empty($_POST['send'])) {
 
     }
 }
-/*参数赋值*/
-$baseurl = '.';
-$body = 'showtopic.partial.php';
 
-$page = array();
-
-$page['body'] = array();
-$page['body']['class'] = 'index';
-
-$page['header'] = array();
-$page['header']['title'] = $site->description;
 /*引入模板*/
 require './template/layout.php';

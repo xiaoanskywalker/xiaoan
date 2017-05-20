@@ -1,16 +1,16 @@
 <?php
-
+/*引入Model类*/
 require_once '../common/conn.php';
 require_once '../model/Site.php';
 require_once '../model/User.php';
-
+/*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
 }
 session_start();
 
 if ($_SESSION["user"]) {
-    header("location:../");
+    header("location:../index.php?welcome=4");
 }
 
 $page = array();
@@ -39,7 +39,7 @@ if (!empty($_POST['log'])) {
         try {
             $user = User::login($uar, $pwd);
             $_SESSION["user"] = $user;
-            $gotoo=Site::gotoo(@$_REQUEST["goto"]."&welcome=1");
+           echo  $gotoo=Site::gotoo(@$_REQUEST["goto"])."&welcome=1";
             header("location:$gotoo");
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
