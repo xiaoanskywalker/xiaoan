@@ -55,7 +55,7 @@ if (!empty($_POST['log'])) {
         try {
             $user = User::register($usr, $pwd, $eml,0);
             $_SESSION["user"] = $user;
-            $_SESSION["welcome"]=3;
+            $_SESSION["welcome"]=2;
             header("location:../index.php");
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
