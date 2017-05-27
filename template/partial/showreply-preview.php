@@ -1,7 +1,11 @@
+<?php
+$avatar = User::avatar($row[2],$baseurl);
+//TODO 点击头像、名称进入用户主页
+?>
 <li>
     <div class="discussion">
         <div class="avatar-area">
-            <a href="#"><img src="<?= $baseurl ?>/static/img/avatar.jpg" class="avatar" alt="1" /></a>
+            <a href="#"><img src="<?= $avatar ?>" class="avatar" alt="1" /></a>
         </div>
 
         <div class="profile">

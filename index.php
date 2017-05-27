@@ -3,14 +3,18 @@
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
+/*基础参数赋值*/
+$baseurl = '.';
+$body = 'index.partial.php';
+
+/*引入初始文件*/
+require_once './common/includes/common.php';
 /*引入Model类*/
-require_once './common/conn.php';
-require_once './model/Site.php';
-require_once './model/User.php';
 require_once './model/Post.php';
+
 session_start();
 /*帖子分页预处理*/
-$page=Site::pagefirst(@$_REQUEST["page"]);
+$pge=Site::pagefirst(@$_REQUEST["page"]);
 /*获取站点信息 */
 $site = Site::get();
 /*获取用户*/
@@ -18,21 +22,13 @@ if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
 /*获取帖子*/
-$discussions = Post::getPage($page);
+$discussions = Post::getPage($pge);
 /*获取页码*/
 $pagination = array();
-Site::pagination($page,"./?page=");
-/*参数及数组赋值*/
-$page = array();
-$page['message'] = array();
-$page['message']['accept'] = array();
-$page['message']['error'] = array();
-$page['body'] = array();
+Site::pagination($pge,"./?page=");
+/*站点参数赋值*/
 $page['body']['class'] = 'index';
-$page['header'] = array();
 $page['header']['title'] = $site->description;
-$baseurl = '.';
-$body = 'index.partial.php';
 /*欢迎信息显示*/
 $wel=@$_SESSION["welcome"];
 if ($wel==1 or $wel==2 or $wel==3){

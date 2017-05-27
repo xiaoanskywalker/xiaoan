@@ -3,11 +3,11 @@
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/");
 }
+/*引入初始文件*/
+require_once './common/includes/common.php';
 /*引入Model类*/
-require_once './common/conn.php';
-require_once './model/Site.php';
-require_once './model/User.php';
 require_once './model/Post.php';
+
 session_start();
 /*帖子分页帖子ID预处理*/
 $pages=Site::pagefirst(@$_REQUEST["page"]);
@@ -22,15 +22,9 @@ if ($_SESSION["user"] != null) {
 $topic=Post::getReplyTopic($tid);
 /*获取页码*/
 $pagination = array();
-Site::pagination($page,"./showtopic.php?tid=$tid&page=");
+Site::pagination($pages,"./showtopic.php?tid=$tid&page=");
 /*参数赋值*/
-$page = array();
-$page['message'] = array();
-$page['message']['accept'] = array();
-$page['message']['error'] = array();
-$page['body'] = array();
 $page['body']['class'] = 'index';
-$page['header'] = array();
 $page['header']['title'] = $site->description;
 $baseurl = '.';
 $body = 'showtopic.partial.php';

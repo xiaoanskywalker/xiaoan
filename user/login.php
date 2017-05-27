@@ -1,8 +1,6 @@
 <?php
-/*引入Model类*/
-require_once '../common/conn.php';
-require_once '../model/Site.php';
-require_once '../model/User.php';
+/*引入初始文件*/
+require_once '../common/includes/common.php';
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
