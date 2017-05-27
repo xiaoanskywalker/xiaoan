@@ -10,7 +10,8 @@ if ((file_exists("../common/config.php")) == false) {
 session_start();
 
 if ($_SESSION["user"]) {
-    header("location:../index.php?welcome=4");
+    $_SESSION["welcome"]=4;
+    header("location:../index.php");
 }
 
 $page = array();
@@ -39,7 +40,8 @@ if (!empty($_POST['log'])) {
         try {
             $user = User::login($uar, $pwd);
             $_SESSION["user"] = $user;
-           echo  $gotoo=Site::gotoo(@$_REQUEST["goto"])."&welcome=1";
+            $_SESSION["welcome"]=1;
+            $gotoo=Site::gotoo(@$_REQUEST["goto"]);
             header("location:$gotoo");
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());

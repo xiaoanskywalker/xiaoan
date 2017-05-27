@@ -9,7 +9,8 @@ if ((file_exists("../common/config.php")) == false) {
 session_start();
 
 if ($_SESSION["user"]) {
-    header("location:../?welcome=5");
+    $_SESSION["welcome"]=5;
+    header("location:../index.php");
 }
 
 $page = array();
@@ -53,7 +54,8 @@ if (!empty($_POST['log'])) {
         try {
             $user = User::register($usr, $pwd, $eml,0);
             $_SESSION["user"] = $user;
-            header("location:../index.php?welcome=2");
+            $_SESSION["welcome"]=3;
+            header("location:../index.php");
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
         }

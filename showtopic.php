@@ -35,7 +35,7 @@ $page['header']['title'] = $site->description;
 $baseurl = '.';
 $body = 'showtopic.partial.php';
 /*欢迎信息显示*/
-$wel=@$_REQUEST["welcome"];
+$wel=@$_SESSION["welcome"];
 if ($wel==1 or $wel==2 or $wel==3){
     $wel=Site::welcome($wel,$user,$site);
     array_push($page['message']['accept'],$wel);
@@ -45,23 +45,6 @@ if($wel==4 or $wel==5){
     array_push($page['message']['error'],$wel);
 }
 /*回帖模块*/
-if (!empty($_POST['send'])) {
-    $reply = $_POST["reply"];
-    if (empty($reply)) {
-        array_push($page['message']['error'], '回帖内容为空');
-    }
-    if (empty($user)) {
-        array_push($page['message']['error'], '用户未登录');
-    }
-    /*执行数据库中的插入回复帖操作*/
-    if (empty($page['message']['error'])) {
-        try {
-            $doreply = Post::newReply($tid,$reply);
-        } catch (Exception $e) {
-            array_push($page['message']['accept'], $e->getMessage());
-        }
-
-    }
-}
+require './common/includes/newpost.php';
 /*引入模板*/
 require './template/layout.php';

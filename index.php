@@ -34,7 +34,7 @@ $page['header']['title'] = $site->description;
 $baseurl = '.';
 $body = 'index.partial.php';
 /*欢迎信息显示*/
-$wel=@$_REQUEST["welcome"];
+$wel=@$_SESSION["welcome"];
 if ($wel==1 or $wel==2 or $wel==3){
     $wel=Site::welcome($wel,$user,$site);
     array_push($page['message']['accept'],$wel);
@@ -43,30 +43,8 @@ if($wel==4 or $wel==5){
     $wel=Site::welcome($wel,$user,$site);
     array_push($page['message']['error'],$wel);
 }
+unset($_SESSION["welcome"]);
 /*发帖模块*/
-if (!empty($_POST['send'])) {
-    /*获取帖子参数*/
-    $title = $_POST["title"];
-    $topic = $_POST["topic"];
-    /*帖子合法性检测*/
-    if (empty($title)) {
-        array_push($page['message']['error'], '帖子标题为空');
-    }
-    if (empty($topic)) {
-        array_push($page['message']['error'], '帖子内容为空');
-    }
-    if (empty($user)) {
-        array_push($page['message']['error'], '用户未登录');
-    }
-    /*执行数据库中的插入主题帖操作*/
-    if (empty($page['message']['error'])) {
-        try {
-            $user = Post::newtopic($title,$topic);
-        } catch (Exception $e) {
-            array_push($page['message']['accept'], $e->getMessage());
-        }
-
-    }
-}
+require './common/includes/newpost.php';
 /*引入模板*/
 require './template/layout.php';
