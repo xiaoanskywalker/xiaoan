@@ -1,22 +1,20 @@
 <?php
-/*引入初始文件*/
-require_once '../common/includes/common.php';
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
 }
+/*基础参数赋值*/
+$baseurl = '..';
+$body = 'login.partial.php';
+$page['header']['title'] = '登录，享受更多精彩!';
+/*引入初始文件*/
+require_once '../common/includes/common.php';
+/*获取用户*/
 session_start();
-
 if ($_SESSION["user"]) {
     $_SESSION["welcome"]=4;
     header("location:../index.php");
 }
-
-$page = array();
-
-$page['message'] = array();
-$page['message']['error'] = array();
-
 if (!empty($_POST['log'])) {
     $uar = $_POST["username"];
     $pwd = $_POST["password"];
@@ -47,22 +45,8 @@ if (!empty($_POST['log'])) {
 
     }
 }
-
-$site = Site::get();
-
-
-$baseurl = '..';
-$body = 'login.partial.php';
-
-$page['body'] = array();
-$page['body']['class'] = 'login';
-
-$page['header'] = array();
-$page['header']['title'] = '登录，享受更多精彩!';
-
-$page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
-
+$page['body']['class'] = 'login';
 require '../template/layout.php';
 
 

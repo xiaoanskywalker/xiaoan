@@ -1,22 +1,23 @@
 <?php
-require_once '../common/conn.php';
-require_once '../model/Site.php';
-require_once '../model/User.php';
-
+/*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/");
 }
+/*基础参数赋值*/
+$baseurl = '..';
+$body = 'register.partial.php';
+$page['header']['title'] = '注册，探索崭新世界!';
+
+
+/*引入初始文件*/
+require_once '../common/includes/common.php';
+/*获取用户*/
 session_start();
 
 if ($_SESSION["user"]) {
     $_SESSION["welcome"]=5;
     header("location:../index.php");
 }
-
-$page = array();
-
-$page['message'] = array();
-$page['message']['error'] = array();
 
 if (!empty($_POST['log'])) {
     $usr = $_POST["username"];
@@ -62,22 +63,6 @@ if (!empty($_POST['log'])) {
 
     }
 }
-
-$site = Site::get();
-
-
-$baseurl = '..';
-$body = 'register.partial.php';
-
-$page['body'] = array();
-$page['body']['class'] = 'register';
-
-$page['header'] = array();
-$page['header']['title'] = '注册，探索崭新世界!';
-
-$page['sidebar'] = array();
 $page['sidebar']['content'] = 'sidebar-login.php';
-
+$page['body']['class'] = 'register';
 require '../template/layout.php';
-
-
