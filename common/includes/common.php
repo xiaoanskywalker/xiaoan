@@ -1,5 +1,7 @@
 <?php
-//ini_set('date.timezone','Asia/Shanghai');//设置时区
+/*设置PHP时区为东八区
+若访问站点时服务器报错It is not safe to rely on the system's timezon等字样请取消下一行的注释*/
+//ini_set('date.timezone','Asia/Shanghai');
 /*引入Model类*/
 require $baseurl.'/common/conn.php';
 require $baseurl.'/model/Site.php';
