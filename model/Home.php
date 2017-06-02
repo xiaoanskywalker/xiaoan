@@ -4,12 +4,20 @@ class Home{
     public $id;
     public $name;
     public $email;
+    public $sex;
+    public $regtime;
+    public $admingp;
+    public $birthday;
 
-    function __construct($id, $name,$email)
+    function __construct($id, $name,$email,$sex,$regtime,$admingp,$birthday)
     {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->sex = $sex;
+        $this->regtime = $regtime;
+        $this->admingp = $admingp;
+        $this->birthday = $birthday;
     }
     static function Upload($filename){
         if($filename==null){
@@ -30,7 +38,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['uid'], $row['usr'], $row['email'],$row['regtime'],$row['admingp'],$row['sex'],$row['birthday']);
+        return new Home($row['uid'], $row['usr'], $row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday']);
     }
 
     static function myinfo($uid){
@@ -40,5 +48,12 @@ class Home{
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
         return Home::from($row);
+    }
+
+    static function changeinfo($sex,$birthday,$email,$uid){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_users SET sex=?,birthday=?,email=? WHERE uid=?");
+        $stat->bind_param('issi',$sex,$birthday,$email,$uid);
+        $stat->execute();
     }
 }
