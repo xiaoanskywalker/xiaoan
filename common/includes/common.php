@@ -1,4 +1,5 @@
 <?php
+//ini_set('date.timezone','Asia/Shanghai');//设置时区
 /*引入Model类*/
 require $baseurl.'/common/conn.php';
 require $baseurl.'/model/Site.php';
