@@ -35,7 +35,7 @@ body, input, button, textarea {
   height: 100%; }
 
 body {
-  background: url("../img/bg1.jpg");
+  background: url("../img/bg2.jpg");
   background-size: cover;
   background-attachment: fixed; }
 
@@ -184,7 +184,8 @@ body.login .login-box, body.login .register-box, body.register .login-box, body.
 
 body.login .header {
   background: #4ae94f; }
-
+body.myhome .header {
+  background: #FFAEB9; }
 body.register .header {
   background: #f78d32; }
 

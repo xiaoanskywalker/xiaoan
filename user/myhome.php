@@ -7,8 +7,6 @@ if ((file_exists("../common/config.php")) == false) {
 /*基础参数赋值*/
 $baseurl = '..';
 $body = 'myhome.partial.php';
-$page['header']['title'] = '个人中心';
-$page['body']['class'] = 'index';
 
 
 /*引入初始文件*/
@@ -71,6 +69,8 @@ if (!empty($_POST['info'])) {
         array_push($page['message']['accept'], '个人信息修改成功');
     }
 }
+$page['body']['class'] = 'myhome';
+$page['header']['title'] = '个人中心';
 /*引入模板*/
 require '../template/layout.php';
 

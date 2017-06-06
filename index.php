@@ -20,8 +20,6 @@ $pge=Site::pagefirst(@$_REQUEST["page"]);
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }
-/*获取帖子*/
-$discussions = Post::getPage($pge);
 /*获取页码*/
 $pagination = array();
 Site::pagination($pge,"./?page=");
@@ -39,5 +37,7 @@ if($wel==4 or $wel==5){
 unset($_SESSION["welcome"]);
 /*发帖模块*/
 require './common/includes/newpost.php';
+/*获取帖子*/
+$discussions = Post::getPage($pge);
 /*引入模板*/
 require './template/layout.php';
