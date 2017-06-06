@@ -6,7 +6,7 @@ if ((file_exists("../common/config.php")) == false) {
 /*基础参数赋值*/
 $baseurl = '..';
 $body = 'register.partial.php';
-$page['header']['title'] = '注册，探索崭新世界!';
+
 
 
 /*引入初始文件*/
@@ -65,4 +65,5 @@ if (!empty($_POST['log'])) {
 }
 $page['sidebar']['content'] = 'sidebar-login.php';
 $page['body']['class'] = 'register';
+$page['header']['title'] = '注册，探索崭新世界!';
 require '../template/layout.php';
