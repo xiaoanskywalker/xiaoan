@@ -95,11 +95,12 @@ body {
     list-style: none;
     padding: 0; }
   .content > * {
-    margin-top: 2em; }
+    margin-top: 2em;
+  }
 
 .discussion {
   display: flex;
-  height: 4em;
+  /* height: 4em;*/
   margin: .8em 0;
   color: #5e5e5e; }
   .discussion a {
@@ -218,6 +219,9 @@ body.register .header {
 /*# sourceMappingURL=style.css.map */
 .showreply-title{
   font-size: 22px;
+}
+.showreply-content{
+  width: 100px;
 }
 .install{
   width:80%;

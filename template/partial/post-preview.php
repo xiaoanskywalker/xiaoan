@@ -12,7 +12,7 @@
             <a href=".<?= $discussion->url ?>"><?= $discussion->title ?></a>
         </h3>
         <div class="preview">
-            <?= $discussion->content ?>
+            <?= substr($discussion->content,0,80)?>
         </div>
         <div class="info">
             <a href="#" class="author"><?= $discussion->username ?></a>
