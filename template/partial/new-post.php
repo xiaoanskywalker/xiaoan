@@ -14,7 +14,7 @@
                 }
                 ?>
             </SELECT>
-            <input type="text" id="title" name="title" placeholder="话题标题" value="<?=$arr[count($arr)-1] ?>" required>
+            <input type="text" id="title" name="title" placeholder="话题标题" value="<?=$arr[count($arr)-1] ?>" maxlength="30" required>
         </div>
         <div class="post-content">
             <textarea name="topic" class="input-area" placeholder="写点什么..." required></textarea>
