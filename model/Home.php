@@ -1,23 +1,25 @@
 <?php
 class Home{
 
-    public $id;
-    public $name;
     public $email;
     public $sex;
     public $regtime;
     public $admingp;
     public $birthday;
+    public $title;
+    public $content;
+    public $topdate;
 
-    function __construct($id, $name,$email,$sex,$regtime,$admingp,$birthday)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate)
     {
-        $this->id = $id;
-        $this->name = $name;
         $this->email = $email;
         $this->sex = $sex;
         $this->regtime = $regtime;
         $this->admingp = $admingp;
         $this->birthday = $birthday;
+        $this->title = $title;
+        $this->content = $content;
+        $this->topdate = $topdate;
     }
     static function Upload($filename){
         if($filename==null){
@@ -38,7 +40,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['uid'], $row['usr'], $row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date']);
     }
 
     static function myinfo($uid){
@@ -55,5 +57,18 @@ class Home{
         $stat = $con->prepare("UPDATE wtb_users SET sex=?,birthday=?,email=? WHERE uid=?");
         $stat->bind_param('issi',$sex,$birthday,$email,$uid);
         $stat->execute();
+    }
+
+    static function mytopic($user){
+        global $con;
+        $stat = $con->prepare("SELECT * FROM wtb_titles where users=?");
+        $stat->bind_param('s',$user);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Home::from($row));
+        }
+        return $arr;
     }
 }
