@@ -1,10 +1,7 @@
+
 <tr>
-    <td>帖子标题</td>
-    <td>帖子内容</td>
-    <td>发帖时间</td>
-</tr>
-<tr>
-    <td><?= $value->title?></td>
-    <td><?= $value->content?></td>
-    <td><?= $value->topdate?></td>
+    <td><?= $value->tid ?></td>
+    <td><a href="<?= "$baseurl/showtopic.php?tid=$value->tid" ?>" target="_blank"><?= substr($value->title,0,50) ?></a></td>
+    <td><?= substr($value->content,0,70) ?></td>
+    <td><?= $value->topdate ?></td>
 </tr>

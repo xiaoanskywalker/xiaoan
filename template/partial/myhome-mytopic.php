@@ -27,6 +27,12 @@ $mytopic = Home::mytopic($user->name);
         </ul><br>
         <div class="tab-pane fade active in" id="adminid">
             <table class="table">
+                <tr>
+                    <td>帖子ID</td>
+                    <td>帖子标题</td>
+                    <td>帖子内容</td>
+                    <td>发帖时间</td>
+                </tr>
                 <?php
                 foreach ($mytopic as $value){
                     require'myhome-topicpreview.php';

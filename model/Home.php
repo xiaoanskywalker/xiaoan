@@ -9,8 +9,9 @@ class Home{
     public $title;
     public $content;
     public $topdate;
+    public $tid;
 
-    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid)
     {
         $this->email = $email;
         $this->sex = $sex;
@@ -20,6 +21,7 @@ class Home{
         $this->title = $title;
         $this->content = $content;
         $this->topdate = $topdate;
+        $this->tid = $tid;
     }
     static function Upload($filename){
         if($filename==null){
@@ -40,7 +42,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid']);
     }
 
     static function myinfo($uid){

@@ -15,7 +15,7 @@ class User
         $this->password = $password;
 
         //TODO 路劲绝对地址
-        echo $name;
+        //echo $name;
         $file = "/static/img/avatars/" . $name . ".png";
         if (file_exists($file)) {
             $this->avatar = $file;
