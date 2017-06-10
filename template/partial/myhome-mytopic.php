@@ -32,6 +32,7 @@ $mytopic = Home::mytopic($user->name);
                     <td>帖子标题</td>
                     <td>帖子内容</td>
                     <td>发帖时间</td>
+                    <td>帖子回复数</td>
                 </tr>
                 <?php
                 foreach ($mytopic as $value){
