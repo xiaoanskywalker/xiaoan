@@ -44,7 +44,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['count(*)']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['count( * )']);
     }
 
     static function myinfo($uid){
@@ -63,10 +63,13 @@ class Home{
         $stat->execute();
     }
 
-    static function mytopic($user){
+    static function mytopic($user,$page){
         global $con;
-        $stat = $con->prepare("SELECT * FROM wtb_titles where users=?");
-        $stat->bind_param('s',$user);
+        $limit = array();
+        $limit[0] = ($page-1) * Site::$page_count;
+        $limit[1] = $page * Site::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_titles where users=? LIMIT ?,?");
+        $stat->bind_param('sii',$user,$limit[0],$limit[1]);
         $stat->execute();
         $result = $stat->get_result();
         $arr = array();

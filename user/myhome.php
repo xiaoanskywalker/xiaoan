@@ -8,12 +8,13 @@ if ((file_exists("../common/config.php")) == false) {
 $baseurl = '..';
 $body = 'myhome.partial.php';
 
-
 /*引入初始文件*/
 require_once '../common/includes/common.php';
 /*引入Model类*/
 require_once '../model/Home.php';
 
+/*帖子分页预处理*/
+$pge=Site::pagefirst(@$_REQUEST["page"]);
 /*判断用户是否登录*/
 session_start();
 if ($_SESSION["user"] != null) {
@@ -37,6 +38,9 @@ if (!empty($_POST['avatar'])) {
         array_push($page['message']['error'], '头像设置失败');
     }
 }
+/*获取页码*/
+$pagination = array();
+Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
 /*恢复默认头像操作*/
 if (!empty($_POST['c-avatar'])) {
     unlink("$baseurl/static/img/avatars/$user->name.png");

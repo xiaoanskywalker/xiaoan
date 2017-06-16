@@ -13,7 +13,7 @@
 </script>
 
 <?php
-$mytopic = Home::mytopic($user->name);
+$mytopic = Home::mytopic($user->name,$pge);
 //print_r($mytopic);
 ?>
 <div id="fundetail">
@@ -40,6 +40,7 @@ $mytopic = Home::mytopic($user->name);
                 }
                 ?>
             </table>
+            <?php require 'pagination.php';?>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
             <table>

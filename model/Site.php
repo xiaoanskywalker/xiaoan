@@ -1,7 +1,7 @@
 <?php
 class Site
 {
-
+    public static $page_count = 40;
     public $title;
     public $keywords;
     public $description;
