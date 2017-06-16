@@ -11,8 +11,11 @@ class Home{
     public $topdate;
     public $tid;
     public $replynumber;
+    public $rid;
+    public $reply;
+    public $repdate;
 
-    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$replynumber)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$replynumber,$rid,$reply,$repdate)
     {
         $this->email = $email;
         $this->sex = $sex;
@@ -24,6 +27,9 @@ class Home{
         $this->topdate = $topdate;
         $this->tid = $tid;
         $this->replynumber = $replynumber;
+        $this->rid = $rid;
+        $this->reply = $reply;
+        $this->repdate = $repdate;
     }
     static function Upload($filename){
         if($filename==null){
@@ -44,7 +50,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['count( * )']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['count( * )'],$row['rid'],$row['reply'],$row['date']);
     }
 
     static function myinfo($uid){
@@ -86,5 +92,22 @@ class Home{
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
         return Home::from($row);
+    }
+
+    static function myreply($user,$page)
+    {
+        global $con;
+        $limit = array();
+        $limit[0] = ($page - 1) * Site::$page_count;
+        $limit[1] = $page * Site::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_reply where user=? LIMIT ?,?");
+        $stat->bind_param('sii', $user, $limit[0], $limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Home::from($row));
+        }
+        return $arr;
     }
 }

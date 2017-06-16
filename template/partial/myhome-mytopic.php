@@ -14,7 +14,8 @@
 
 <?php
 $mytopic = Home::mytopic($user->name,$pge);
-//print_r($mytopic);
+$myreply = Home::myreply($user->name,$pge);
+//print_r($myreply);
 ?>
 <div id="fundetail">
     <div class="col-md-9" role="main">
@@ -40,13 +41,24 @@ $mytopic = Home::mytopic($user->name,$pge);
                 }
                 ?>
             </table>
-            <?php require 'pagination.php';?>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
-            <table>
-                222
+            <table class="table">
+                <tr>
+                    <td>回复ID</td>
+                    <td>主题帖ID</td>
+                    <td>主题帖标题</td>
+                    <td>回帖内容</td>
+                    <td>发帖时间</td>
+                </tr>
+                <?php
+                foreach ($myreply as $value){
+                    require'myhome-replypreview.php';
+                }
+                ?>
             </table>
         </div>
+        <?php require 'pagination.php';?>
     </div>
 </div>
 
