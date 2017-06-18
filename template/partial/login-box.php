@@ -1,9 +1,4 @@
 <div class="login-box">
-    <script type="text/javascript" >
-        function changing(){
-            document.getElementById('checkpic').src="../common/checkcode.php?"+Math.random();
-        }
-    </script>
     <form class="form-inline" name="login" role="form" action="" method=post>
 
         <input type="text" class="form-control" placeholder="用户名或邮箱账号" name="username" required>

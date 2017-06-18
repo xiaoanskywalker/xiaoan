@@ -4,4 +4,7 @@ function show(){
 function down(){
     $("div.message").slideUp();
 }
+function changing(){
+    document.getElementById('checkpic').src="../common/checkcode.php?"+Math.random();
+}
 setTimeout(down,4000)
