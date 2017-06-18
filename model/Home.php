@@ -10,12 +10,10 @@ class Home{
     public $content;
     public $topdate;
     public $tid;
-    public $replynumber;
-    public $rid;
     public $reply;
     public $repdate;
 
-    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$replynumber,$rid,$reply,$repdate)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$reply,$repdate)
     {
         $this->email = $email;
         $this->sex = $sex;
@@ -26,8 +24,6 @@ class Home{
         $this->content = $content;
         $this->topdate = $topdate;
         $this->tid = $tid;
-        $this->replynumber = $replynumber;
-        $this->rid = $rid;
         $this->reply = $reply;
         $this->repdate = $repdate;
     }
@@ -50,7 +46,7 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['count( * )'],$row['rid'],$row['reply'],$row['date']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['reply'],$row['date']);
     }
 
     static function myinfo($uid){
@@ -83,15 +79,6 @@ class Home{
             array_push($arr, Home::from($row));
         }
         return $arr;
-    }
-
-    static function replynumber($tid){
-        global $con;
-        $stat = $con->prepare("SELECT count( * ) FROM wtb_reply WHERE tid =?");
-        $stat->bind_param('i', $tid);
-        $stat->execute();
-        $row = $stat->get_result()->fetch_array();
-        return Home::from($row);
     }
 
     static function myreply($user,$page)

@@ -5,13 +5,14 @@ class Site
     public $title;
     public $keywords;
     public $description;
-    public $code;
+    public $replynumber;
 
-    function __construct($title, $keywords, $description)
+    function __construct($title, $keywords, $description,$replynumber)
     {
         $this->title = $title;
         $this->keywords = $keywords;
         $this->description = $description;
+        $this->replynumber = $replynumber;
     }
 
     static function from($row)
@@ -19,7 +20,7 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['name'], $row['keywords'], $row['description']);
+        return new Site($row['name'], $row['keywords'], $row['description'],$row['count( * )']);
     }
 
     static function get()
@@ -99,5 +100,14 @@ class Site
             default:
                 return null;
         }
+    }
+
+    static function replynumber($tid){
+        global $con;
+        $stat = $con->prepare("SELECT count( * ) FROM wtb_reply WHERE tid =?");
+        $stat->bind_param('i', $tid);
+        $stat->execute();
+        $row = $stat->get_result()->fetch_array();
+        return Site::from($row);
     }
 }

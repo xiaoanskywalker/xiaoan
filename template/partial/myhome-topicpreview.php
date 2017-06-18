@@ -1,4 +1,4 @@
-<?php $replynumber = Home::replynumber($value->tid);?>
+<?php $replynumber = Site::replynumber($value->tid);?>
 <tr>
     <td><?= $value->tid ?></td>
     <td><a href="<?= "$baseurl/showtopic.php?tid=$value->tid" ?>" target="_blank"><?= substr($value->title,0,50) ?></a></td>

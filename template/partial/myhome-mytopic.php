@@ -45,7 +45,6 @@ $myreply = Home::myreply($user->name,$pge);
         <div class="tab-pane fade" id="newid" style="display: none;">
             <table class="table">
                 <tr>
-                    <td>回复ID</td>
                     <td>主题帖ID</td>
                     <td>主题帖标题</td>
                     <td>回帖内容</td>
