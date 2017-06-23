@@ -2,9 +2,10 @@
     <div class="avatar-area">
         <?php
         $avatar = User::avatar($discussion->username,$baseurl);
+        $uid = User::getByName($discussion->username);
         //TODO 点击头像、名称进入用户主页
         ?>
-        <a href="#"><img src="<?= $avatar ?>" class="avatar" alt="<?= $discussion->username ?>"></a>
+        <a href="./user/home.php?uid=<?= $uid->id ?>" target="_blank"><img src="<?= $avatar ?>" class="avatar" alt="<?= $discussion->username ?>"></a>
     </div>
 
     <div class="profile">
