@@ -16,7 +16,7 @@
             <?= substr($discussion->content,0,80)?>
         </div>
         <div class="info">
-            <a href="#" class="author"><?= $discussion->username ?></a>
+            <a href="./user/home.php?uid=<?= $uid->id ?>" target="_blank" class="author"><?= $discussion->username ?></a>
             <span class="time"><?= $discussion->getDate() ?></span>
         </div>
     </div>

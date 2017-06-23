@@ -5,15 +5,19 @@ if ((file_exists("../common/config.php")) == false) {
 }
 /*基础参数赋值*/
 $baseurl = '..';
-$body = 'myhome.partial.php';
+$body = 'home.partial.php';
 
 /*引入初始文件*/
 require_once '../common/includes/common.php';
 /*引入Model类*/
 require_once '../model/Home.php';
 
-/*帖子分页预处理*/
-//$pge=Site::pagefirst(@$_REQUEST["page"]);
+
+/*UID预处理*/
+$uid = Site::pagefirst(@$_REQUEST["uid"]);
+/*获取UID对应的用户名*/
+$usr = User::get($uid);
+
 /*判断用户是否登录*/
 session_start();
 if ($_SESSION["user"] != null) {
@@ -30,7 +34,7 @@ require '../common/includes/myhome-inculdes.php';
 
 
 $page['body']['class'] = 'myhome';
-$page['header']['title'] = '个人中心';
+$page['header']['title'] = $usr->name.'的个人中心';
 /*引入模板*/
 require '../template/layout.php';
 
