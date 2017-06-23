@@ -74,7 +74,7 @@ class User
 
     static function login($uar, $pwd)
     {
-        /*用户登录*/
+        /*用户登录 user login*/
         $user = User::getByName($uar);
         if ($user == null) {
             $user = User::getByMail($uar);
@@ -98,7 +98,7 @@ class User
 
     static function register($usr, $pwd, $email,$group)
     {
-        /*用户注册*/
+        /*用户注册 user register*/
         global $con;
         $user = User::getByMail($email);
         if ($user) {
@@ -118,9 +118,21 @@ class User
     }
 
     static function logout(){
-        /*退出登录*/
+        /*退出登录 user logout*/
         unset($_SESSION["user"]);
         unset($_SESSION["admin"]);
     }
-}
 
+    static function changepwd($uid,$pwd0,$pwd1){
+        /*修改密码 change password*/
+        $user = User::get($uid);
+        if ($user->password != $pwd0) {
+            throw new Exception('原密码错误,请检查');
+        }
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_users SET pwd=? WHERE uid=?");
+        $stat->bind_param('si',$pwd1,$uid);
+        $stat->execute();
+        return 1;
+    }
+}
