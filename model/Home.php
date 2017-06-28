@@ -97,4 +97,12 @@ class Home{
         }
         return $arr;
     }
+
+    static function heorshe($sex){
+        if($sex==1){
+            return "他";
+        }else{
+            return "她";
+        }
+    }
 }

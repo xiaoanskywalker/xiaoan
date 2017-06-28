@@ -3,7 +3,7 @@
         <?php
         $avatar = User::avatar($discussion->username,$baseurl);
         $uid = User::getByName($discussion->username);
-        //TODO 点击头像、名称进入用户主页
+        $replynumber = Site::replynumber($discussion->id);
         ?>
         <a href="./user/home.php?uid=<?= $uid->id ?>" target="_blank"><img src="<?= $avatar ?>" class="avatar" alt="<?= $discussion->username ?>"></a>
     </div>
@@ -20,9 +20,5 @@
             <span class="time"><?= $discussion->getDate() ?></span>
         </div>
     </div>
-
-    <?php
-    //TODO 获取每个帖子评论数量
-    ?>
-    <div class="count"><i class="zmdi zmdi-comments"></i>NaN</div>
+    <div class="count"><i class="zmdi zmdi-comments"></i><?= $replynumber->replynumber ?></div>
 </div>
