@@ -1,41 +1,15 @@
-<?php
-/*配置文件检测*/
-if (file_exists("../common/config.php")){
-    die ("请删除配置文件./common/config.php 后才能安装！<a href='../' class='btn btn-primary'>返回</a>");
-}
-/*基础参数赋值*/
-$baseurl = '..';
-$body = 'myhome.partial.php';
-
-/*引入初始文件*/
-require_once '../common/includes/common.php';
-/*引入Model类*/
-require_once '../model/Home.php';
-
-/*帖子分页预处理*/
-$pge=Site::pagefirst(@$_REQUEST["page"]);
-/*判断用户是否登录*/
-session_start();
-if ($_SESSION["user"] != null) {
-    $user = $_SESSION["user"];
-}else{
-    header("location:../");
-}
-/*判断action参数是否合法*/
-$action = array("index","avatar","myinfo","mytopic","message","changepwd");
-$page['body']['action'] = @$_REQUEST["action"];
-if (!(in_array($page['body']['action'] , $action))){
-    $page['body']['action'] = 'index';
-}
-/*导入具体操作代码*/
-require '../common/includes/myhome-inculdes.php';
-/*获取页码*/
-$pagination = array();
-Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
-
-
-$page['body']['class'] = 'myhome';
-$page['header']['title'] = '个人中心';
-/*引入模板*/
-require '../template/layout.php';
-
+<?php include("header.php"); ?>
+<h3>
+    <span class="label label-info">第一步</span>--阅读使用协议
+</h3>
+<p>感谢您将 <b>小安社区</b> 用作您网站的论坛系统。<br>
+本软件遵照<a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GPL协议</a>开放源代码，您可以自由传播和修改，在遵照下面的约束条件的前提下：</p>
+<p>一.用户可以自由地使用及二次发布本软件而不必征得原作者同意。</p>
+<p>二.在二次发布时请务必不要删除这个使用协议。</p>
+<p>三.请<b><font color="red">不要删除软件底部的名称及版权信息</font></b>。</p>
+<p>只要你遵循上述条款规定，您就可以自由使用并传播本源代码。</p>
+<center>
+    <a href="step-2.php" class="btn btn-primary">下一步</a>&nbsp;<a href="../" class="btn btn-primary">取消</a>
+</center>
+</div>
+</body>
