@@ -12,7 +12,6 @@ require_once '../common/includes/common.php';
 /*引入Model类*/
 require_once '../model/Home.php';
 
-
 /*UID预处理*/
 $uid = Site::pagefirst(@$_REQUEST["uid"]);
 /*获取UID对应的用户名*/
@@ -23,16 +22,12 @@ $avatars = User::avatar($usr->name,$baseurl);
 session_start();
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
-}else{
-    header("location:../");
 }
 
 /*导入具体操作代码*/
 require '../common/includes/myhome-inculdes.php';
-/*获取页码*/
-//$pagination = array();
-//Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
-/*获取页码*/
+
+/*获取个人信息*/
 $info = Home::myinfo($usr->id);
 $sex = Home::heorshe($info->sex);
 $birthday = Home::getage($info->birthday);
@@ -42,4 +37,3 @@ $page['body']['class'] = 'myhome';
 $page['header']['title'] = $usr->name.'的个人中心';
 /*引入模板*/
 require '../template/layout.php';
-

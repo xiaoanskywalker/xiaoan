@@ -1,10 +1,10 @@
  <table class="table">
      <tr>
          <td>
-             <b><?= $sex ?>的用户名:<p></b><?= $user->name ?>
+             <b><?= $sex ?>的用户名:<p></b><?= $usr->name ?>
          </td>
          <td>
-             <b><?= $sex ?>的uid:<p></b><?= $user ->id ?>
+             <b><?= $sex ?>的uid:<p></b><?= $usr ->id ?>
          </td>
          <td>
              <b><?= $sex ?>的年龄:<p></b><?= $age ?>岁
