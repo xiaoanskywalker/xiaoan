@@ -105,4 +105,9 @@ class Home{
             return "她";
         }
     }
+
+    static function getage($birthday){
+        $arr = explode("-",$birthday);//将出生日期按照年月日导入数组，以"-"符号为分界
+        return $arr;
+    }
 }

@@ -17,7 +17,8 @@ require_once '../model/Home.php';
 $uid = Site::pagefirst(@$_REQUEST["uid"]);
 /*获取UID对应的用户名*/
 $usr = User::get($uid);
-
+/*获取用户名对应的头像*/
+$avatars = User::avatar($usr->name,$baseurl);
 /*判断用户是否登录*/
 session_start();
 if ($_SESSION["user"] != null) {
@@ -31,7 +32,11 @@ require '../common/includes/myhome-inculdes.php';
 /*获取页码*/
 //$pagination = array();
 //Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
-
+/*获取页码*/
+$info = Home::myinfo($usr->id);
+$sex = Home::heorshe($info->sex);
+$birthday = Home::getage($info->birthday);
+$age = date("Y") - $birthday[0];
 
 $page['body']['class'] = 'myhome';
 $page['header']['title'] = $usr->name.'的个人中心';
