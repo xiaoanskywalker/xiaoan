@@ -2,7 +2,7 @@
 //TODO 解决用户名为中文的头像上传失败问题
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
-    header("location:../install/");
+    header("location:../install/install.php");
 }
 /*基础参数赋值*/
 $baseurl = '..';

@@ -1,7 +1,7 @@
 <?php
 /*配置文件检测*/
-if ((file_exists("../common/config.php")) == false) {
-    header("location:../install/");
+if (file_exists("../common/config.php")){
+    die ("请删除配置文件./common/config.php 后才能安装！<a href='../' class='btn btn-primary'>返回</a>");
 }
 /*基础参数赋值*/
 $baseurl = '..';

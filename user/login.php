@@ -1,7 +1,7 @@
 <?php
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
-    header("location:../install/");
+    header("location:../install/install.php");
 }
 /*基础参数赋值*/
 $baseurl = '..';
