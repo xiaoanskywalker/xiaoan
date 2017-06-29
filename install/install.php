@@ -9,7 +9,7 @@
 <p>三.请<b><font color="red">不要删除软件底部的名称及版权信息</font></b>。</p>
 <p>只要你遵循上述条款规定，您就可以自由使用并传播本源代码。</p>
 <center>
-    <a href="step-2.php" class="btn btn-primary">下一步</a>&nbsp;<a href="../" class="btn btn-primary">取消</a>
+    <a href="step-2.php" class="btn btn-primary">下一步</a>
 </center>
 </div>
 </body>

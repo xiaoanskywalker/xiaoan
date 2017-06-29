@@ -42,11 +42,12 @@
         <td>可选/支持</td>
         <td><b>
         <?php
-        if (is_writable("../common/config.php"))
+        if (is_writable("../common/config2.php"))
         {echo "<font color='green'>支持</font>";}
         else
         {echo "<font color='red'>不支持</font>";}
-        ?></b></td></tr>
+        ?></b></td>
+      </tr>
 
       <tr>
         <td>程序最长运行时间</td>
@@ -64,10 +65,25 @@
           </b>
         </td>
       </tr>
+    <tr>
+      <td>文件上传大小限制：</td>
+      <td>2M/10M</td>
+      <td>
+        <b><font color="<?php
+          preg_match_all('/\d+/',ini_get("upload_max_filesize"),$arr);
+          $arr = join('',$arr[0]);
+          if ($arr>=2) {
+            echo"green";
+          } else {
+            echo "red";
+          }
+          ?>">
+        <?= ini_get("upload_max_filesize") ?></td>
+    </tr>
     </tbody>
   </table>
   
 <center>
-<a href="step-3.php" class="btn btn-primary">下一步</a>&nbsp;<a href="index.php" class="btn btn-primary">上一步</a></center>
+<a href="step-3.php" class="btn btn-primary">下一步</a>&nbsp;<a href="install.php" class="btn btn-primary">上一步</a></center>
 </body>
 </html>
