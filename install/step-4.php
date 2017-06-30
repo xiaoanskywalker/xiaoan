@@ -14,7 +14,7 @@ $install['db_user'] = @$_POST['db_usr'];//数据库用户名
 $install['db_pawd'] = @$_POST['db_pwd'];//数据库密码
 $install['admin_user'] = @$_POST['admin_usr'];//管理员用户名
     /*
-   $admin_usr = @$_POST['admin_usr'];
+   $admin_usr = @$_POST['admin_usr'];1
    $admin_email = @$_POST['admin_email'];
    $admin_pwd = @$_POST['admin_pwd'];
    if ($db_name == null) {

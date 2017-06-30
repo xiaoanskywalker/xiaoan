@@ -1,5 +1,5 @@
 <?php include("header.php"); ?>
-<h3><span class='label label-info'>第二步</span>--服务器配置检查</h3>
+<h3><span class='label label-info'>2/5</span>--检查环境配置</h3>
 <div class="table-responsive">
   <table class="table">
     <thead>
@@ -67,12 +67,12 @@
       </tr>
     <tr>
       <td>文件上传大小限制：</td>
-      <td>2M/10M</td>
+      <td>1M/5M</td>
       <td>
         <b><font color="<?php
           preg_match_all('/\d+/',ini_get("upload_max_filesize"),$arr);
           $arr = join('',$arr[0]);
-          if ($arr>=2) {
+          if ($arr>=1) {
             echo"green";
           } else {
             echo "red";
