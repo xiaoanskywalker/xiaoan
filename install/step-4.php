@@ -1,52 +1,60 @@
 <?php
+/*开始计时*/
+$stime = microtime(true);
+/*引入Model类*/
 require_once '../model/User.php';
 include("header.php");
 ?>
-<h3><span class="label label-info">第四步</span>-安装数据库</h3><p>
+<h3>
+    <span class="label label-info">4/5</span>-安装数据库
+</h3><p>
 <?php
-$stime = microtime(true);
 /*定义数组*/
 $install = array();
 /*把相关信息保存在数组里*/
+$install['go_back'] = "<a href='./step-3.php'>返回</a>";
 $install['db_name'] = @$_POST['db_name'];//数据库名
 $install['db_host'] = @$_POST['db_host'];//主机地址
 $install['db_user'] = @$_POST['db_usr'];//数据库用户名
 $install['db_pawd'] = @$_POST['db_pwd'];//数据库密码
 $install['admin_user'] = @$_POST['admin_usr'];//管理员用户名
-    /*
-   $admin_usr = @$_POST['admin_usr'];1
-   $admin_email = @$_POST['admin_email'];
-   $admin_pwd = @$_POST['admin_pwd'];
-   if ($db_name == null) {
-       die("<b><font color='red'>数据库名为空，请重新填写。</font></b><a href='./step-3.php'>返回</a>");
-   }
-   /*开始连接数据库 行24-26*/
-/*$con = mysqli_connect($db_host, $db_usr, $db_pwd, $db_name) or die("<b><font color='red'>连接数据库时发生错误，请检查数据库名、数据库主机名、数据库用户名、数据库密码填写是否正确并重新填写。</font></b><a href='./step-3.php'>返回</a>");;
-mysqli_query($con, "SET NAMES 'utf8'");//数据库编码
-if ($admin_usr == null) {
-   die("<b><font color='red'>用户名为空，请重新填写。</font></b>。<a href='./step-3.php'>返回</a>");
+$install['admin_pawd'] = @$_POST['admin_pwd'];//管理员密码
+$install['admin_pwd2'] = @$_POST['admin_pwd2'];//管理员密码确认
+$install['admin_mail']  = @$_POST['admin_email'];//管理员邮箱
+$install['site_name']  = @$_POST['site_name'];//管理员邮箱
+/*参数预处理*/
+if(!$install['db_name'] || !$install['db_host'] || !$install['db_user']){
+    die("<b><font color='red'>请填写数据库信息。</font></b>".$install['go_back']);
 }
-if ($admin_email == null) {
-   die("<b><font color='red'>邮箱为空，请重新填写。</font></b><a href='./step-3.php'>返回</a>");
+if(!$install['admin_user'] || !$install['admin_pawd'] || !$install['admin_pwd2'] || !$install['admin_mail']){
+    die("<b><font color='red'>请填写管理员信息。</font></b>".$install['go_back']);
 }
-if ($admin_pwd == null) {
-   die("<b><font color='red'>账号密码为空，请重新填写。</font></b><a href='./step-3.php'>返回</a>");
+if(!$install['site_name']){
+    $install['site_name'] = "小安社区";
 }
-$sql = file_get_contents("install.sql");
-$arr = explode(';', $sql);
-$mysqli = new mysqli($db_host, $db_usr, $db_pwd, $db_name);
-$mysqli->query("SET NAMES 'utf8'");//数据库编码
-$mysqli->query("SET time_zone = '+8:00'");
-if (mysqli_connect_errno()) {
-   exit('连接数据库出错');
+if($install['admin_pawd'] != $install['admin_pwd2']){
+    die("<b><font color='red'>管理员密码和确认密码不一致。</font></b>".$install['go_back']);
 }
+if(strlen($install['admin_pawd'])<6){
+    die("<b><font color='red'>管理员密码应大于等于6位。</font></b>".$install['go_back']);
+}
+/*连接数据库*/
+$con = new mysqli($install['db_host'],$install['db_user'],$install['db_pawd'],$install['db_name']);
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error.$install['go_back']);
+}
+
+$sql = explode(';',file_get_contents("install.sql"));
+$con->query("SET NAMES 'utf8'");//数据库编码
+$con->query("SET time_zone = '+8:00'");
 //执行sql语句
-foreach ($arr as $value) {
-   $mysqli->query($value . ';');
+foreach ($sql as $value) {
+   $con->query($value . ';');
 }
-User::register($admin_usr, md5($admin_pwd), $admin_email,2);
-$mysqli->close();
-$myfile = fopen("../common/config.php", "w") or die("Unable to open file!");//写入配置文件
+User::register($install['admin_user'], md5($install['admin_pawd']),$install['admin_mail'],2);
+$con->close();
+/*写入配置文件*/
+$myfile = fopen("../common/config.php", "w") or die("Unable to open file!");
 $txt = "<?php
 define('mysql_servername','$db_host'); //主机地址，默认为localhost
 define('mysql_username','$db_usr'); //数据库用户名

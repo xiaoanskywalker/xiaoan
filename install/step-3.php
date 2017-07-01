@@ -41,7 +41,7 @@
             <tr>
                 <td>管理员密码</td>
                 <td><input type="text"class="form-control" name="admin_pwd"></td>
-                <td>*密码必须超过6位</td>
+                <td>*密码必须大于等于6位</td>
             </tr>
             <tr>
                 <td>管理员密码确认</td>
@@ -77,6 +77,7 @@
                 <td>*用于接受升级提醒、漏洞修复等，也是管理员的登录账号</td>
             </tr>-->
         </table>
+        <b><font color='red'>注意：*号为必填选项。</font></b>
     </fieldset>
     <center>
         <input name="log" type = "submit" class="btn btn-primary" value = "下一步">
