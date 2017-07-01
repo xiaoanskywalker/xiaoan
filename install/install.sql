@@ -8,9 +8,6 @@ CREATE TABLE IF NOT EXISTS `wtb_general_settings` (
   PRIMARY KEY (`gid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
-INSERT INTO `wtb_general_settings` (`gid`, `name`, `keywords`, `description`) VALUES
-(1, '小安社区', '小安社区', '小安社区，追求简单、极致');
-
 DROP TABLE IF EXISTS `wtb_messages`;
 CREATE TABLE IF NOT EXISTS `wtb_messages` (
   `postuser` text NOT NULL,

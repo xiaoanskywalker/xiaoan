@@ -52,20 +52,22 @@ foreach ($sql as $value) {
    $con->query($value . ';');
 }
 User::register($install['admin_user'], md5($install['admin_pawd']),$install['admin_mail'],2);
+$con->query("INSERT INTO wtb_general_settings (gid,name,keywords,description) VALUES(1, '".$install['site_name']."', '小安社区', '小安社区，追求简单、极致');");
 $con->close();
+
 /*写入配置文件*/
 $myfile = fopen("../common/config.php", "w") or die("Unable to open file!");
 $txt = "<?php
-define('mysql_servername','$db_host'); //主机地址，默认为localhost
-define('mysql_username','$db_usr'); //数据库用户名
-define('mysql_password','$db_pwd');//数据库密码
-define('mysql_database','$db_name'); //数据库名
+define('mysql_servername','" .$install['db_host']. "'); //主机地址，默认为localhost,默认端口为3306,可添加端口号，例如localhost:8888
+define('mysql_username','" .$install['db_user']. "'); //数据库用户名
+define('mysql_password','" .$install['db_pawd']. "');//数据库密码
+define('mysql_database','" .$install['db_name']. "'); //数据库名
 ?>";
 fwrite($myfile, $txt);
 fclose($myfile);
 $etime = microtime(true);//获取程序执行结束的时间
 $total = $etime - $stime;   //计算差值
-echo "<p>安装完成。安装过程共耗时$total 秒"; /*
+echo "<p>安装完成。安装过程共耗时$total 秒";
 ?>
 <div class="well" align="center">
 安装完成。您可以<a href="../" class="btn btn-primary">查看站点</a>
