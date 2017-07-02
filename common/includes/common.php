@@ -17,4 +17,4 @@ $page['header'] = array();
 $page['sidebar'] = array();
 /*获取站点信息 */
 $site = Site::get();
-$page['header']['title'] = $site->description;
+$page['header']['title'] = $site->title;

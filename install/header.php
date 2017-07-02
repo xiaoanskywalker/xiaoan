@@ -7,7 +7,7 @@
 <body>
 <div class="install">
     <center>
-        <h1 class="text-primary">V0.4.0--安装向导</h1><p>
+        <h1 class="text-primary">Xiaoanbbs V0.4.0--安装向导</h1><p>
     </center>
     <hr>
     <?php
