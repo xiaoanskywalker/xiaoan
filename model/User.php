@@ -7,12 +7,14 @@ class User
     public $name;
     public $password;
     public $avatar;
+    public $admingp;
 
-    function __construct($id, $name, $password)
+    function __construct($id, $name, $password, $admingp)
     {
         $this->id = $id;
         $this->name = $name;
         $this->password = $password;
+        $this->admingp = $admingp;
 
         //TODO 路劲绝对地址
         //echo $name;
@@ -29,7 +31,7 @@ class User
         if (!$row) {
             return null;
         }
-        return new User($row['uid'], $row['usr'], $row['pwd']);
+        return new User($row['uid'], $row['usr'], $row['pwd'],$row["admingp"]);
     }
 
     static function avatar($user,$baseurl){

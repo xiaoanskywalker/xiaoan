@@ -11,6 +11,11 @@
         </li>
         <li role="separator" class="divider"></li>
         <li><a href="<?= $baseurl ?>/user/myhome.php">个人中心</a></li>
+        <?php
+        if($user->admingp != 0){
+            echo " <li><a href='$baseurl/admin/' target='_blank'>管理中心</a></li>";
+        }
+        ?>
         <li><a href="<?= $baseurl ?>/user/logout.php?goto=<?= $url ?>">退出登录</a></li>
     </ul>
 </li>
