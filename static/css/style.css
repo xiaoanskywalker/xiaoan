@@ -186,6 +186,8 @@ body.login .header {
   background: #4ae94f; }
 body.myhome .header {
   background: #FFAEB9; }
+body.admin .header {
+  background: #9A32CD; }
 body.register .header {
   background: #f78d32; }
 

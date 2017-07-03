@@ -25,8 +25,12 @@ if ($_SESSION["user"] != null) {
 if($user->admingp == 0){
     header("location:../");
 }
-/*判断action参数是否合法
-$action = array("index","avatar","myinfo","mytopic","message","changepwd");
+/*判断是否进行管理员二次登录*/
+if ($_SESSION["admin"] == null) {
+    header("location:login.php");
+}
+/*判断action参数是否合法*/
+$action = array("index","setting","topic","user");
 $page['body']['action'] = @$_REQUEST["action"];
 if (!(in_array($page['body']['action'] , $action))){
     $page['body']['action'] = 'index';
@@ -38,8 +42,8 @@ $pagination = array();
 Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
 
 
-$page['body']['class'] = 'myhome';
-$page['header']['title'] = '个人中心';
+$page['body']['class'] = 'admin';
+$page['header']['title'] = '管理中心';
 /*引入模板*/
 require '../template/layout.php';
 
