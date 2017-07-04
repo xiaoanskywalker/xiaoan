@@ -20,6 +20,7 @@ session_start();
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
 }else{
+    $_SESSION["welcome"] = 6;
     header("location:../");
 }
 /*判断action参数是否合法*/

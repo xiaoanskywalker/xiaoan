@@ -7,4 +7,4 @@ function down(){
 function changing(){
     document.getElementById('checkpic').src="../common/checkcode.php?"+Math.random();
 }
-setTimeout(down,4000)
+setTimeout(down,10000)

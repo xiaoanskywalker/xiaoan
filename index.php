@@ -25,12 +25,12 @@ $pagination = array();
 Site::pagination($pge,"./?page=");
 
 /*欢迎信息显示*/
-$wel=@$_SESSION["welcome"];
+$wel = @$_SESSION["welcome"];
 if ($wel==1 or $wel==2 or $wel==3){
     $wel=Site::welcome($wel,$user,$site);
     array_push($page['message']['accept'],$wel);
 }
-if($wel==4 or $wel==5){
+if($wel==4 or $wel==5 or $wel==6 or $wel==7){
     $wel=Site::welcome($wel,$user,$site);
     array_push($page['message']['error'],$wel);
 }
