@@ -125,6 +125,11 @@ class User
         unset($_SESSION["admin"]);
     }
 
+    static function adminlogout(){
+        /*管理员退出登录 user logout*/
+        unset($_SESSION["admin"]);
+    }
+
     static function changepwd($uid,$pwd0,$pwd1){
         /*修改密码 change password*/
         $user = User::get($uid);

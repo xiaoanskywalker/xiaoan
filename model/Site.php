@@ -104,6 +104,9 @@ class Site
             case 7:
                 return "您不是站点管理员，没有权限进入管理中心";
                 break;
+            case 8:
+                return "您已经成功退出管理中心";
+                break;
             default:
                 return null;
         }

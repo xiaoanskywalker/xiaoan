@@ -28,12 +28,12 @@ if($user->admingp == 0){
     header("location:../");
 }
 /*判断action参数是否合法*/
-$action = array("index","setting","topic","user");
+$action = array("index","setting","topic","user","logout");
 $page['body']['action'] = @$_REQUEST["action"];
 if (!(in_array($page['body']['action'] , $action))){
     $page['body']['action'] = 'index';
 }
-/*判断是否进行管理员二次登录*/
+/*判断是否进行管理员二次登录，如果未登录则进入登录页*/
 if ($_SESSION["admin"] == null) {
     $page['body']['action'] = 'login';
 }
@@ -55,7 +55,12 @@ require '../common/includes/admin-inculdes.php';
 $pagination = array();
 Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
 
-
+/*管理员退出登录*/
+if($page['body']['action'] == 'logout'){
+    User::adminlogout();
+    $_SESSION["welcome"] = 8;
+    header("location:../");
+}
 $page['body']['class'] = 'admin';
 $page['header']['title'] = '管理中心';
 /*引入模板*/
