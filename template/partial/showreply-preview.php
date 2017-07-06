@@ -1,6 +1,5 @@
 <?php
 $avatar = User::avatar($row[2],$baseurl);
-//TODO 点击头像、名称进入用户主页
 ?>
 <li>
     <div class="discussion">
