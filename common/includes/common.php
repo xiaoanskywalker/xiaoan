@@ -3,9 +3,10 @@
 若访问站点时服务器报错It is not safe to rely on the system's timezon等字样请取消下一行的注释*/
 //ini_set('date.timezone','Asia/Shanghai');
 /*引入Model类*/
-require $baseurl.'/common/conn.php';
-require $baseurl.'/model/Site.php';
-require $baseurl.'/model/User.php';
+require "$baseurl/common/conn.php";
+require "$baseurl/model/Site.php";
+require "$baseurl/model/User.php";
+require "$baseurl/model/Post.php";
 /*基本参数赋值*/
 $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
 $page = array();
@@ -18,3 +19,5 @@ $page['sidebar'] = array();
 /*获取站点信息 */
 $site = Site::get();
 $page['header']['title'] = $site->title;
+/*获取发帖前缀*/
+$per = explode(" ",Post::show_prefix());//获取全部前缀,并将每个前缀导入数组，以空格为分界

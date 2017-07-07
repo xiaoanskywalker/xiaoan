@@ -7,7 +7,7 @@
     <div class="content">
         <?php
         require 'partial/message.php';
-        require "partial/admin-".$page['body']['action'].".php";
+        require "partial/admin-".$page['body']['mode'].".php";
         ?>
     </div>
 

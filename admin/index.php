@@ -13,7 +13,7 @@ require_once "$baseurl/common/includes/common.php";
 require_once "$baseurl/model/Admin.php";
 
 /*帖子分页预处理*/
-$pge=Site::pagefirst(@$_REQUEST["page"]);
+$pge = Site::pagefirst(@$_REQUEST["page"]);
 /*判断用户是否登录*/
 session_start();
 if ($_SESSION["user"] != null) {
@@ -28,14 +28,14 @@ if($user->admingp == 0){
     header("location:../");
 }
 /*判断action参数是否合法*/
-$action = array("index","setting","topic","user","logout");
-$page['body']['action'] = @$_REQUEST["action"];
-if (!(in_array($page['body']['action'] , $action))){
-    $page['body']['action'] = 'index';
+$mode = array("index","setting","topic","user","logout");
+$page['body']['mode'] = @$_REQUEST["mode"];
+if (!(in_array($page['body']['mode'] , $mode))){
+    $page['body']['mode'] = 'index';
 }
 /*判断是否进行管理员二次登录，如果未登录则进入登录页*/
 if ($_SESSION["admin"] == null) {
-    $page['body']['action'] = 'login';
+    $page['body']['mode'] = 'login';
 }
 /*欢迎信息显示*/
 $wel = @$_SESSION["welcome"];
