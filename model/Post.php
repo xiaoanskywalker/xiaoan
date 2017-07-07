@@ -144,4 +144,11 @@ class Post
         $stat->execute();
         throw new Exception('回帖成功！');
     }
+
+    static function show_prefix()
+    {
+        global $con;
+        $row = $con->query("SELECT * FROM wtb_settings where sid=1")->fetch_row();
+        return $row[4];
+    }
 }

@@ -3,14 +3,9 @@
         <div class="post-title">
             <SELECT name="prefix" onchange="document.getElementById('title').value=this.options[this.selectedIndex].value">
                 <?php
-                /*发帖前缀功能*/
-                $per=User::show_prefix();//获取全部前缀
-                $arr = explode(" "," ".$per);//将每个前缀导入数组，以空格为分界
-                $index =count($arr)-1;//获取前缀个数
                 //循环输出前缀
-                while($index>0){
-                    echo "<option value ='$arr[$index]'>$arr[$index]</option>";
-                    $index=$index-1;
+                foreach($per as $pers){
+                    echo "<option value ='$pers'>$pers</option>";
                 }
                 ?>
             </SELECT>

@@ -91,13 +91,6 @@ class User
         }
     }
 
-    static function show_prefix()
-    {
-        global $con;
-        $row = $con->query("SELECT * FROM wtb_topic_settings where tsid=1")->fetch_row();
-        return $row[1];
-    }
-
     static function register($usr, $pwd, $email,$group)
     {
         /*用户注册 user register*/
