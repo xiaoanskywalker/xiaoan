@@ -6,13 +6,15 @@ class Site
     public $keywords;
     public $description;
     public $replynumber;
+    public $ifopen;
 
-    function __construct($title, $keywords, $description,$replynumber)
+    function __construct($title, $keywords, $description,$replynumber,$ifopen)
     {
         $this->title = $title;
         $this->keywords = $keywords;
         $this->description = $description;
         $this->replynumber = $replynumber;
+        $this->ifopen = $ifopen;
     }
 
     static function from($row)
@@ -20,7 +22,7 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['name'], $row['keywords'], $row['description'],$row['count( * )']);
+        return new Site($row['name'], $row['keywords'], $row['description'],$row['count( * )'],$row['ifopen']);
     }
 
     static function get()
@@ -118,6 +120,12 @@ class Site
         $stat->bind_param('i', $tid);
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
+        return Site::from($row);
+    }
+
+    static function ifopen(){
+        global $con;
+       $row = $con->query("SELECT * FROM wtb_settings WHERE sid =1")->fetch_array();
         return Site::from($row);
     }
 }

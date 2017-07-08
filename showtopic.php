@@ -9,8 +9,7 @@ $body = 'showtopic.partial.php';
 $page['body']['class'] = 'index';
 /*引入初始文件*/
 require_once './common/includes/common.php';
-/*引入Model类*/
-require_once './model/Post.php';
+
 session_start();
 /*帖子分页帖子ID预处理*/
 $pages=Site::pagefirst(@$_REQUEST["page"]);
