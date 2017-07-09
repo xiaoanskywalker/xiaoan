@@ -10,7 +10,7 @@
 
     <div class="profile">
         <h3 class="title">
-            <a href=".<?= $discussion->url ?>"><?= $discussion->title ?></a>
+            <a href=".<?= $discussion->url ?>"><?= $discussion->title ?></a>&nbsp;<?= Post::topictype($discussion->topictype)?>
         </h3>
         <div class="preview">
             <?= substr($discussion->content,0,80)?>

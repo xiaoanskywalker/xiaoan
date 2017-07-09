@@ -50,4 +50,11 @@ class Admin{
         $row = $stat->get_result()->fetch_array();
         return Admin::from($row);
     }
+
+    static function changesettings($ifopen,$webname ,$keywords ,$description ){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_settings SET webname=?,keywords=?,description=?,ifopen=? WHERE sid=1");
+        $stat->bind_param('sssi',$webname,$keywords,$description,$ifopen);
+        $stat->execute();
+    }
 }

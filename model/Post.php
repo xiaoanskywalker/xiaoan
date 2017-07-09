@@ -1,25 +1,23 @@
 <?php
 
 
-class Post
-{
+class Post{
     public static $page_count = 40;
-
     public $id;
     public $title;
     public $username;
     public $date;
     public $content;
+    public $topictype;
     public $url;
 
-
-    function __construct($id, $title, $username, $date, $content)
-    {
+    function __construct($id, $title, $username, $date, $content,$topictype){
         $this->id = $id;
         $this->title = $title;
         $this->username = $username;
         $this->date = $date;
         $this->content = $content;
+        $this->topictype = $topictype;
         $this->url = '/showtopic.php?tid=' . $id;
     }
 
@@ -36,7 +34,7 @@ class Post
         if (!$row) {
             return null;
         }
-        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['user'],$row['reply']);
+        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['reply']);
     }
 
     static function get($id)
@@ -150,5 +148,23 @@ class Post
         global $con;
         $row = $con->query("SELECT * FROM wtb_settings where sid=1")->fetch_row();
         return $row[4];
+    }
+    static function topictype ($type){
+        switch ($type){
+            case 1:
+                return null;
+                break;
+            case 2:
+                return "[置顶]";
+                break;
+            case 3:
+                return "[精华]";
+                break;
+            case 4:
+                return "[置顶][精华]";
+                break;
+            default:
+                return null;
+        }
     }
 }

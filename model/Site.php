@@ -22,7 +22,7 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['name'], $row['keywords'], $row['description'],$row['count( * )'],$row['ifopen']);
+        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['ifopen']);
     }
 
     static function get()
