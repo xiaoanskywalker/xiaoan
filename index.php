@@ -18,6 +18,8 @@ $pge=Site::pagefirst(@$_REQUEST["page"]);
 /*获取用户*/
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
+}else{
+    $user = null;
 }
 /*获取页码*/
 $pagination = array();

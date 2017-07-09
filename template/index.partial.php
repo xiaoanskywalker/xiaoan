@@ -7,10 +7,14 @@
     <div class="content">
         <?php
         require 'partial/message.php';
-        require 'partial/post-list.php';
-        require 'partial/pagination.php';
-        if ($_SESSION["user"]!=null){
-            require 'partial/new-post.php';
+        if($user != null and $user->admingp != 0 or Site::ifopen()->ifopen == 1){
+            require 'partial/post-list.php';
+            require 'partial/pagination.php';
+            if ($user!= null){
+                require 'partial/new-post.php';
+            }
+        }else{
+            require "partial/forbid-visit-set.php";
         }
         ?>
     </div>

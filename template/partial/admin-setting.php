@@ -6,8 +6,8 @@
         <tr>
             <td>是否开启站点</td>
             <td>
-                <input type="radio" name="sex" id="man" value="1" <?php if(Site::ifopen() == 1) echo " checked=\"checked\""; ?> /> 开启
-                <input type="radio" name="sex" id="woman" value="2" <?php if(Site::ifopen() == 2) echo " checked=\"checked\""; ?> /> 关闭
+                <input type="radio" name="sex" id="man" value="1" <?php if(Site::ifopen()->ifopen == 1) echo " checked=\"checked\""; ?> /> 开启
+                <input type="radio" name="sex" id="woman" value="2" <?php if(Site::ifopen()->ifopen == 0) echo " checked=\"checked\""; ?> /> 关闭
             </td>
             <td>若选择“关闭”，则只有管理员才能访问站点</td>
         <tr>

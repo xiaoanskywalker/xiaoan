@@ -18,6 +18,8 @@ $tid=Site::pagefirst(@$_REQUEST["tid"]);
 /*获取用户*/
 if ($_SESSION["user"] != null) {
     $user = $_SESSION["user"];
+}else{
+    $user = null;
 }
 /*获取回复*/;
 $topic=Post::getReplyTopic($tid);
