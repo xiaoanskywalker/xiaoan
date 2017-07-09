@@ -1,5 +1,5 @@
 <?php
-$avatar = User::avatar($row[2],$baseurl);
+$avatar = User::avatar($replys->lzuser,$baseurl);
 ?>
 <li>
     <div class="discussion">
@@ -9,11 +9,11 @@ $avatar = User::avatar($row[2],$baseurl);
 
         <div class="profile">
             <div class="preview">
-                <?= $row[3];?>
+                <?= $replys->reply ?>
             </div>
             <div class="info">
-                <a href="#" class="author"><?= $row[2]; ?></a>
-                <span class="time">回复于 <?= $row[4]; ?></span>
+                <a href="#" class="author"><?= $replys->lzuser ?></a>
+                <span class="time">回复于 <?= $replys->replytime ?></span>
             </div>
         </div>
     </div>

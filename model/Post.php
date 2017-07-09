@@ -9,15 +9,21 @@ class Post{
     public $date;
     public $content;
     public $topictype;
+    public $lzuser;
+    public $reply;
+    public $replytime;
     public $url;
 
-    function __construct($id, $title, $username, $date, $content,$topictype){
+    function __construct($id, $title, $username, $date, $content,$topictype,$lzuser,$reply,$replytime){
         $this->id = $id;
         $this->title = $title;
         $this->username = $username;
         $this->date = $date;
         $this->content = $content;
         $this->topictype = $topictype;
+        $this->lzuser = $lzuser;
+        $this->reply = $reply;
+        $this->replytime = $replytime;
         $this->url = '/showtopic.php?tid=' . $id;
     }
 
@@ -34,7 +40,7 @@ class Post{
         if (!$row) {
             return null;
         }
-        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['reply']);
+        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['user'],$row['reply'],$row['date']);
     }
 
     static function get($id)
@@ -108,19 +114,19 @@ class Post{
         throw new Exception('发帖成功！');
     }
 
-    static function getreply($tid,$page){
+    static function getreplys($tid,$page){
         global $con;
-        global $baseurl;
-        $limit = array();
-
         $limit[0] = ($page-1) * Post::$page_count;
         $limit[1] = $page * Post::$page_count;
-
-        $sql = mysqli_query($con,"SELECT * FROM wtb_reply WHERE tid=$tid ORDER BY rid DESC LIMIT $limit[0],$limit[1] ");
-        while ($row = mysqli_fetch_row($sql)) {
-            require "./template/partial/showreply-preview.php";
-
+        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? ORDER BY rid DESC limit ?,?");
+        $stat->bind_param('iii',$tid,$limit[0], $limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Post::from($row));
         }
+        return $arr;
     }
 
     static function getReplyTopic($tid){

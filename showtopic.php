@@ -9,11 +9,13 @@ $body = 'showtopic.partial.php';
 $page['body']['class'] = 'index';
 /*引入初始文件*/
 require_once './common/includes/common.php';
+/*引入Model类*/
+require_once "$baseurl/model/Admin.php";
 
 session_start();
 /*帖子分页帖子ID预处理*/
-$pages=Site::pagefirst(@$_REQUEST["page"]);
-$tid=Site::pagefirst(@$_REQUEST["tid"]);
+$pages = Site::pagefirst(@$_REQUEST["page"]);
+$tid = Site::pagefirst(@$_REQUEST["tid"]);
 
 /*获取用户*/
 if ($_SESSION["user"] != null) {
@@ -22,7 +24,8 @@ if ($_SESSION["user"] != null) {
     $user = null;
 }
 /*获取回复*/;
-$topic=Post::getReplyTopic($tid);
+$topic = Post::getReplyTopic($tid);
+$reply = Post::getreplys($tid,$pages);
 /*获取页码*/
 $pagination = array();
 Site::pagination($pages,"./showtopic.php?tid=$tid&page=");
