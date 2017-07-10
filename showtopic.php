@@ -23,9 +23,6 @@ if ($_SESSION["user"] != null) {
 }else{
     $user = null;
 }
-/*获取回复*/;
-$topic = Post::getReplyTopic($tid);
-$reply = Post::getreplys($tid,$pages);
 /*获取页码*/
 $pagination = array();
 Site::pagination($pages,"./showtopic.php?tid=$tid&page=");
@@ -41,5 +38,8 @@ if($wel==4 or $wel==5){
 }
 /*回帖模块*/
 require './common/includes/newpost.php';
+/*获取回复*/;
+$topic = Post::getReplyTopic($tid);
+$reply = Post::getreplys($tid,$pages);
 /*引入模板*/
 require './template/layout.php';

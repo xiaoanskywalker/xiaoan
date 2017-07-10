@@ -1,4 +1,9 @@
 <?php
+/**
+ * Xiaoanbbs 0.4.0
+ * Created by Xiaoan
+ * File: /common/includes/admin-includes.php
+ */
 if (!empty($_POST['login'])) {
     /*管理员二次登录操作*/
     $pwd = $_POST["password"];

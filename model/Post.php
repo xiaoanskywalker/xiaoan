@@ -173,4 +173,13 @@ class Post{
                 return null;
         }
     }
+
+    static function gettype($tid){
+        global $con;
+        $stat = $con->prepare("SELECT * FROM wtb_titles where tid=?");
+        $stat->bind_param('i', $tid);
+        $stat->execute();
+        $row = $stat->get_result()->fetch_array();
+        return Post::from($row);
+    }
 }
