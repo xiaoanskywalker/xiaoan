@@ -57,4 +57,11 @@ class Admin{
         $stat->bind_param('sssi',$webname,$keywords,$description,$ifopen);
         $stat->execute();
     }
+
+    static function changetopictype($tid,$type){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_titles SET topictype=? WHERE tid=?");
+        $stat->bind_param('ii',$type,$tid);
+        $stat->execute();
+    }
 }

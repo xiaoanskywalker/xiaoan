@@ -1,7 +1,8 @@
 <?php
 /**
- * Xiaoanbbs 0.4.0
- * Created by Xiaoan
+ * Softwave name:Xiaoanbbs
+ * Last modify version:0.5.0
+ * Author: Xiaoan
  * File: /common/includes/admin-includes.php
  */
 if (!empty($_POST['login'])) {
