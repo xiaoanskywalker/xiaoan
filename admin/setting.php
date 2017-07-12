@@ -1,6 +1,6 @@
 <?php
 /**
- * Softwave name:Xiaoanbbs
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
  * Last modify version:0.5.0
  * Author: Xiaoan
  * File: /admin/toptyp.php
@@ -17,8 +17,8 @@ session_start();
 if($_SESSION['admin'] == null){
     echo ("Access denied.");
 }
-$page['body']['action'] = @$_REQUEST["ac"];
-if($page['body']['action'] == "tt"){
+$page['body']['action'] = @$_REQUEST["action"];
+if($page['body']['action'] == "topictype"){
     Admin::changetopictype(@$_REQUEST["tid"],@$_REQUEST["tp"]);
     echo  ("操作成功");
 }else{

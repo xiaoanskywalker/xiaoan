@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /template/partial/new-post.php
+ */
+?>
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
@@ -9,7 +17,7 @@
                 }
                 ?>
             </SELECT>
-            <input type="text" id="title" name="title" placeholder="话题标题" value="<?=$arr[count($arr)-1] ?>" maxlength="30" required>
+            <input type="text" id="title" name="title" placeholder="话题标题" value="<?= $per[0] ?>" maxlength="30" required>
         </div>
         <div class="post-content">
             <textarea name="topic" class="input-area" placeholder="写点什么..." required></textarea>
