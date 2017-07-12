@@ -59,7 +59,7 @@ unset($_SESSION["welcome"]);
 require '../common/includes/admin-inculdes.php';
 /*获取页码*/
 $pagination = array();
-Site::pagination($pge,"./myhome.php?action=".$page['body']['action']."&page=");
+Site::pagination($pge,"./index.php?mode=".$page['body']['mode']."&page=");
 
 /*管理员退出登录*/
 if($page['body']['action'] == 'logout'){

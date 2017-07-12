@@ -5,7 +5,7 @@
  * Author: Xiaoan
  * File: /template/partial/admin-topic.php
  */
-print_r(Admin::topicbin(1));
+$topicbin = Admin::topicbin($pge);
 ?>
 <center>
     <h4>帖子回收站</h4>
@@ -23,12 +23,18 @@ print_r(Admin::topicbin(1));
         <div class="tab-pane fade active in" id="adminid">
             <table class="table">
                 <tr>
+                    <td>勾选</td>
                     <td>帖子ID</td>
                     <td>发帖人</td>
                     <td>帖子标题</td>
                     <td>帖子内容</td>
                     <td>发帖时间</td>
                 </tr>
+                <?php
+                foreach ($topicbin as $value){
+                    require "admin-topicpreview.php";
+                }
+                ?>
             </table>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
@@ -41,7 +47,7 @@ print_r(Admin::topicbin(1));
                 </tr>
             </table>
         </div>
-        <?php //require 'pagination.php';?>
+        <?php require 'pagination.php';?>
     </div>
 </div>
 

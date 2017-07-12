@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /template/partial/login-box.php
+ */
+?>
 <div class="login-box">
     <form class="form-inline" name="login" role="form" action="" method=post>
 
