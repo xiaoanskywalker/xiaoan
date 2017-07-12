@@ -1,4 +1,10 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /model/Home.php
+ */
 class Home{
 
     public $email;

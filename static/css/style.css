@@ -232,3 +232,11 @@ body.register .header {
   margin:0px auto;
   background: rgba(255, 255, 255, 0.85);
 }
+.ok{
+  color: green;
+  text-align: center;
+  margin-top:10px;
+  margin-left:20%;
+  margin-right:20%;
+  background: rgba(255, 255, 255, 0.85);
+}
