@@ -50,3 +50,24 @@ if (!empty($_POST['settings'])) {
         array_push($page['message']['accept'], '设置已经保存');
     }
 }
+
+if (!empty($_POST['recovertopics'])) {
+    $chk = $_POST["chk"];
+    $retid = array();
+    if(count($chk) == 0){
+        array_push($page['message']['error'], '请至少选择一个帖子');
+    }
+    if (empty($page['message']['error'])) {
+        try{
+            foreach ($chk as $key=>$value){
+                array_push($retid,$key);
+            }
+            foreach($retid as $value){
+                Admin::changetopictype($value,1);
+            }
+            array_push($page['message']['accept'], '帖子恢复成功');
+        }catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+    }
+}

@@ -7,7 +7,7 @@
  */
 ?>
 <tr>
-    <td><input type="checkbox" name="<?= $value->t_id ?>"></td>
+    <td><input type="checkbox" name="chk[<?= $value->t_id ?>]"></td>
     <td><?= $value->t_id ?></td>
     <td><?= $value->t_user ?></td>
     <td><?= substr($value->t_title,0,50) ?></td>

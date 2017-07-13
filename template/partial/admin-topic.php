@@ -21,21 +21,24 @@ $topicbin = Admin::topicbin($pge);
                 <a href="#newid" data-toggle="tab" onclick="myreply()" aria-expanded="false">回帖回收站</a></li>
         </ul><br>
         <div class="tab-pane fade active in" id="adminid">
-            <table class="table">
-                <tr>
-                    <td>勾选</td>
-                    <td>帖子ID</td>
-                    <td>发帖人</td>
-                    <td>帖子标题</td>
-                    <td>帖子内容</td>
-                    <td>发帖时间</td>
-                </tr>
-                <?php
-                foreach ($topicbin as $value){
-                    require "admin-topicpreview.php";
-                }
-                ?>
-            </table>
+            <form class="form-inline" name="topicbin" role="form" action="" method=post>
+                <table class="table">
+                    <tr>
+                        <td>勾选</td>
+                        <td>帖子ID</td>
+                        <td>发帖人</td>
+                        <td>帖子标题</td>
+                        <td>帖子内容</td>
+                        <td>发帖时间</td>
+                    </tr>
+                    <?php
+                    foreach ($topicbin as $value){
+                        require "admin-topicpreview.php";
+                    }
+                    ?>
+                </table>
+                <input name="recovertopics" type = "submit" class="btn btn-success" value = "恢复所选帖子">
+            </form>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
             <table class="table">
