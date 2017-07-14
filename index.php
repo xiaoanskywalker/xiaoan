@@ -1,4 +1,10 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /index.php
+ */
 /*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/install.php");
