@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /template/partial/admin-setting.php
+ */
+?>
 <center>
     <h4>站点基本设置</h4>
 </center>
@@ -32,15 +40,7 @@
                 </td>
                 <td>选填选项，可留空</td>
             </tr>
-        <!--
-        <tr>
-            <td>发帖前缀</td>
-            <td>
-                <input type=text name="webname"  value="<?= Post::show_prefix() ?>" class="form-control">
-            </td>
-            <td>选填选项，以空格为分界，不设前缀则留空</td>
-        </tr>
-        -->
+
         </table>
         <input name="settings" type="submit" value="保存设置" class="btn btn-success">
     </form>

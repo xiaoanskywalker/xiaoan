@@ -47,7 +47,7 @@ if (!empty($_POST['settings'])) {
         } catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
         }
-        array_push($page['message']['accept'], '设置已经保存');
+        array_push($page['message']['accept'], '设置保存成功');
     }
 }
 
@@ -69,5 +69,22 @@ if (!empty($_POST['recovertopics'])) {
         }catch (Exception $e) {
             array_push($page['message']['error'], $e->getMessage());
         }
+    }
+}
+if (!empty($_POST['topicsetting'])) {
+    $allow = $_POST["allow"];
+    $prefix = $_POST["prefix"];
+
+    if ($allow != 1 and $allow != 0) {
+        array_push($page['message']['error'], '是否允许发帖选项填写错误');
+    }
+
+    if (empty($page['message']['error'])) {
+        try {
+            Admin::changetopicsetting($allow,$prefix);
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+        array_push($page['message']['accept'], '设置保存成功');
     }
 }

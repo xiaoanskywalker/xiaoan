@@ -1,6 +1,10 @@
 <?php
-
-
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /model/Post.php
+ */
 class Post{
     public static $page_count = 40;
     public $id;
@@ -40,7 +44,8 @@ class Post{
         if (!$row) {
             return null;
         }
-        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['user'],$row['reply'],$row['date']);
+        return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['user'],
+            $row['reply'],$row['date']);
     }
 
     static function get($id)

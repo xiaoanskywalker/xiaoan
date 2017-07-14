@@ -1,4 +1,10 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /model/Site.php
+ */
 class Site
 {
     public static $page_count = 40;
@@ -7,14 +13,16 @@ class Site
     public $description;
     public $replynumber;
     public $ifopen;
+    public $allowpost;
 
-    function __construct($title, $keywords, $description,$replynumber,$ifopen)
+    function __construct($title, $keywords, $description,$replynumber,$ifopen,$allowpost)
     {
         $this->title = $title;
         $this->keywords = $keywords;
         $this->description = $description;
         $this->replynumber = $replynumber;
         $this->ifopen = $ifopen;
+        $this->allowpost = $allowpost;
     }
 
     static function from($row)
@@ -22,7 +30,7 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['ifopen']);
+        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['opened'],$row["allowpost"]);
     }
 
     static function get()
@@ -125,7 +133,7 @@ class Site
 
     static function ifopen(){
         global $con;
-       $row = $con->query("SELECT * FROM wtb_settings WHERE sid =1")->fetch_array();
+        $row = $con->query("SELECT * FROM wtb_settings WHERE sid =1")->fetch_array();
         return Site::from($row);
     }
 }

@@ -9,8 +9,8 @@
 <aside class="sidebar">
     <ul>
         <li><a href="<?= $baseurl ?>/admin/index.php?mode=index"><i class="zmdi zmdi-account-box"></i>系统首页</a></li>
-        <li><a href="<?= $baseurl ?>/admin/index.php?mode=setting"><i class="zmdi zmdi-account-add"></i>基本设置</a></li>
-        <li><a href="<?= $baseurl ?>/admin/index.php?mode=topic"><i class="zmdi zmdi-account-box"></i>帖子回收站</a></li>
+        <li><a href="<?= $baseurl ?>/admin/index.php?mode=setting"><i class="zmdi zmdi-account-add"></i>站点设置</a></li>
+        <li><a href="<?= $baseurl ?>/admin/index.php?mode=topic"><i class="zmdi zmdi-account-box"></i>帖子管理</a></li>
         <li><a href="<?= $baseurl ?>/admin/index.php?mode=user"><i class="zmdi zmdi-account-add"></i>用户管理</a></li>
         <!--
         <li><a href="<?= $baseurl ?>/user/myhome.php?mode=message"><i class="zmdi zmdi-account-box"></i>消息中心</a></li>

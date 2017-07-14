@@ -70,7 +70,7 @@ class Admin{
 
     static function changesettings($ifopen,$webname ,$keywords ,$description ){
         global $con;
-        $stat = $con->prepare("UPDATE wtb_settings SET webname=?,keywords=?,description=?,ifopen=? WHERE sid=1");
+        $stat = $con->prepare("UPDATE wtb_settings SET webname=?,keywords=?,description=?,opened=? WHERE sid=1");
         $stat->bind_param('sssi',$webname,$keywords,$description,$ifopen);
         $stat->execute();
     }
@@ -96,5 +96,12 @@ class Admin{
             array_push($arr, Admin::from($row));
         }
         return $arr;
+    }
+
+    static function changetopicsetting($allowed,$prefix){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_settings SET prefix=?,allowpost=? WHERE sid=1");
+        $stat->bind_param('si',$prefix,$allowed);
+        $stat->execute();
     }
 }
