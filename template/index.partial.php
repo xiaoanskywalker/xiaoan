@@ -1,4 +1,12 @@
-<?php require 'partial/header.php'; ?>
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /template/index.partial.php
+ */
+require 'partial/header.php';
+?>
 
 <main class="main">
 
@@ -10,8 +18,10 @@
         if($user != null and $user->admingp != 0 or Site::ifopen()->ifopen == 1){
             require 'partial/post-list.php';
             require 'partial/pagination.php';
-            if ($user!= null){
+            if ($user!= null and (Site::ifopen()->allowpost == 1 or $user->admingp != 0)){
                 require 'partial/new-post.php';
+            }else{
+                require 'partial/forbid-post.php';
             }
         }else{
             require "partial/forbid-visit-set.php";
@@ -20,6 +30,3 @@
     </div>
 
 </main>
-
-
-

@@ -16,8 +16,13 @@ class Admin{
     public $t_title;
     public $t_context;
     public $t_time;
+    public $u_id;
+    public $u_name;
+    public $u_regtime;
+    public $u_admingp;
 
-    function __construct($usernumber,$topicnumber,$replynumber,$dbsize,$t_id,$t_user,$t_title,$t_context,$t_time){
+    function __construct($usernumber,$topicnumber,$replynumber,$dbsize,$t_id,$t_user,$t_title,$t_context,$t_time,$u_id,$u_name,
+                         $u_regtime,$u_admingp){
         $this->usernumber = $usernumber;
         $this->topicnumber = $topicnumber;
         $this->replynumber = $replynumber;
@@ -27,6 +32,10 @@ class Admin{
         $this->t_title = $t_title;
         $this->t_context = $t_context;
         $this->t_time = $t_time;
+        $this->u_id = $u_id;
+        $this->u_name = $u_name;
+        $this->u_regtime = $u_regtime;
+        $this->u_admingp = $u_admingp;
     }
 
     static function from($row)
@@ -35,7 +44,7 @@ class Admin{
             return null;
         }
         return new Admin($row['count( * )'],$row['count( * )'],$row['count( * )'], $row['sum( DATA_LENGTH ) + sum( INDEX_LENGTH )'],$row['tid'],
-            $row['users'],$row['titles'],$row['posts'],$row['date']);
+            $row['users'],$row['titles'],$row['posts'],$row['date'],$row["uid"],$row["usr"],$row["regtime"],$row["admingp"]);
     }
 
     static function getusernum(){
@@ -87,7 +96,7 @@ class Admin{
         $limit = array();
         $limit[0] = ($page-1) * Site::$page_count;
         $limit[1] = $page * Site::$page_count;
-        $stat = $con->prepare("SELECT * FROM wtb_titles where topictype=0  LIMIT ?,?");
+        $stat = $con->prepare("SELECT * FROM wtb_titles where topictype=0  ORDER BY tid DESC  LIMIT ?,?");
         $stat->bind_param('ii',$limit[0],$limit[1]);
         $stat->execute();
         $result = $stat->get_result();
@@ -103,5 +112,21 @@ class Admin{
         $stat = $con->prepare("UPDATE wtb_settings SET prefix=?,allowpost=? WHERE sid=1");
         $stat->bind_param('si',$prefix,$allowed);
         $stat->execute();
+    }
+
+    static function listuser($page){
+        global $con;
+        $limit = array();
+        $limit[0] = ($page-1) * Site::$page_count;
+        $limit[1] = $page * Site::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_users  ORDER BY uid DESC  LIMIT ?,?");
+        $stat->bind_param('ii',$limit[0],$limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Admin::from($row));
+        }
+        return $arr;
     }
 }

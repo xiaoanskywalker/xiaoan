@@ -9,14 +9,17 @@
 <div class="new-post">
     <form method="post" action="">
         <div class="post-title">
-            <SELECT name="prefix" onchange="document.getElementById('title').value=this.options[this.selectedIndex].value">
-                <?php
-                //循环输出前缀
-                foreach($per as $pers){
-                    echo "<option value ='$pers'>$pers</option>";
-                }
-                ?>
-            </SELECT>
+            <?php
+            if (Post::show_prefix() != null){?>
+                <SELECT name="prefix" onchange="document.getElementById('title').value=this.options[this.selectedIndex].value">
+                    <?php
+                    //循环输出前缀
+                    foreach($per as $pers){
+                        echo "<option value ='$pers'>$pers</option>";
+                    }
+                    ?>
+                </SELECT>
+            <?php } ?>
             <input type="text" id="title" name="title" placeholder="话题标题" value="<?= $per[0] ?>" maxlength="30" required>
         </div>
         <div class="post-content">
