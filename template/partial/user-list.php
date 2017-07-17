@@ -22,6 +22,6 @@
             }
             ?>
         </table>
-        <input name="recovertopics" type = "submit" class="btn btn-success" value = "恢复所选帖子">
+        <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >
     </form>
 </div>

@@ -129,4 +129,11 @@ class Admin{
         }
         return $arr;
     }
+
+    static function delusr($uid){
+        global $con;
+        $stat = $con->prepare("DELETE FROM wtb_users WHERE uid=?;");
+        $stat->bind_param('i',$uid);
+        $stat->execute();
+    }
 }

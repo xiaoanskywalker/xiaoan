@@ -88,3 +88,26 @@ if (!empty($_POST['topicsetting'])) {
         array_push($page['message']['accept'], '设置保存成功');
     }
 }
+if (!empty($_POST['delusr'])) {
+    $chk = $_POST["chk"];
+    $retid = array();
+    if(count($chk) == 0){
+        array_push($page['message']['error'], '请至少选择一个用户');
+    }
+    if (empty($page['message']['error'])) {
+        try{
+            foreach ($chk as $key=>$value){
+                array_push($retid,$key);
+            }
+            foreach($retid as $value){
+                if(file_exists("$baseurl/static/img/avatars/".User::get($value)->name.".png")){
+                    unlink("$baseurl/static/img/avatars/".User::get($value)->name.".png");
+                }
+                Admin::delusr($value);
+            }
+            array_push($page['message']['accept'], '用户删除成功');
+        }catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+    }
+}

@@ -11,5 +11,17 @@
     <td><?= $value->u_id ?></td>
     <td><?= $value->u_name ?></td>
     <td><?= $value->u_regtime ?></td>
-    <td><?=$value->u_admingp ?></td>
+    <td><?php
+          switch ($value->u_admingp){
+              case 1:
+                  echo "普通管理员";
+                  break;
+              case 2:
+                  echo "超级管理员";
+                  break;
+              default:
+                  echo "普通用户";
+          }
+        ?>
+    </td>
 </tr>

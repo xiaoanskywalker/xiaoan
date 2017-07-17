@@ -28,4 +28,4 @@ function topicsetting(){
     $('#adminid').css('display','none');
     $('#newid2').css('display','');
 }
-setTimeout(down,10000)
+setTimeout(down,10000);
