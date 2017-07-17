@@ -12,11 +12,12 @@
             <tr>
                 <td>勾选</td>
                 <td>UID</td>
-                <td>头像和用户名</td>
+                <td>用户名</td>
                 <td>注册时间</td>
                 <td>用户组</td>
             </tr>
             <?php
+            //TODO 显示每个用户的头像
             foreach ($users as $value){
                 require "admin-userpreview.php";
             }

@@ -100,6 +100,9 @@ if (!empty($_POST['delusr'])) {
                 array_push($retid,$key);
             }
             foreach($retid as $value){
+                if(User::get($value)->admingp != 0){
+                    throw new Exception ("无法删除管理员");
+                }
                 if(file_exists("$baseurl/static/img/avatars/".User::get($value)->name.".png")){
                     unlink("$baseurl/static/img/avatars/".User::get($value)->name.".png");
                 }
