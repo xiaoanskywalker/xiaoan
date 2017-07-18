@@ -16,6 +16,7 @@
                     <input type="radio" name="allow" id="disallowed" value="0" <?php if(Site::ifopen()->allowpost == 0) echo " checked=\"checked\""; ?> /> 不允许
                 </td>
                 <td>若选择“不允许”，则只有管理员才能发帖</td>
+            </tr>
             <tr>
                 <td>发帖前缀</td>
                 <td>

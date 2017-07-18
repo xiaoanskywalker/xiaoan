@@ -143,4 +143,11 @@ class Admin{
         $stat->bind_param('ii',$gp,$uid);
         $stat->execute();
     }
+
+    static function maxuid(){
+        global $con;
+        $result = $con->query("SELECT max(uid) AS uid FROM wtb_users");
+        $row = $result->fetch_array();
+        return Admin::from($row);
+    }
 }

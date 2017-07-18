@@ -19,11 +19,14 @@ $users = Admin::listuser($pge);
             <li class="">
                 <a href="#newid" data-toggle="tab" onclick="myreply()" aria-expanded="false">用户设置</a>
             </li>
+            <li class="">
+                <a href="#newid2" data-toggle="tab" onclick="topicsetting()" aria-expanded="false">添加用户</a>
+            </li>
         </ul><br>
         <?php
         require"user-list.php";
-       // require "reply-bin.php";
-        //require "topic-setting.php";
+        // require "reply-bin.php";
+        require "add-user.php";
         require 'pagination.php';
         ?>
     </div>
