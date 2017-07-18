@@ -114,3 +114,31 @@ if (!empty($_POST['delusr'])) {
         }
     }
 }
+if (!empty($_POST['usrtyp'])) {
+    $type =  $_POST["usrsel"];
+    $chk = $_POST["chk"];
+    $retid = array();
+    if(count($chk) == 0){
+        array_push($page['message']['error'], '请至少选择一个用户');
+    }
+    if($type != 0 and $type != 1){
+        array_push($page['message']['error'], '用户组错误');
+    }
+
+    if (empty($page['message']['error'])) {
+        try {
+            foreach ($chk as $key=>$value){
+                array_push($retid,$key);
+            }
+            foreach($retid as $value){
+                if(User::get($value)->admingp == 2){
+                    throw new Exception ("无法更改超级管理员用户组");
+                }
+                Admin::changeusergroup($value,$type);
+            }
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+        array_push($page['message']['accept'], '用户组设置成功');
+    }
+}

@@ -23,6 +23,11 @@
             }
             ?>
         </table>
-        <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >
+        <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >&nbsp;
+        <input name="usrtyp" type = "submit" class="btn btn-success"  value = "设置" >所选用户的用户组至
+        <select class="form-control" name="usrsel">
+            <option value ='0'>普通用户</option>
+            <option value ='1'>普通管理员</option>
+        </select>
     </form>
 </div>

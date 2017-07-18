@@ -136,4 +136,11 @@ class Admin{
         $stat->bind_param('i',$uid);
         $stat->execute();
     }
+
+    static function changeusergroup($uid,$gp){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_users SET admingp=? WHERE uid=?");
+        $stat->bind_param('ii',$gp,$uid);
+        $stat->execute();
+    }
 }
