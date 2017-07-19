@@ -1,4 +1,12 @@
-<?php include("header.php"); ?>
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /install/step-3.php
+ */
+include("header.php");
+?>
 <h3><span class='label label-info'>3/5</span>--填写相关信息</h3>
 <form name="login" action="step-4.php" method=post >
     <fieldset id="tb">

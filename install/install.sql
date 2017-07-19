@@ -1,22 +1,5 @@
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-DROP TABLE IF EXISTS `wtb_general_settings`;
-CREATE TABLE IF NOT EXISTS `wtb_general_settings` (
-  `gid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` text NOT NULL,
-  `keywords` text NOT NULL,
-  `description` text NOT NULL,
-  PRIMARY KEY (`gid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `wtb_messages`;
-CREATE TABLE IF NOT EXISTS `wtb_messages` (
-  `postuser` text NOT NULL,
-  `getuser` text NOT NULL,
-  `message` text NOT NULL,
-  `ifread` int(11) NOT NULL,
-  `time` datetime NOT NULL,
-  `tid` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `wtb_reply`;
 CREATE TABLE IF NOT EXISTS `wtb_reply` (
@@ -28,6 +11,19 @@ CREATE TABLE IF NOT EXISTS `wtb_reply` (
   PRIMARY KEY (`rid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `wtb_settings`;
+CREATE TABLE IF NOT EXISTS `wtb_settings` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `webname` text NOT NULL,
+  `keywords` text NOT NULL,
+  `description` text NOT NULL,
+  `prefix` text,
+  `opened` int(11) NOT NULL,
+  `allowpost` int(11) NOT NULL,
+  `allowreg` int(11) NOT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
 DROP TABLE IF EXISTS `wtb_titles`;
 CREATE TABLE IF NOT EXISTS `wtb_titles` (
   `tid` mediumint(8) NOT NULL AUTO_INCREMENT,
@@ -35,19 +31,9 @@ CREATE TABLE IF NOT EXISTS `wtb_titles` (
   `titles` text NOT NULL,
   `date` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `posts` text NOT NULL,
-  `topictype` int(11) NOT NULL,
+  `topictype` int(11) NOT NULL COMMENT '0：被删除贴1：普通贴2：置顶帖3：精华帖4:置顶精华帖',
   PRIMARY KEY (`tid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-
-DROP TABLE IF EXISTS `wtb_topic_settings`;
-CREATE TABLE IF NOT EXISTS `wtb_topic_settings` (
-  `tsid` int(11) NOT NULL DEFAULT '0',
-  `prefix` text,
-  PRIMARY KEY (`tsid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO `wtb_topic_settings` (`tsid`, `prefix`) VALUES
-(1, '【发帖前缀】');
 
 DROP TABLE IF EXISTS `wtb_users`;
 CREATE TABLE IF NOT EXISTS `wtb_users` (

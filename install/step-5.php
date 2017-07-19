@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /install/step-4.php
+ */
+?>
 <head>
   <meta charset="UTF-8">
   <title>小安社区-安装向导</title>

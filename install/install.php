@@ -1,4 +1,12 @@
-<?php include("header.php"); ?>
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /install/install.php
+ */
+include("header.php");
+?>
 <script>
     function check(){
         var chec=document.getElementById("chec");

@@ -1,4 +1,12 @@
-<?php include("header.php"); ?>
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /install/step-2.php
+ */
+include("header.php");
+?>
 <h3><span class='label label-info'>2/5</span>--检查环境配置</h3>
 <div class="table-responsive">
   <table class="table">
@@ -30,23 +38,29 @@
         <td>MySQLi数据库拓展</td>
         <td>支持/支持</td>
         <td><b>
-        <?php
-        if (function_exists('mysqli_connect'))
-        {echo "<font color='green'>支持</font>";}
-        else
-        {echo "<font color='red'>不支持</font>";}
-        ?></b></td></tr>
+            <?php
+            if (function_exists('mysqli_connect')) {
+              echo "<font color='green'>支持</font>";
+            }else {
+              echo "<font color='red'>不支持</font>";
+            }
+            ?>
+          </b>
+        </td>
+      </tr>
 
       <tr>
         <td>配置文件写入</td>
         <td>可选/支持</td>
         <td><b>
-        <?php
-        if (is_writable("../common/config2.php"))
-        {echo "<font color='green'>支持</font>";}
-        else
-        {echo "<font color='red'>不支持</font>";}
-        ?></b></td>
+            <?php
+            if (is_writable("../common/config2.php")) {
+              echo "<font color='green'>支持</font>";
+            }else {
+              echo "<font color='red'>不支持</font>";}
+            ?>
+          </b>
+        </td>
       </tr>
 
       <tr>
