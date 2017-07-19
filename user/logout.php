@@ -12,7 +12,10 @@ require "../common/includes/common.php";
 
 /*退出登录操作*/
 User::logout();
-$gotoo=Site::gotoo(@$_REQUEST["goto"]);
-$_SESSION["welcome"]=3;
+
+/*得到提示信息*/
+$gotoo = Site::gotoo(@$_REQUEST["goto"]);
+$_SESSION["welcome"] = 3;
+
+/*返回之前页面*/
 header("location:$gotoo");
-?>

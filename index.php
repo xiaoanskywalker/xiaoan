@@ -9,15 +9,16 @@
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/install.php");
 }
+
 /*基础参数赋值*/
 $baseurl = '.';
 $body = 'index.partial.php';
 $page['body']['class'] = 'index';
+
 /*引入初始文件*/
 require_once './common/includes/common.php';
-/*引入Model类*/
-
 session_start();
+
 /*帖子分页预处理*/
 $pge=Site::pagefirst(@$_REQUEST["page"]);
 
@@ -27,6 +28,7 @@ if ($_SESSION["user"] != null) {
 }else{
     $user = null;
 }
+
 /*获取页码*/
 $pagination = array();
 Site::pagination($pge,"./?page=");
@@ -45,7 +47,9 @@ unset($_SESSION["welcome"]);
 
 /*发帖模块*/
 require './common/includes/newpost.php';
+
 /*获取帖子*/
 $discussions = Post::getPage($pge);
+
 /*引入模板*/
 require './template/layout.php';

@@ -3,7 +3,7 @@
  * (C)2016-2017 Xiaoanbbs All rights reserved.
  * Last modify version:0.5.0
  * Author: Xiaoan
- * File: /template/layout.php
+ * File: /template/register.partial.php
  */
 require 'partial/header.php';
 ?>
