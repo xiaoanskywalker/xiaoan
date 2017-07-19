@@ -5,7 +5,8 @@
  * Author: Xiaoan
  * File: /template/layout.php
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="zh-cn">
 <?php require 'partial/head.php'; ?>
 <body class="<?= $page['body']['class'] ?>" onload="show()">

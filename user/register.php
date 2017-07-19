@@ -1,24 +1,30 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.0
+ * Author: Xiaoan
+ * File: /user/register.php
+ */
 /*配置文件检测*/
 if ((file_exists("../common/config.php")) == false) {
     header("location:../install/install.php");
 }
+
 /*基础参数赋值*/
 $baseurl = '..';
 $body = 'register.partial.php';
 
-
-
 /*引入初始文件*/
 require_once '../common/includes/common.php';
-/*获取用户*/
-session_start();
 
+/*检测用户是否已登录*/
+session_start();
 if ($_SESSION["user"]) {
     $_SESSION["welcome"]=5;
     header("location:../index.php");
 }
 
+/*用户注册操作*/
 if (!empty($_POST['log'])) {
     $usr = $_POST["username"];
     $pwd = $_POST["password"];
@@ -63,7 +69,11 @@ if (!empty($_POST['log'])) {
 
     }
 }
+
+/*参数赋值*/
 $page['sidebar']['content'] = 'sidebar-login.php';
 $page['body']['class'] = 'register';
 $page['header']['title'] = '注册，探索崭新世界!';
+
+/*引入模板*/
 require '../template/layout.php';

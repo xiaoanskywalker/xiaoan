@@ -25,7 +25,7 @@ $users = Admin::listuser($pge);
         </ul><br>
         <?php
         require"user-list.php";
-        // require "reply-bin.php";
+        require "user-setting.php";
         require "add-user.php";
         require 'pagination.php';
         ?>

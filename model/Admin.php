@@ -150,4 +150,11 @@ class Admin{
         $row = $result->fetch_array();
         return Admin::from($row);
     }
+
+    static function allowreg($ifallow){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_settings SET allowreg=? WHERE sid=1");
+        $stat->bind_param('i',$ifallow);
+        $stat->execute();
+    }
 }

@@ -142,3 +142,40 @@ if (!empty($_POST['usrtyp'])) {
         array_push($page['message']['accept'], '用户组设置成功');
     }
 }
+
+if (!empty($_POST['adduser'])) {
+    $user = @$_POST["usr"];
+    $pawd = @$_POST["pwd"];
+    $mail = @$_POST["email"];
+    $gp = @$_POST["user"];
+
+    if($user == null or $pawd == null or $mail == null){
+        array_push($page['message']['error'], '用户名、密码或电子邮箱为空');
+    }
+    if($gp != 0 and $gp != 1){
+        array_push($page['message']['error'], '用户组类型错误');
+    }
+
+    if (empty($page['message']['error'])) {
+        try {
+            User::register($user,md5($pawd),$mail,$gp);
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+        array_push($page['message']['accept'], '用户添加成功');
+    }
+}
+if (!empty($_POST['usersetting'])) {
+    $allowreg = @$_POST["allowreg"];
+    if ($allowreg != 0 and $allowreg != 1){
+        array_push($page['message']['error'], '是否运行注册选项填写错误');
+    }
+    if (empty($page['message']['error'])) {
+        try {
+            Admin::allowreg($allowreg);
+        } catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+        array_push($page['message']['accept'], '设置保存成功');
+    }
+}

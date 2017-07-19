@@ -14,8 +14,9 @@ class Site
     public $replynumber;
     public $ifopen;
     public $allowpost;
+    public $allowreg;
 
-    function __construct($title, $keywords, $description,$replynumber,$ifopen,$allowpost)
+    function __construct($title, $keywords, $description,$replynumber,$ifopen,$allowpost,$allowreg)
     {
         $this->title = $title;
         $this->keywords = $keywords;
@@ -23,6 +24,7 @@ class Site
         $this->replynumber = $replynumber;
         $this->ifopen = $ifopen;
         $this->allowpost = $allowpost;
+        $this->allowreg = $allowreg;
     }
 
     static function from($row)
@@ -30,7 +32,7 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['opened'],$row["allowpost"]);
+        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['opened'],$row["allowpost"],$row["allowreg"]);
     }
 
     static function get()

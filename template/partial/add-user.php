@@ -17,14 +17,21 @@
             <tr>
                 <td>用户名</td>
                 <td>
-                    <input type=text name="usr"  class="form-control">
+                    <input type=text name="usr"  class="form-control" required>
                 </td>
                 <td>必填选项</td>
             </tr>
             <tr>
                 <td>密码</td>
                 <td>
-                    <input type=text name="pwd"  class="form-control">
+                    <input type=text name="pwd"  class="form-control" required>
+                </td>
+                <td>必填选项</td>
+            </tr>
+            <tr>
+                <td>电子邮箱</td>
+                <td>
+                    <input type=text name="email"  class="form-control" required>
                 </td>
                 <td>必填选项</td>
             </tr>
