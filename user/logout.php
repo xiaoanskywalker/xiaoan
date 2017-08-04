@@ -1,12 +1,12 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.1
  * Author: Xiaoan
  * File: /user/logout.php
  */
 session_start();
-
+$baseurl = "..";
 /*引入初始文件*/
 require "../common/includes/common.php";
 
