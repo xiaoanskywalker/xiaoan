@@ -148,7 +148,7 @@ class Post{
         global $user;
         $usr = $user->name;
         $time = date('Y-m-d h:m:s');
-        $stat = $con->prepare("INSERT INTO wtb_reply VALUES (null,?,?,?,?)");
+        $stat = $con->prepare("INSERT INTO wtb_reply VALUES (null,?,?,?,?,0)");
         $stat->bind_param('ssss',$tid,$usr,$reply,$time);
         $stat->execute();
         throw new Exception('回帖成功！');
