@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.1
  * Author: Xiaoan
  * File: /template/partial/top-bar-logged.php
  */
@@ -10,14 +10,24 @@ $avatar = User::avatar($user->name,$baseurl);
 <li class="dropdown user-nav-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">
         <span><?= $user->name ?></span>
+        <?php if (count(Post::newreplynun()) >0){ ?>
+        <span id="msgNum" class="ii"><?= count(Post::newreplynun()) ?></span>
+        <?php } ?>
         <span class="caret"></span>
     </a>
+
     <ul class="dropdown-menu user-nav">
         <li class="user-profile">
             <img src="<?= $avatar ?>" class="avatar">
             <span class="username"><?= $user->name ?></span>
         </li>
         <li role="separator" class="divider"></li>
+
+        <li>
+            <li><a href="<?= $baseurl ?>/user/myhome.php?action=message"><b><?= count(Post::newreplynun()) ?></b>条新回复</a></li>
+        </li>
+        <li role="separator" class="divider"></li>
+
         <li><a href="<?= $baseurl ?>/user/myhome.php">个人中心</a></li>
         <?php
         if($user->admingp != 0){

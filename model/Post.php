@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.1
  * Author: Xiaoan
  * File: /model/Post.php
  */
@@ -186,5 +186,26 @@ class Post{
         $stat->execute();
         $row = $stat->get_result()->fetch_array();
         return Post::from($row);
+    }
+    static function listnewreply(){
+        global $con;
+        $result = $con->query("SELECT * FROM wtb_reply WHERE ifread=0");
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Post::from($row));
+        }
+        return $arr;
+    }
+
+    static function newreplynun(){
+        global $user;
+        $newreplyids = array();
+        foreach (Post::listnewreply() as $value){
+            $lzuid = Post::gettype($value->id);
+            if($lzuid->username == $user->name){
+                array_push($newreplyids,$lzuid->username);
+            }
+        }
+        return $newreplyids;
     }
 }
