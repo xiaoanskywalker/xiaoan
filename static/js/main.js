@@ -1,9 +1,10 @@
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.1
  * Author: Xiaoan
  * File: /static/js/main.js
  */
+setTimeout(down,10000);
 function show(){
     $("div.message").slideDown();
 }
@@ -66,9 +67,7 @@ function addpic(){
     var topic = document.getElementById("topic").value;
     var picurl = document.getElementById("picurl").value;
     parent.document.getElementById("topic").value = topic + "<img src = '" + picurl + "' />";
-    parent.document.getElementById("picurl").value = null;
+    parent.document.getElementById("picurl").value = "http://";
     d_x();
     d_y();
 }
-
-setTimeout(down,10000);
