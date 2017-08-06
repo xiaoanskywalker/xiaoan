@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.1
+ * Author: Xiaoan
+ * File: /template/partial/myhome-avatar.php
+ */
+?>
 <center><h4>修改头像</h4></center>
 <table class="table">
     <tr>

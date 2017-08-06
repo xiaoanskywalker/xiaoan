@@ -1,3 +1,11 @@
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.1
+ * Author: Xiaoan
+ * File: /template/partial/myhome-myinfo.php
+ */
+?>
 <center><h4>个人信息管理</h4></center>
 <?php
 $info=Home::myinfo($user->id);

@@ -1,5 +1,10 @@
 <?php
-
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.1
+ * Author: Xiaoan
+ * File: /model/User.php
+ */
 class User
 {
 
