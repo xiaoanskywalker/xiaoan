@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.1
  * Author: Xiaoan
  * File: /model/Home.php
  */
@@ -115,5 +115,31 @@ class Home{
     static function getage($birthday){
         $arr = explode("-",$birthday);//将出生日期按照年月日导入数组，以"-"符号为分界
         return $arr;
+    }
+
+    static function replyme($tid,$type,$page){
+        global $con;
+        $limit = array();
+        $limit[0] = ($page-1) * Post::$page_count;
+        $limit[1] = $page * Post::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? AND ifread=? ORDER BY rid DESC limit ?,?");
+        $stat->bind_param('iiii',$tid,$type,$limit[0], $limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Home::from($row));
+        }
+        return $arr;
+    }
+
+    static function gettidbyuser($user){
+        global $con;
+        $tid = array();
+        $sql = mysqli_query($con,"SELECT * FROM wtb_titles WHERE users = '$user'");
+        while($row = mysqli_fetch_row($sql)){
+            array_push($tid,$row[0]);
+        }
+        return $tid;
     }
 }
