@@ -6,9 +6,10 @@
  * File: /template/partial/myhome-message.php
  */
 //TODO 系统消息
-Home::gettidbyuser($user->name);
-
-print_r($myreply = Home::replyme(11,0,1));
+$myreply = array();
+foreach (Home::gettidbyuser($user->name) as $tid){
+    array_push($myreply,Home::replyme($tid,0,$pge));
+}
 ?>
 <center><h4>消息中心</h4></center>
 <div id="fundetail">
@@ -22,6 +23,7 @@ print_r($myreply = Home::replyme(11,0,1));
         </ul><br>
         <div class="tab-pane fade active in" id="adminid">
             <table class="table">
+                <!--
                 <tr>
                     <td>原主题帖ID</td>
                     <td>原主题帖标题</td>
@@ -29,14 +31,18 @@ print_r($myreply = Home::replyme(11,0,1));
                     <td>回复内容</td>
                     <td>回复时间</td>
                 </tr>
+                -->
                 <?php
-               // foreach ($mytopic as $value){
-                 //   require'myhome-topicpreview.php';
-              //  }
+                foreach($myreply as $value){
+                    foreach($value as $values){
+                        require "myhome-massagepreview.php";
+                    }
+                }
                 ?>
             </table>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
 
     </div>
+        <?php require 'pagination.php';?>
 </div>

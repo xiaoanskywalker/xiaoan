@@ -18,8 +18,9 @@ class Home{
     public $tid;
     public $reply;
     public $repdate;
+    public $replyuser;
 
-    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$reply,$repdate)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$reply,$repdate,$replyuser)
     {
         $this->email = $email;
         $this->sex = $sex;
@@ -32,6 +33,7 @@ class Home{
         $this->tid = $tid;
         $this->reply = $reply;
         $this->repdate = $repdate;
+        $this->replyuser = $replyuser;
     }
     static function Upload($filename){
         if($filename==null){
@@ -52,7 +54,8 @@ class Home{
         if (!$row) {
             return null;
         }
-        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],$row['reply'],$row['date']);
+        return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],
+            $row['reply'],$row['date'],$row['user']);
     }
 
     static function myinfo($uid){
@@ -136,7 +139,7 @@ class Home{
     static function gettidbyuser($user){
         global $con;
         $tid = array();
-        $sql = mysqli_query($con,"SELECT * FROM wtb_titles WHERE users = '$user'");
+        $sql = mysqli_query($con,"SELECT * FROM wtb_titles WHERE users = '$user' ORDER BY tid DESC");
         while($row = mysqli_fetch_row($sql)){
             array_push($tid,$row[0]);
         }
