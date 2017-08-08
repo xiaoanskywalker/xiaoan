@@ -19,8 +19,9 @@ class Home{
     public $reply;
     public $repdate;
     public $replyuser;
+    public $rid;
 
-    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$reply,$repdate,$replyuser)
+    function __construct($email,$sex,$regtime,$admingp,$birthday,$title,$content,$topdate,$tid,$reply,$repdate,$replyuser,$rid)
     {
         $this->email = $email;
         $this->sex = $sex;
@@ -34,6 +35,7 @@ class Home{
         $this->reply = $reply;
         $this->repdate = $repdate;
         $this->replyuser = $replyuser;
+        $this->rid = $rid;
     }
     static function Upload($filename){
         if($filename==null){
@@ -55,7 +57,7 @@ class Home{
             return null;
         }
         return new Home($row['email'],$row['sex'],$row['regtime'],$row['admingp'],$row['birthday'],$row['titles'],$row['posts'],$row['date'],$row['tid'],
-            $row['reply'],$row['date'],$row['user']);
+            $row['reply'],$row['date'],$row['user'],$row['rid']);
     }
 
     static function myinfo($uid){
@@ -144,5 +146,12 @@ class Home{
             array_push($tid,$row[0]);
         }
         return $tid;
+    }
+
+    static function haveread($rid){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_reply SET ifread=1 WHERE rid=?");
+        $stat->bind_param('i',$rid);
+        $stat->execute();
     }
 }

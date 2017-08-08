@@ -9,6 +9,7 @@
 $myreply = array();
 foreach (Home::gettidbyuser($user->name) as $tid){
     array_push($myreply,Home::replyme($tid,0,$pge));
+    array_push($myreply,Home::replyme($tid,1,$pge));
 }
 ?>
 <center><h4>消息中心</h4></center>
@@ -22,7 +23,6 @@ foreach (Home::gettidbyuser($user->name) as $tid){
                 <a href="#newid" data-toggle="tab" onclick="myreply()" aria-expanded="false">系统消息</a></li>
         </ul><br>
         <div class="tab-pane fade active in" id="adminid">
-            <table class="table">
                 <!--
                 <tr>
                     <td>原主题帖ID</td>
@@ -36,10 +36,10 @@ foreach (Home::gettidbyuser($user->name) as $tid){
                 foreach($myreply as $value){
                     foreach($value as $values){
                         require "myhome-massagepreview.php";
+                        Home::haveread($values->rid);
                     }
                 }
                 ?>
-            </table>
         </div>
         <div class="tab-pane fade" id="newid" style="display: none;">
 
