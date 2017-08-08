@@ -1,3 +1,9 @@
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.1
+ * Author: Xiaoan
+ * File: /install/install.sql
+ */
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -8,6 +14,7 @@ CREATE TABLE IF NOT EXISTS `wtb_reply` (
   `user` text NOT NULL,
   `reply` text NOT NULL,
   `date` datetime NOT NULL,
+  `ifread` int(11) NOT NULL,
   PRIMARY KEY (`rid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
