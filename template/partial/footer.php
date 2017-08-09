@@ -1,14 +1,14 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/footer.php
  */
 ?>
 <footer>
     <div class="copyright">
-        Powered By <a href="http://xiaoanbbs.cn" target="_blank">Xiaoanbbs</a>&nbsp;V0.5.0
+        Powered By <a href="http://xiaoanbbs.cn" target="_blank">Xiaoanbbs</a>&nbsp;V0<?= $page["version"] ?>
         <p>
             <?php
             if($user->admingp != 0){

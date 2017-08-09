@@ -1,25 +1,24 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.1
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /model/User.php
  */
-class User
-{
-
+class User{
     public $id;
     public $name;
     public $password;
     public $avatar;
     public $admingp;
+    public $endblock;
 
-    function __construct($id, $name, $password, $admingp)
-    {
+    function __construct($id, $name, $password, $admingp,$endblock){
         $this->id = $id;
         $this->name = $name;
         $this->password = $password;
         $this->admingp = $admingp;
+        $this->endblock = $endblock;
 
         //TODO 路劲绝对地址
         //echo $name;
@@ -31,12 +30,11 @@ class User
         }
     }
 
-    static function from($row)
-    {
+    static function from($row){
         if (!$row) {
             return null;
         }
-        return new User($row['uid'], $row['usr'], $row['pwd'],$row["admingp"]);
+        return new User($row['uid'], $row['usr'], $row['pwd'],$row["admingp"],$row['endblock']);
     }
 
     static function avatar($user,$baseurl){
@@ -48,8 +46,7 @@ class User
         }
     }
 
-    static function get($id)
-    {
+    static function get($id){
         global $con;
         $stat = $con->prepare("SELECT * FROM wtb_users where uid=?");
         $stat->bind_param('i', $id);
@@ -58,8 +55,7 @@ class User
         return User::from($row);
     }
 
-    static function getByName($name)
-    {
+    static function getByName($name){
         global $con;
         $stat = $con->prepare("SELECT * FROM wtb_users where usr=?");
         $stat->bind_param('s', $name);
@@ -68,8 +64,7 @@ class User
         return User::from($row);
     }
 
-    static function getByMail($mail)
-    {
+    static function getByMail($mail){
         global $con;
         $stat = $con->prepare("SELECT * FROM wtb_users where email=?");
         $stat->bind_param('s', $mail);
@@ -79,8 +74,7 @@ class User
     }
 
 
-    static function login($uar, $pwd)
-    {
+    static function login($uar, $pwd){
         /*用户登录 user login*/
         $user = User::getByName($uar);
         if ($user == null) {
@@ -96,8 +90,7 @@ class User
         }
     }
 
-    static function register($usr, $pwd, $email,$group)
-    {
+    static function register($usr, $pwd, $email,$group){
         /*用户注册 user register*/
         global $con;
         $user = User::getByMail($email);
@@ -139,5 +132,14 @@ class User
         $stat->bind_param('si',$pwd1,$uid);
         $stat->execute();
         return 1;
+    }
+
+    static function ifblock($uid){
+        global $con;
+        $stat = $con->prepare("SELECT * FROM wtb_blockuser WHERE blockuid=?");
+        $stat->bind_param('i', $uid);
+        $stat->execute();
+        $row = $stat->get_result()->fetch_array();
+        return User::from($row);
     }
 }

@@ -7,6 +7,18 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
+/*
+DROP TABLE IF EXISTS `wtb_blockuser`
+CREATE TABLE IF NOT EXISTS `wtb_blockuser` (
+  `bid` int(11) NOT NULL AUTO_INCREMENT,
+  `blockuid` int(11) NOT NULL,
+  `startblock` datetime NOT NULL,
+  `endblock`datetime NOT NULL,
+  `operateuid` int(11) NOT NULL,
+  PRIMARY KEY (`bid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+*/
+
 DROP TABLE IF EXISTS `wtb_reply`;
 CREATE TABLE IF NOT EXISTS `wtb_reply` (
   `rid` mediumint(8) NOT NULL AUTO_INCREMENT,

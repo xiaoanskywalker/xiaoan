@@ -18,7 +18,7 @@ require 'partial/header.php';
         if($user != null and $user->admingp != 0 or Site::ifopen()->ifopen == 1){
             require 'partial/post-list.php';
             require 'partial/pagination.php';
-            if ($user!= null and (Site::ifopen()->allowpost == 1 or $user->admingp != 0)){
+            if ($user!= null and Site::ifopen()->allowpost == 1 and User::ifblock($user->id)->endblock == null or $user->admingp != 0){
                 require 'partial/new-post.php';
             }else{
                 require 'partial/forbid-post.php';

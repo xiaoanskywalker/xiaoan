@@ -1,25 +1,25 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/admin-index.php
  */
+
+//TODO 启用/取消验证码
+//TODO 管理员操作记录
+//TODO 用户申请解封
 ?>
 <center>
     <h4>管理中心首页</h4>
 </center>
 <div id="fundetail">
-    <?php
-    //TODO 检查更新功能
-    //TODO 管理员操作记录
-    ?>
     <b>管理控制台</b><br>
-    程序版本：Xiaoanbbs V0.5.0&nbsp;<a href="#" target="_blank">检查更新</a><p>
+    程序版本：Xiaoanbbs V<?= $page["version"] ?>&nbsp;<a href="http://xiaoanbbs.cn/checkupd.php?version=<?= $page["version"] ?>" target="_blank">检查更新</a><p>
     官方网站：<a href="http://xiaoanbbs.cn" target="_blank">http://xiaoanbbs.cn</a><br>
     发布站点：<a href="http://weitieba.cf" target="_blank">http://http://weitieba.cf</a><br>
     Github：<a href="https://github.com/tfdogs/xiaoan" target="_blank">https://github.com/tfdogs/xiaoan</a><br>
-    开发者：Xiaoan Development Group <br>
+    开发者：Xiaoan<br>
     管理员：<?= $user->name ?><br>
     用户组：
         <?php
