@@ -1,7 +1,7 @@
 <?php
 /*
  *  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.1
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /common/includes/common.php
 
@@ -13,6 +13,9 @@ require "$baseurl/common/conn.php";
 require "$baseurl/model/Site.php";
 require "$baseurl/model/User.php";
 require "$baseurl/model/Post.php";
+require "$baseurl/model/Home.php";
+require "$baseurl/model/Admin.php";
+
 /*基本参数赋值*/
 $url='http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
 $page = array();

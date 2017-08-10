@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /user/home.php
  */
@@ -16,9 +16,6 @@ $body = 'home.partial.php';
 
 /*引入初始文件*/
 require_once '../common/includes/common.php';
-
-/*引入Model类*/
-require_once '../model/Home.php';
 
 /*UID预处理*/
 $uid = Site::pagefirst(@$_REQUEST["uid"]);

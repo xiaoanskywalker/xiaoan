@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.1
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /install/header.php
  */
@@ -14,7 +14,7 @@
 <body>
 <div class="install">
     <center>
-        <h1 class="text-primary">Xiaoanbbs V0.5.1--安装向导</h1><p>
+        <h1 class="text-primary">Xiaoanbbs V0.5.2--安装向导</h1><p>
     </center>
     <hr>
     <?php

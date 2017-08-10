@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /admin/setting.php
  */
@@ -14,8 +14,7 @@ $body = 'admin.partial.php';
 <?php
 /*引入初始文件*/
 require_once "$baseurl/common/includes/common.php";
-/*引入Model类*/
-require_once "$baseurl/model/Admin.php";
+
 session_start();
 if($_SESSION['admin'] == null){
     echo ("Access denied.");
