@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/index.partial.php
  */
@@ -18,7 +18,7 @@ require 'partial/header.php';
         if($user != null and $user->admingp != 0 or Site::ifopen()->ifopen == 1){
             require 'partial/post-list.php';
             require 'partial/pagination.php';
-            if ($user!= null and Site::ifopen()->allowpost == 1 and User::ifblock($user->id)->endblock == null or $user->admingp != 0){
+            if ($user!= null and Site::ifopen()->allowpost == 1 and $page["endblock"] == null or $user->admingp != 0){
                 require 'partial/new-post.php';
             }else{
                 require 'partial/forbid-post.php';

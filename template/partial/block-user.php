@@ -1,28 +1,29 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
- * File: /template/partial/user-list.php
+ * File: /template/partial/block-user.php
  */
 ?>
-<div class="tab-pane fade active in" id="adminid">
+<div class="tab-pane fade active in" id="newid3" style="display: none;">
     <form class="form-inline" name="topicbin" role="form" action="" method=post>
         <table class="table">
             <tr>
                 <td>勾选</td>
-                <td>UID</td>
-                <td>用户名</td>
-                <td>注册时间</td>
-                <td>用户组</td>
+                <td>被封禁用户名</td>
+                <td>开始封禁时间</td>
+                <td>结束封禁时间</td>
+                <td>操作管理员</td>
             </tr>
             <?php
             //TODO 显示每个用户的头像
-            foreach ($users as $value){
-                require "admin-userpreview.php";
-            }
+            //foreach ($users as $value){
+             //   require "admin-userpreview.php";
+           // }
             ?>
         </table>
+
         <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >&nbsp;
         <input name="usrtyp" type = "submit" class="btn btn-success"  value = "设置" >所选用户的用户组至
         <select class="form-control" name="usrsel">

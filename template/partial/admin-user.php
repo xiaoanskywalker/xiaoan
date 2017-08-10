@@ -22,11 +22,15 @@ $users = Admin::listuser($pge);
             <li class="">
                 <a href="#newid2" data-toggle="tab" onclick="topicsetting()" aria-expanded="false">添加用户</a>
             </li>
+            <li class="">
+                <a href="#newid3" data-toggle="tab" onclick="blockedusr()" aria-expanded="false">用户封禁管理</a>
+            </li>
         </ul><br>
         <?php
         require"user-list.php";
         require "user-setting.php";
         require "add-user.php";
+        require "block-user.php";
         require 'pagination.php';
         ?>
     </div>

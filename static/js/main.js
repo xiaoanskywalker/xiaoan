@@ -15,19 +15,28 @@ function changing(){
     document.getElementById('checkpic').src="../common/checkcode.php?"+Math.random();
 }
 function mytopic(){
+    $('#newid3').css('display','none');
     $('#newid2').css('display','none');
     $('#newid').css('display','none');
     $('#adminid').css('display','');
 }
 function myreply(){
+    $('#newid3').css('display','none');
     $('#newid').css('display','');
     $('#adminid').css('display','none');
     $('#newid2').css('display','none');
 }
 function topicsetting(){
+    $('#newid3').css('display','none');
     $('#newid').css('display','none');
     $('#adminid').css('display','none');
     $('#newid2').css('display','');
+}
+function blockedusr(){
+    $('#newid3').css('display','');
+    $('#newid').css('display','none');
+    $('#adminid').css('display','none');
+    $('#newid2').css('display','none');
 }
 
 var Obj=''

@@ -11,7 +11,7 @@ if ($user == null){
     if(Site::ifopen()->allowpost == 0){
         echo "管理员已关闭发帖回帖功能，目前只有站点管理员才能发帖回帖";
     }
-    if(User::ifblock($user->id)->endblock != null){
-        echo "您已经被管理员封禁账号，封禁至".User::ifblock($user->id)->endblock."，被封禁期间您不能发帖或回帖";
+    if( $page["endblock"] != null){
+        echo "您已经被管理员封禁账号，封禁至". $page["endblock"]."，被封禁期间您不能发帖或回帖";
     }
 }

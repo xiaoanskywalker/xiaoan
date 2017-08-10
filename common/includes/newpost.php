@@ -1,4 +1,11 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.2
+ * Author: Xiaoan
+ * File: /common/includes/newpost.php
+ */
+
 /*发帖模块*/
 if (!empty($_POST['sendtopic'])) {
     /*获取帖子参数*/
@@ -42,5 +49,14 @@ if (!empty($_POST['sendreply'])) {
             array_push($page['message']['accept'], $e->getMessage());
         }
 
+    }
+}
+
+/*解封模块*/
+$page["endblock"] = User::ifblock($user->id)->endblock;
+if($page["endblock"] != null ){
+    if(strtotime("now") >= strtotime($page["endblock"])){
+        User::endblock($user->id);
+        $page["endblock"] = null;
     }
 }

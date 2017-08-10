@@ -142,4 +142,11 @@ class User{
         $row = $stat->get_result()->fetch_array();
         return User::from($row);
     }
+
+    static function endblock($uid){
+        global $con;
+        $stat = $con->prepare("DELETE FROM wtb_blockuser WHERE blockuid=?");
+        $stat->bind_param('i',$uid);
+        $stat->execute();
+    }
 }
