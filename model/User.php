@@ -12,13 +12,19 @@ class User{
     public $avatar;
     public $admingp;
     public $endblock;
+    public $b_uid;
+    public $b_startblock;
+    public $b_operate;
 
-    function __construct($id, $name, $password, $admingp,$endblock){
+    function __construct($id, $name, $password, $admingp,$endblock,$b_uid,$b_startblock,$b_operate){
         $this->id = $id;
         $this->name = $name;
         $this->password = $password;
         $this->admingp = $admingp;
-        $this->endblock = $endblock;
+        $this->b_endblock = $endblock;
+        $this->b_uid = $b_uid;
+        $this->b_startblock = $b_startblock;
+        $this->b_operate = $b_operate;
 
         //TODO 路劲绝对地址
         //echo $name;
@@ -34,7 +40,7 @@ class User{
         if (!$row) {
             return null;
         }
-        return new User($row['uid'], $row['usr'], $row['pwd'],$row["admingp"],$row['endblock']);
+        return new User($row['uid'], $row['usr'], $row['pwd'],$row["admingp"],$row['endblock'],$row['blockuid'],$row['startblock'],$row['operateuid']);
     }
 
     static function avatar($user,$baseurl){

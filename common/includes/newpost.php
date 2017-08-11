@@ -53,7 +53,7 @@ if (!empty($_POST['sendreply'])) {
 }
 
 /*解封模块*/
-$page["endblock"] = User::ifblock($user->id)->endblock;
+$page["endblock"] = User::ifblock($user->id)->b_endblock;
 if($page["endblock"] != null ){
     if(strtotime("now") >= strtotime($page["endblock"])){
         User::endblock($user->id);

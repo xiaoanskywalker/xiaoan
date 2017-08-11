@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /common/includes/admin-includes.php
  */
@@ -177,5 +177,25 @@ if (!empty($_POST['usersetting'])) {
             array_push($page['message']['error'], $e->getMessage());
         }
         array_push($page['message']['accept'], '设置保存成功');
+    }
+}
+if (!empty($_POST['endblock'])) {
+    $chk = $_POST["chk"];
+    $retid = array();
+    if(count($chk) == 0){
+        array_push($page['message']['error'], '请至少选择一个用户');
+    }
+    if (empty($page['message']['error'])) {
+        try{
+            foreach ($chk as $key=>$value){
+                array_push($retid,$key);
+            }
+            foreach($retid as $value){
+                User::endblock($value);
+            }
+            array_push($page['message']['accept'], '用户解封成功');
+        }catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
     }
 }

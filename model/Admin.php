@@ -157,4 +157,20 @@ class Admin{
         $stat->bind_param('i',$ifallow);
         $stat->execute();
     }
+
+    static function listblockuser($page){
+        global $con;
+        $limit = array();
+        $limit[0] = ($page-1) * Site::$page_count;
+        $limit[1] = $page * Site::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_blockuser  ORDER BY bid DESC  LIMIT ?,?");
+        $stat->bind_param('ii',$limit[0],$limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, User::from($row));
+        }
+        return $arr;
+    }
 }

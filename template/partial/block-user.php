@@ -17,18 +17,12 @@
                 <td>操作管理员</td>
             </tr>
             <?php
-            //TODO 显示每个用户的头像
-            //foreach ($users as $value){
-             //   require "admin-userpreview.php";
-           // }
+            foreach ($block as $value){
+                require "block-userlist.php";
+            }
             ?>
         </table>
 
-        <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >&nbsp;
-        <input name="usrtyp" type = "submit" class="btn btn-success"  value = "设置" >所选用户的用户组至
-        <select class="form-control" name="usrsel">
-            <option value ='0'>普通用户</option>
-            <option value ='1'>普通管理员</option>
-        </select>
+        <input name="endblock" type = "submit" class="btn btn-success"  value = "解封所选用户" >
     </form>
 </div>

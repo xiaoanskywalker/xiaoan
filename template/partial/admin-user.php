@@ -6,6 +6,7 @@
  * File: /template/partial/admin-user.php
  */
 $users = Admin::listuser($pge);
+$block = Admin::listblockuser($pge);
 ?>
 <center>
     <h4>用户管理</h4>
