@@ -1,16 +1,28 @@
-<?php  
+<?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.2
+ * Author: Xiaoan
+ * File: /common/checkcode.php
+ */
 session_start();
-function random($len) {
-    $srcstr = "1a2s3d4f5g6hj8k9qwertyupzxcvbnm";
-    mt_srand();
-    $strs = "";
-    for ($i = 0; $i < $len; $i++) {
-        $strs .= $srcstr[mt_rand(0, 30)];
+function getnumber() {
+    $plus =  rand(1,2);
+    $num1 = rand(1,20);
+    $num2 = rand(10,20);
+    $num3 = rand(1,30);
+    if($plus == 1){
+        $_SESSION["verification"] = $num1+$num2-$num3;
+        return"$num1+$num2-$num3=?";
+    }else{
+        $_SESSION["verification"] = $num1-$num2+$num3;
+        return"$num1-$num2+$num3=?";
     }
-    return $strs;
+
+
 }
- $str = random(4); //随机生成的字符串
- $width  = 50;  //验证码图片的宽度
+ $str = getnumber(); //随机生成的字符串
+ $width  = 100;  //验证码图片的宽度
  $height = 25;//验证码图片的高度
  @ header("Content-Type:image/png");//声明需要创建的图层的图片格式
  $im = imagecreate($width, $height);//创建一个图层
@@ -25,7 +37,3 @@ function random($len) {
  imagerectangle($im, 0, 0, $width -1, $height -1, $font); //输出矩形
  imagepng($im); //输出图片
  imagedestroy($im);
-$str=md5($str);
- //选择 Session
- $_SESSION["verification"] = $str;
- ?>

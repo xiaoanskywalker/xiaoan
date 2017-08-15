@@ -43,9 +43,7 @@ class Site
         return Site::from($row);
     }
 
-    static function checkcode($code)
-    {
-        $code = md5($code);
+    static function checkcode($code){
         if ($code == $_SESSION["verification"]) {
             return 1;
         } else {

@@ -14,6 +14,12 @@ require 'partial/header.php';
 
     <div class="content">
         <?php
+        if($page['body']['mode'] == "logout"){
+            $_SESSION["welcome"] = 3;
+            User::adminlogout();
+            header("location:../");
+            exit;
+        }
         require 'partial/message.php';
         require "partial/admin-".$page['body']['mode'].".php";
         ?>

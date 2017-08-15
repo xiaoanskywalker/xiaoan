@@ -8,7 +8,7 @@
 ?>
 <footer>
     <div class="copyright">
-        Powered By <a href="http://xiaoanbbs.cn" target="_blank">Xiaoanbbs</a>&nbsp;V0<?= $page["version"] ?>
+        Powered By <a href="http://xiaoanbbs.cn" target="_blank">Xiaoanbbs</a>&nbsp;V<?= $page["version"] ?>
         <p>
             <?php
             if($user->admingp != 0){

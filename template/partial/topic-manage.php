@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/topic-manage.php
  */
@@ -26,4 +26,6 @@ switch (Post::gettype($tid)->topictype){
         return null;
 }
 ?>
+&nbsp;<b>用户管理：</b>&nbsp;
+封禁至
 <p></p>
