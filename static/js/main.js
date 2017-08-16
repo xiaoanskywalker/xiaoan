@@ -49,21 +49,18 @@ function MDown(Object){
     pX=event.x-document.all(Obj).style.pixelLeft;
     pY=event.y-document.all(Obj).style.pixelTop;
 }
-
 function MMove(){
     if(Obj!=''){
         document.all(Obj).style.left=event.x-pX;
         document.all(Obj).style.top=event.y-pY;
     }
 }
-
 function MUp(){
     if(Obj!=''){
         document.all(Obj).releaseCapture();
         Obj='';
     }
 }
-
 function d_x(){
     mask.style.visibility='visible';
     massage_box.style.visibility='visible'
@@ -79,4 +76,9 @@ function addpic(){
     parent.document.getElementById("picurl").value = "http://";
     d_x();
     d_y();
+}
+function bantime(){
+    var bantime = $('input[name="bantime"]:checked').val();
+    var bantimes = document.getElementById("bantimes").value;
+    window.location.href("./admin/setting.php?action=banuser&category=" + bantime + "&bantimes=" + bantimes);
 }

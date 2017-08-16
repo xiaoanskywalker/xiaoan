@@ -26,6 +26,16 @@ switch (Post::gettype($tid)->topictype){
         return null;
 }
 ?>
-&nbsp;<b>用户管理：</b>&nbsp;
-封禁至
+<br><b>用户管理：</b>&nbsp;
+<a href="#" onclick="bantime()">封禁</a>
+<input type="radio" name="bantime" id="1h" value="12h" />半天
+<input type="radio" name="bantime" id="1h" value="1d" checked />1天
+<input type="radio" name="bantime" id="1h" value="7d" />1周
+<input type="radio" name="bantime" id="1h" value="1m" />1月
+<input type="radio" name="bantime" id="1h" value="1y" />1年
+<input type="radio" name="bantime" id="1h" value="f" />永久
+<input type="radio" name="bantime" id="1h" value="s" />自定义：至
+<input type="text" name="bantimes" id="bantimes" value="<?=date("Y-m-d H:i:s",strtotime("+1 week"))?>" required />
 <p></p>
+<script>
+</script>

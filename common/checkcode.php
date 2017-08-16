@@ -18,8 +18,6 @@ function getnumber() {
         $_SESSION["verification"] = $num1-$num2+$num3;
         return"$num1-$num2+$num3=?";
     }
-
-
 }
  $str = getnumber(); //随机生成的字符串
  $width  = 100;  //验证码图片的宽度
