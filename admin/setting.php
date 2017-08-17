@@ -20,6 +20,8 @@ if($_SESSION['admin'] == null){
     echo ("Access denied.");
 }
 $page['body']['action'] = @$_REQUEST["action"];
+$page['body']['uid']  = @$_REQUEST["uid"];
+
 if($page['body']['action'] == "topictype"){
     Admin::changetopictype(@$_REQUEST["tid"],@$_REQUEST["tp"]);
     //echo  ("操作成功");
@@ -29,6 +31,12 @@ if($page['body']['action'] == "topictype"){
         $gourl = "$baseurl/showtopic.php?tid=".@$_REQUEST["tid"];
     }
     require "$baseurl/template/partial/ok.php";
+}elseif($page['body']['action'] == "banuser"){
+    //$page['body']['category']  = @$_REQUEST["category"];
+    //$page['body']['bantimes']  = @$_REQUEST["bantimes"];
+    $endtime =  Admin::getendtime(@$_REQUEST["category"],@$_REQUEST["bantimes"]);
+
+
 }else{
     echo  ("System error.");
 }

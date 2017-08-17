@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /model/Admin.php
  */
@@ -172,5 +172,30 @@ class Admin{
             array_push($arr, User::from($row));
         }
         return $arr;
+    }
+
+    static function getendtime($category,$bantime){
+        if($category == "12h"){
+            return date("Y-m-d H:i:s",strtotime("+12 hours"));
+        }elseif($category == "1d"){
+            return date("Y-m-d H:i:s",strtotime("+1 day"));
+        }elseif($category == "7d"){
+            return date("Y-m-d H:i:s",strtotime("+1 week"));
+        }elseif($category == "1m"){
+            return date("Y-m-d H:i:s",strtotime("+1 month"));
+        }elseif($category == "1y"){
+            return date("Y-m-d H:i:s",strtotime("+1 year"));
+        }elseif($category == "s"){
+            return $bantime;
+        }else{
+            return "2038-1-19 03:14:07";
+        }
+    }
+
+    static function blockuser($blockuid,$endblock,$operateuid){
+        global $con;
+        $stat = $con->prepare("INSERT INTO wtb_blockuser VALUES (null,?,?,?,?)");
+        $stat->bind_param('issi',$blockuid,date("Y-m-d H:i:s"),$endblock,$operateuid);
+        $stat->execute();
     }
 }
