@@ -192,10 +192,17 @@ class Admin{
         }
     }
 
-    static function blockuser($blockuid,$endblock,$operateuid){
+    static function newblock($blockuid,$endblock,$operateuid){
         global $con;
         $stat = $con->prepare("INSERT INTO wtb_blockuser VALUES (null,?,?,?,?)");
         $stat->bind_param('issi',$blockuid,date("Y-m-d H:i:s"),$endblock,$operateuid);
+        $stat->execute();
+    }
+
+    static function updblock($blockuid,$endblock,$operateuid){
+        global $con;
+        $stat = $con->prepare("UPDATE wtb_blockuser SET endblock=? ,operateuid=? WHERE blockuid=? ");
+        $stat->bind_param('sii',$endblock,$operateuid,$blockuid);
         $stat->execute();
     }
 }

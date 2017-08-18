@@ -28,7 +28,7 @@ switch (Post::gettype($tid)->topictype){
 }
 ?>
 <br><b>用户管理：</b>&nbsp;
-    <a href="#" onclick="bantime('<?= $baseurl ?>',<?= User::getByName($topic->username)->id?>)">封禁</a>
+    <a href="#" onclick="bantime('<?= $baseurl ?>',<?= User::getByName($topic->username)->id?>,<?= $tid ?>)">封禁</a>
     <input type="radio" name="bantime" id="1h" value="12h" />半天
     <input type="radio" name="bantime" id="1h" value="1d" checked />1天
     <input type="radio" name="bantime" id="1h" value="7d" />1周

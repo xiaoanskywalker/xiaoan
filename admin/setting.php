@@ -21,22 +21,28 @@ if($_SESSION['admin'] == null){
 }
 $page['body']['action'] = @$_REQUEST["action"];
 $page['body']['uid']  = @$_REQUEST["uid"];
+$page['body']['tid']  = @$_REQUEST["tid"];
+$gourl = "$baseurl/showtopic.php?tid=".@$_REQUEST["tid"];
 
 if($page['body']['action'] == "topictype"){
-    Admin::changetopictype(@$_REQUEST["tid"],@$_REQUEST["tp"]);
+    Admin::changetopictype($page['body']['tid'],@$_REQUEST["tp"]);
     //echo  ("操作成功");
     if(@$_REQUEST["tp"] == 0){
         $gourl = $baseurl;
-    }else{
-        $gourl = "$baseurl/showtopic.php?tid=".@$_REQUEST["tid"];
     }
     require "$baseurl/template/partial/ok.php";
+
 }elseif($page['body']['action'] == "banuser"){
-    //$page['body']['category']  = @$_REQUEST["category"];
-    //$page['body']['bantimes']  = @$_REQUEST["bantimes"];
-    $endtime =  Admin::getendtime(@$_REQUEST["category"],@$_REQUEST["bantimes"]);
+    $endtime = array();
+    $endtime[0] = Admin::getendtime(@$_REQUEST["category"],@$_REQUEST["bantimes"]);//管理员设置的封禁截止时间
+    $endtime[1] = User::ifblock($page['body']['uid'])->b_endblock;//数据库中已有的封禁截止时间
+    if($endtime[1] == null){
+        Admin::newblock($page['body']['uid'],$endtime[0],$_SESSION['admin']->id);
+    }//else{
 
+ //   }
 
+    require "$baseurl/template/partial/ok.php";
 }else{
     echo  ("System error.");
 }

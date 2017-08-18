@@ -77,8 +77,8 @@ function addpic(){
     d_x();
     d_y();
 }
-function bantime(baseurl,uid){
+function bantime(baseurl,uid,tid){
     var bantime = $('input[name="bantime"]:checked').val();
     var bantimes = document.getElementById("bantimes").value;
-    window.location.href(baseurl + "/admin/setting.php?action=banuser&uid=" + uid + "&category=" + bantime + "&bantimes=" + bantimes);
+    window.location.href(baseurl + "/admin/setting.php?action=banuser&uid=" + uid + "&category=" + bantime + "&bantimes=" + bantimes +"&tid=" + tid);
 }
