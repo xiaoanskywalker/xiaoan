@@ -28,15 +28,15 @@
         }else{
             echo "普通管理员";
         }
-        ?>
-    <hr>
-    <b>服务器环境</b><br>
-    操作系统：<?php echo php_uname();?><br><p><p>
-    解释引擎：<?php echo $_SERVER['SERVER_SOFTWARE'];?><br>
-    PHP版本：<?php echo PHP_VERSION;?>
-        &nbsp;&nbsp;<a href="<?= $baseurl ?>/common/phpinfo.php" target="_blank">Phpinfo</a><br>
-    IP&nbsp;地址：<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br>
-
+        if($user->admingp == 2){ ?>
+          <hr>
+          <b>服务器环境</b><br>
+          操作系统：<?php echo php_uname();?><br><p><p>
+          解释引擎：<?php echo $_SERVER['SERVER_SOFTWARE'];?><br>
+          PHP版本：<?php echo PHP_VERSION;?>
+          &nbsp;&nbsp;<a href="<?= $baseurl ?>/common/phpinfo.php" target="_blank">Phpinfo</a><br>
+          IP&nbsp;地址：<?php echo GetHostByName($_SERVER['SERVER_NAME']);?><br>
+        <?php } ?>
     <hr>
     <b>统计信息</b><br>
     <table class="table">

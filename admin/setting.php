@@ -16,7 +16,7 @@ $body = 'admin.partial.php';
 require_once "$baseurl/common/includes/common.php";
 
 session_start();
-if($_SESSION['admin'] == null){
+if($_SESSION['user'] == null){
     echo ("Access denied.");
 }
 $page['body']['action'] = @$_REQUEST["action"];
@@ -37,10 +37,13 @@ if($page['body']['action'] == "topictype"){
     $endtime[0] = Admin::getendtime(@$_REQUEST["category"],@$_REQUEST["bantimes"]);//管理员设置的封禁截止时间
     $endtime[1] = User::ifblock($page['body']['uid'])->b_endblock;//数据库中已有的封禁截止时间
     if($endtime[1] == null){
-        Admin::newblock($page['body']['uid'],$endtime[0],$_SESSION['admin']->id);
-    }//else{
-
- //   }
+        Admin::newblock($page['body']['uid'],$endtime[0],$_SESSION['user']->id);
+    }else{
+        if(strtotime($endtime[0]) >= strtotime($endtime[1])){
+                Admin::updblock($page['body']['uid'],$endtime[0],$_SESSION['user']->id);
+            }
+        //echo strtotime($endtime[0])."<br>".strtotime($endtime[1]);
+    }
 
     require "$baseurl/template/partial/ok.php";
 }else{
