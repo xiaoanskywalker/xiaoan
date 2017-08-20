@@ -8,19 +8,18 @@
 session_start();
 function getnumber() {
     $plus =  rand(1,2);
-    $num1 = rand(1,20);
-    $num2 = rand(10,20);
-    $num3 = rand(1,30);
+    $num1 = rand(15,24);
+    $num2 = rand(5,14);
     if($plus == 1){
-        $_SESSION["verification"] = $num1+$num2-$num3;
-        return"$num1+$num2-$num3=?";
+        $_SESSION["verification"] = $num1 + $num2;
+        return"$num1+$num2=?";
     }else{
-        $_SESSION["verification"] = $num1-$num2+$num3;
-        return"$num1-$num2+$num3=?";
+        $_SESSION["verification"] = $num1 - $num2;
+        return"$num1-$num2=?";
     }
 }
  $str = getnumber(); //随机生成的字符串
- $width  = 100;  //验证码图片的宽度
+ $width  = 75;  //验证码图片的宽度
  $height = 25;//验证码图片的高度
  @ header("Content-Type:image/png");//声明需要创建的图层的图片格式
  $im = imagecreate($width, $height);//创建一个图层

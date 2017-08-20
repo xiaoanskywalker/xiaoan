@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/user-list.php
  */
@@ -23,11 +23,13 @@
             }
             ?>
         </table>
+        <?php if($user->admingp == 2){ ?>
         <input name="delusr" type = "submit" class="btn btn-danger"  value = "删除所选用户" >&nbsp;
         <input name="usrtyp" type = "submit" class="btn btn-success"  value = "设置" >所选用户的用户组至
         <select class="form-control" name="usrsel">
             <option value ='0'>普通用户</option>
             <option value ='1'>普通管理员</option>
         </select>
+        <?php } ?>
     </form>
 </div>

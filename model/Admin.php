@@ -77,10 +77,10 @@ class Admin{
         return Admin::from($row);
     }
 
-    static function changesettings($ifopen,$webname ,$keywords ,$description ){
+    static function changesettings($ifopen,$webname ,$keywords ,$description,$checkcode){
         global $con;
-        $stat = $con->prepare("UPDATE wtb_settings SET webname=?,keywords=?,description=?,opened=? WHERE sid=1");
-        $stat->bind_param('sssi',$webname,$keywords,$description,$ifopen);
+        $stat = $con->prepare("UPDATE wtb_settings SET webname=?,keywords=?,description=?,opened=?,checkcode=? WHERE sid=1");
+        $stat->bind_param('sssii',$webname,$keywords,$description,$ifopen,$checkcode);
         $stat->execute();
     }
 

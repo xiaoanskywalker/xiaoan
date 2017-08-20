@@ -1,12 +1,11 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /model/Site.php
  */
-class Site
-{
+class Site{
     public static $page_count = 40;
     public $title;
     public $keywords;
@@ -15,9 +14,9 @@ class Site
     public $ifopen;
     public $allowpost;
     public $allowreg;
+    public $checkcode;
 
-    function __construct($title, $keywords, $description,$replynumber,$ifopen,$allowpost,$allowreg)
-    {
+    function __construct($title, $keywords, $description,$replynumber,$ifopen,$allowpost,$allowreg,$checkcode){
         $this->title = $title;
         $this->keywords = $keywords;
         $this->description = $description;
@@ -25,6 +24,7 @@ class Site
         $this->ifopen = $ifopen;
         $this->allowpost = $allowpost;
         $this->allowreg = $allowreg;
+        $this->checkcode = $checkcode;
     }
 
     static function from($row)
@@ -32,7 +32,8 @@ class Site
         if (!$row) {
             return null;
         }
-        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['opened'],$row["allowpost"],$row["allowreg"]);
+        return new Site($row['webname'], $row['keywords'], $row['description'],$row['count( * )'],$row['opened'],$row["allowpost"],$row["allowreg"],
+            $row["checkcode"]);
     }
 
     static function get()

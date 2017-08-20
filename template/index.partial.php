@@ -11,9 +11,11 @@ require 'partial/header.php';
 <main class="main">
 
     <?php require 'partial/sidebar.php'; ?>
-
     <div class="content">
         <?php
+        echo "用户数：".Admin::getusernum()->usernumber ."&nbsp;";
+        echo "帖子数：".(Admin::gettopicnum()->topicnumber + Admin::getreplynum()->topicnumber);
+
         require 'partial/message.php';
         if($user != null and $user->admingp != 0 or Site::ifopen()->ifopen == 1){
             require 'partial/post-list.php';

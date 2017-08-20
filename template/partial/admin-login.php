@@ -14,8 +14,10 @@
         <form class="form-inline" name="login" role="form" action="" method=post>
             管理员用户名：<?= $user->name ?><p>
                 <input type="password" class="form-control" placeholder="密码" name="password" required><p>
+                <?php if(Site::ifopen()->checkcode == 1){?>
                 <input type="text" class="form-control" placeholder="验证码,请输入计算结果,点击图片可换一张" name="checkcode" required>
                 <img id="checkpic" onclick="changing();" src='../common/checkcode.php' />
+                <?php } ?>
             <div class="button-line">
                 <input name="login" type = "submit" class="btn btn-success" value = "登录">
             </div>

@@ -6,7 +6,6 @@
  * File: /template/partial/admin-index.php
  */
 
-//TODO 启用/取消验证码
 //TODO 管理员操作记录
 //TODO 用户申请解封
 ?>

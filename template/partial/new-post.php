@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.1
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/new-post.php
  */
@@ -25,7 +25,7 @@ require "add-picture.php";
             <input type="text" id="title" name="title" placeholder="话题标题" value="<?= $per[0] ?>" maxlength="30" required>
         </div>
         <div class="post-content">
-            <textarea name="topic" id ="topic" class="input-area" placeholder="写点什么..." required></textarea>
+            <textarea name="topic" id ="topic" class="input-area" placeholder="写点什么...支持HTML" required></textarea>
         </div>
         <input name="sendtopic" type = "submit" class="button send-button" value = "发送">
     </form>

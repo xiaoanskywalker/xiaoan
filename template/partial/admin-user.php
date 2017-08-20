@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/admin-user.php
  */
@@ -17,20 +17,24 @@ $block = Admin::listblockuser($pge);
             <li class="active">
                 <a href="#adminid" data-toggle="tab" onclick="mytopic()" aria-expanded="true">注册用户管理</a>
             </li>
+            <?php if($user->admingp == 2){ ?>
             <li class="">
                 <a href="#newid" data-toggle="tab" onclick="myreply()" aria-expanded="false">用户设置</a>
             </li>
             <li class="">
                 <a href="#newid2" data-toggle="tab" onclick="topicsetting()" aria-expanded="false">添加用户</a>
             </li>
+            <?php } ?>
             <li class="">
                 <a href="#newid3" data-toggle="tab" onclick="blockedusr()" aria-expanded="false">用户封禁管理</a>
             </li>
         </ul><br>
         <?php
         require"user-list.php";
-        require "user-setting.php";
-        require "add-user.php";
+        if($user->admingp == 2){
+            require "user-setting.php";
+            require "add-user.php";
+        }
         require "block-user.php";
         require 'pagination.php';
         ?>
