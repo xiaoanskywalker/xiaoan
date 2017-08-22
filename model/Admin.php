@@ -205,4 +205,19 @@ class Admin{
         $stat->bind_param('sii',$endblock,$operateuid,$blockuid);
         $stat->execute();
     }
+
+    static function replybin($page){
+        global $con;
+        $limit[0] = ($page-1) * Post::$page_count;
+        $limit[1] = $page * Post::$page_count;
+        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE deleted=1 ORDER BY rid DESC limit ?,?");
+        $stat->bind_param('ii',$limit[0], $limit[1]);
+        $stat->execute();
+        $result = $stat->get_result();
+        $arr = array();
+        while ($row = $result->fetch_array()) {
+            array_push($arr, Post::from($row));
+        }
+        return $arr;
+    }
 }

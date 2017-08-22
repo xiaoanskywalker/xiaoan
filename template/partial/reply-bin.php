@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.0
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/reply-bin.php
  */
@@ -16,5 +16,10 @@
             <td>回帖内容</td>
             <td>回帖时间</td>
         </tr>
+        <?php
+        foreach ($replybin as $value){
+            require "admin-replypreview.php";
+        }
+        ?>
     </table>
 </div>

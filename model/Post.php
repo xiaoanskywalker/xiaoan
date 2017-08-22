@@ -16,9 +16,10 @@ class Post{
     public $lzuser;
     public $reply;
     public $replytime;
+    public $rid;
     public $url;
 
-    function __construct($id, $title, $username, $date, $content,$topictype,$lzuser,$reply,$replytime){
+    function __construct($id, $title, $username, $date, $content,$topictype,$lzuser,$reply,$replytime,$rid){
         $this->id = $id;
         $this->title = $title;
         $this->username = $username;
@@ -28,6 +29,7 @@ class Post{
         $this->lzuser = $lzuser;
         $this->reply = $reply;
         $this->replytime = $replytime;
+        $this->rid = $rid;
         $this->url = '/showtopic.php?tid=' . $id;
     }
 
@@ -45,7 +47,7 @@ class Post{
             return null;
         }
         return new Post($row['tid'], $row['titles'], $row['users'], $row['date'], $row['posts'],$row['topictype'],$row['user'],
-            $row['reply'],$row['date']);
+            $row['reply'],$row['date'],$row['rid']);
     }
 
     static function get($id)
@@ -123,7 +125,7 @@ class Post{
         global $con;
         $limit[0] = ($page-1) * Post::$page_count;
         $limit[1] = $page * Post::$page_count;
-        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? ORDER BY rid DESC limit ?,?");
+        $stat = $con->prepare("SELECT * FROM wtb_reply WHERE tid=? AND deleted=0 ORDER BY rid DESC limit ?,?");
         $stat->bind_param('iii',$tid,$limit[0], $limit[1]);
         $stat->execute();
         $result = $stat->get_result();

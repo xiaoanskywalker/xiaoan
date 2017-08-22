@@ -6,6 +6,7 @@
  * File: /template/partial/admin-topic.php
  */
 $topicbin = Admin::topicbin($pge);
+$replybin = Admin::replybin($pge);
 ?>
 <center>
     <h4>帖子管理</h4>
