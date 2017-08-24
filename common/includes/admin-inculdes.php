@@ -203,3 +203,23 @@ if (!empty($_POST['endblock'])) {
         }
     }
 }
+if (!empty($_POST['recoverreplys'])) {
+    $chk = $_POST["chk"];
+    $retid = array();
+    if(count($chk) == 0){
+        array_push($page['message']['error'], '请至少选择一个帖子');
+    }
+    if (empty($page['message']['error'])) {
+        try{
+            foreach ($chk as $key=>$value){
+                array_push($retid,$key);
+            }
+            foreach($retid as $value){
+               Admin::recoverreply($value);
+            }
+            array_push($page['message']['accept'], '回帖恢复成功');
+        }catch (Exception $e) {
+            array_push($page['message']['error'], $e->getMessage());
+        }
+    }
+}
