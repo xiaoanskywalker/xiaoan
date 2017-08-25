@@ -215,7 +215,7 @@ if (!empty($_POST['recoverreplys'])) {
                 array_push($retid,$key);
             }
             foreach($retid as $value){
-               Admin::recoverreply($value);
+               Admin::recoverreply($value,0);
             }
             array_push($page['message']['accept'], '回帖恢复成功');
         }catch (Exception $e) {

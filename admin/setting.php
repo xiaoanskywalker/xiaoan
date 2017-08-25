@@ -26,12 +26,9 @@ $gourl = "$baseurl/showtopic.php?tid=".@$_REQUEST["tid"];
 
 if($page['body']['action'] == "topictype"){
     Admin::changetopictype($page['body']['tid'],@$_REQUEST["tp"]);
-    //echo  ("操作成功");
     if(@$_REQUEST["tp"] == 0){
         $gourl = $baseurl;
     }
-    require "$baseurl/template/partial/ok.php";
-
 }elseif($page['body']['action'] == "banuser"){
     $endtime = array();
     $endtime[0] = Admin::getendtime(@$_REQUEST["category"],@$_REQUEST["bantimes"]);//管理员设置的封禁截止时间
@@ -42,10 +39,10 @@ if($page['body']['action'] == "topictype"){
         if(strtotime($endtime[0]) >= strtotime($endtime[1])){
                 Admin::updblock($page['body']['uid'],$endtime[0],$_SESSION['user']->id);
             }
-        //echo strtotime($endtime[0])."<br>".strtotime($endtime[1]);
     }
-
-    require "$baseurl/template/partial/ok.php";
+}elseif($page['body']['action'] == "delrep"){
+    Admin::recoverreply(@$_REQUEST["rid"],1);
 }else{
     echo  ("System error.");
 }
+require "$baseurl/template/partial/ok.php";

@@ -221,10 +221,10 @@ class Admin{
         return $arr;
     }
 
-    static function recoverreply($rid){
+    static function recoverreply($rid,$deleted){
         global $con;
-        $stat = $con->prepare("UPDATE wtb_reply SET deleted=0 WHERE rid=?");
-        $stat->bind_param('i',$rid);
+        $stat = $con->prepare("UPDATE wtb_reply SET deleted=? WHERE rid=?");
+        $stat->bind_param('ii',$deleted,$rid);
         $stat->execute();
     }
 }

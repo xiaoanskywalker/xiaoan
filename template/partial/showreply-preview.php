@@ -14,6 +14,9 @@ $avatar = User::avatar($replys->lzuser,$baseurl);
             <div class="info">
                 <a href="#" class="author"><?= $replys->lzuser ?></a>
                 <span class="time">回复于 <?= $replys->replytime ?></span>
+                <?php if($user->admingp != 0){?>
+                <a href="<?= $baseurl ?>/admin/setting.php?action=delrep&rid=<?= $replys->rid ?>&tid=<?= $tid ?>">删除</a>
+                <?php } ?>
             </div>
         </div>
     </div>
