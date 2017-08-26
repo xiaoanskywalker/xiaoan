@@ -1,11 +1,11 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.1
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /template/partial/top-bar-logged.php
  */
-$avatar = User::avatar($user->name,$baseurl);
+$avatar = User::avatar($user->id,$baseurl);
 ?>
 <li class="dropdown user-nav-dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">

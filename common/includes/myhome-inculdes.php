@@ -1,4 +1,10 @@
 <?php
+/**
+ * (C)2016-2017 Xiaoanbbs All rights reserved.
+ * Last modify version:0.5.2
+ * Author: Xiaoan
+ * File: /common/includes/myhome-includes.php
+ */
 /*修改密码操作 action of change password*/
 if (!empty($_POST['changepwd'])){
     $pwd0 = $_POST["password0"];
@@ -29,7 +35,6 @@ if (!empty($_POST['changepwd'])){
         }
     }
 }
-
 /*修改个人信息操作 action of change personal information*/
 if (!empty($_POST['info'])) {
     $sex= $_POST["sex"];
@@ -57,16 +62,9 @@ if (!empty($_POST['info'])) {
         array_push($page['message']['accept'], '个人信息修改成功');
     }
 }
-
-/*恢复默认头像操作 action of recover the default avatar*/
-if (!empty($_POST['c-avatar'])) {
-    unlink("$baseurl/static/img/avatars/$user->name.png");
-    array_push($page['message']['accept'], '默认头像恢复成功');
-}
-
 /*头像上传操作 action of upload avatar*/
 if (!empty($_POST['avatar'])) {
-    $upload=Home::Upload("$baseurl/static/img/avatars/$user->name.png");
+    $upload=Home::Upload("$baseurl/static/img/avatars/$user->id.png");
     //print_r($upload);
     if ($upload[3]==0){
         array_push($page['message']['accept'], '头像设置成功');

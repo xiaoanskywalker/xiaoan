@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /common/
+Disallow: /install/
+Disallow: /model/
+Disallow: /static/
+Disallow: /template/
+Disallow: /user/
