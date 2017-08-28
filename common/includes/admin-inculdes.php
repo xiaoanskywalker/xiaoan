@@ -5,6 +5,18 @@
  * Author: Xiaoan
  * File: /common/includes/admin-includes.php
  */
+//TODO URL pathinfo 重写 .htaccess URL重写
+//TODO 自定义错误提示
+//TODO 模板合并
+//TODO 支持导出数据库
+//TODO 优化封禁页面，封禁回帖用户
+//TODO 楼中楼或者回复 回帖用户
+//TODO 使用bootstrap,jquery优化界面
+//TODO 用户登录注册实现不刷新提交表单，AJAX
+//TODO 通过邮箱找回密码
+//TODO 权限管理，管理员不能封禁自己
+//TODO 友情链接、网站备案号、第三方统计代码区域
+//TODO 帖子添加表情，上传附件，上传图片
 if (!empty($_POST['login'])) {
     /*管理员二次登录操作*/
     $pwd = $_POST["password"];
@@ -107,8 +119,8 @@ if (!empty($_POST['delusr'])) {
                 if(User::get($value)->admingp != 0){
                     throw new Exception ("无法删除管理员");
                 }
-                if(file_exists("$baseurl/static/img/avatars/".User::get($value)->name.".png")){
-                    unlink("$baseurl/static/img/avatars/".User::get($value)->name.".png");
+                if(file_exists("$baseurl/static/img/avatars/".User::get($value)->id.".png")){
+                    unlink("$baseurl/static/img/avatars/".User::get($value)->id.".png");
                 }
                 Admin::delusr($value);
             }

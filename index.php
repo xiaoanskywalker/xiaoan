@@ -5,7 +5,6 @@
  * Author: Xiaoan
  * File: /index.php
  */
-//TODO URL pathinfo 重写 .htaccess URL重写
 /*配置文件检测*/
 if ((file_exists("./common/config.php")) == false) {
     header("location:./install/install.php");

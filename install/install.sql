@@ -4,20 +4,17 @@
  * Author: Xiaoan
  * File: /install/install.sql
  */
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+SET time_zone = "+08:00";
 
-/*
-DROP TABLE IF EXISTS `wtb_blockuser`
+DROP TABLE IF EXISTS `wtb_blockuser`;
 CREATE TABLE IF NOT EXISTS `wtb_blockuser` (
   `bid` int(11) NOT NULL AUTO_INCREMENT,
   `blockuid` int(11) NOT NULL,
   `startblock` datetime NOT NULL,
-  `endblock`datetime NOT NULL,
+  `endblock` datetime NOT NULL,
   `operateuid` int(11) NOT NULL,
   PRIMARY KEY (`bid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
-*/
 
 DROP TABLE IF EXISTS `wtb_reply`;
 CREATE TABLE IF NOT EXISTS `wtb_reply` (
@@ -27,6 +24,7 @@ CREATE TABLE IF NOT EXISTS `wtb_reply` (
   `reply` text NOT NULL,
   `date` datetime NOT NULL,
   `ifread` int(11) NOT NULL,
+  `deleted` int(11) NOT NULL,
   PRIMARY KEY (`rid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
@@ -40,8 +38,12 @@ CREATE TABLE IF NOT EXISTS `wtb_settings` (
   `opened` int(11) NOT NULL,
   `allowpost` int(11) NOT NULL,
   `allowreg` int(11) NOT NULL,
+  `checkcode` int(11) NOT NULL,
   PRIMARY KEY (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+INSERT INTO `wtb_settings` (`sid`, `webname`, `keywords`, `description`, `prefix`, `opened`, `allowpost`, `allowreg`, `checkcode`) VALUES
+(1, 'xiaoanbbs', '小安社区 Xiaosnbbs', '小安社区，追求简单、极致', '【默认前缀】', 1, 1, 1, 1);
 
 DROP TABLE IF EXISTS `wtb_titles`;
 CREATE TABLE IF NOT EXISTS `wtb_titles` (
