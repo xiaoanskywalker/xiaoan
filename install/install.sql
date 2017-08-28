@@ -1,6 +1,6 @@
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.2 12
+ * Last modify version:0.5.2
  * Author: Xiaoan
  * File: /install/install.sql
  */

@@ -1,7 +1,7 @@
 <?php
 /**
  * (C)2016-2017 Xiaoanbbs All rights reserved.
- * Last modify version:0.5.2
+ * Last modify version:0.5.2 3
  * Author: Xiaoan
  * File: /template/partial/myhome-avatar.php
  */
