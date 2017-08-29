@@ -68,8 +68,8 @@ foreach ($sql as $value) {
 User::register($install['admin_user'], md5($install['admin_pawd']),$install['admin_mail'],2);;
 
 /*插入站点信息*/
-$con->query("INSERT INTO wtb_settings (sid,webname,keywords,description,prefix,opened,allowpost,allowreg) VALUES
-(1, '".$install['site_name']."', '小安社区 Xiaosnbbs', '小安社区，追求简单、极致', '【默认前缀】', 1, 1, 1);");
+$con->query("INSERT INTO wtb_settings (sid,webname,keywords,description,prefix,opened,allowpost,allowreg,checkcode) VALUES
+(1, '".$install['site_name']."', '小安社区 Xiaosnbbs', '小安社区，追求简单、极致', '【默认前缀】', 1, 1, 1,1);");
 $con->close();
 
 /*写入配置文件*/

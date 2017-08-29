@@ -27,7 +27,9 @@ include("header.php");
 <p>三.请<b><font color="red">不要删除软件底部的名称及版权信息</font></b>，二次开发者可保留自己的版权信息。</p>
 <p>只要你遵循上述条款规定，您就可以自由使用并传播本源代码。</p>
 <center>
-    <input type="checkbox" id="chec" onclick="check()" > 我已看过并接受 <span id="xieyi" onclick="foo3()">《使用协议》</span>
+    <label  class="btn btn-default">
+        <input type="checkbox" id="chec" onclick="check()" > 我已看过并接受 <span id="xieyi" onclick="foo3()">《使用协议》</span>
+    </label>
     <a href="step-2.php" class="btn btn-primary" id="btn" disabled>下一步</a>
 </center>
 </div>

@@ -42,9 +42,6 @@ CREATE TABLE IF NOT EXISTS `wtb_settings` (
   PRIMARY KEY (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
-INSERT INTO `wtb_settings` (`sid`, `webname`, `keywords`, `description`, `prefix`, `opened`, `allowpost`, `allowreg`, `checkcode`) VALUES
-(1, 'xiaoanbbs', '小安社区 Xiaosnbbs', '小安社区，追求简单、极致', '【默认前缀】', 1, 1, 1, 1);
-
 DROP TABLE IF EXISTS `wtb_titles`;
 CREATE TABLE IF NOT EXISTS `wtb_titles` (
   `tid` mediumint(8) NOT NULL AUTO_INCREMENT,
