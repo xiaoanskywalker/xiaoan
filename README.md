@@ -1,5 +1,7 @@
 ## 小安社区 Xiaoanbbs
 小巧安稳的开源论坛，官方网站http://xiaoanbbs.cn
+官方发布站点：http://weitieba.cf
+官方演示站点：https://xiaoan.feking.org
 <p>
 <b>更新日志</b>
 

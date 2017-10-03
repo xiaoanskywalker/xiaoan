@@ -6,7 +6,7 @@
  * File: /common/includes/admin-includes.php
  */
 //TODO URL pathinfo 重写
-//TODO .htaccess URL重写
+//TODO .htaccess 文件 URL重写
 //TODO 自定义错误提示
 //TODO 模板合并
 //TODO 支持导出数据库
