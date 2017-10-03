@@ -5,7 +5,8 @@
  * Author: Xiaoan
  * File: /common/includes/admin-includes.php
  */
-//TODO URL pathinfo 重写 .htaccess URL重写 1
+//TODO URL pathinfo 重写
+//TODO .htaccess URL重写
 //TODO 自定义错误提示
 //TODO 模板合并
 //TODO 支持导出数据库
@@ -17,6 +18,7 @@
 //TODO 权限管理，管理员不能封禁自己
 //TODO 友情链接、网站备案号、第三方统计代码区域
 //TODO 帖子添加表情，上传附件，上传图片
+//TODO 操作手册
 if (!empty($_POST['login'])) {
     /*管理员二次登录操作*/
     $pwd = $_POST["password"];
